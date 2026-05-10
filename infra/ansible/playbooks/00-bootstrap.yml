@@ -1,0 +1,36 @@
+---
+# 00-bootstrap.yml
+# Baseline configuration for all 12 study hosts.
+# Idempotent: safe to re-run if a host is reinstalled.
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/00-bootstrap.yml
+
+- name: Baseline configuration of all study hosts
+  hosts: study_hosts
+  become: true
+  gather_facts: true
+
+  pre_tasks:
+    - name: Wait for SSH to be reachable
+      ansible.builtin.wait_for_connection:
+        timeout: 120
+
+    - name: Set hostname to study identifier
+      ansible.builtin.hostname:
+        name: "{{ inventory_hostname }}"
+
+    - name: Update /etc/hosts with study hostname
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.1\.1'
+        line: "127.0.1.1 {{ inventory_hostname }}"
+        state: present
+
+  roles:
+    - common
+
+  post_tasks:
+    - name: Confirm bootstrap complete
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} bootstrap complete, ready for Zabbix and workload roles"

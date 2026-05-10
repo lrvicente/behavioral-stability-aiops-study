@@ -1,0 +1,16 @@
+[Unit]
+Description=CNSM 2027 study workload generator
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/cnsm-study/workloads/io_load_generator.sh
+Restart=always
+RestartSec=10
+User=root
+StandardOutput=append:/var/log/cnsm-workloads/service.log
+StandardError=append:/var/log/cnsm-workloads/service.log
+
+[Install]
+WantedBy=multi-user.target

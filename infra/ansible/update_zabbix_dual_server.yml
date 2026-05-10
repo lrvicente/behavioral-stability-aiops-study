@@ -1,0 +1,46 @@
+---
+- name: Configure dual Zabbix Server for CNSM study agents
+  hosts: study_hosts
+  become: true
+  gather_facts: false
+
+  vars:
+    primary_zabbix_server: "lucas-homelab.duckdns.org"
+    secondary_zabbix_server: "137.74.116.37"
+
+  tasks:
+    - name: Configure allowed passive Zabbix servers
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^Server='
+        line: "Server={{ primary_zabbix_server }},{{ secondary_zabbix_server }}"
+        backup: true
+
+    - name: Configure active Zabbix servers
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^ServerActive='
+        line: "ServerActive={{ primary_zabbix_server }}:10051,{{ secondary_zabbix_server }}:10051"
+        backup: true
+
+    - name: Ensure hostname matches Ansible inventory
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^Hostname='
+        line: "Hostname={{ inventory_hostname }}"
+        backup: true
+
+    - name: Restart Zabbix Agent 2
+      ansible.builtin.systemd:
+        name: zabbix-agent2
+        state: restarted
+        enabled: true
+
+    - name: Show resulting Zabbix agent configuration
+      ansible.builtin.shell: "grep -E '^(Server|ServerActive|Hostname)=' /etc/zabbix/zabbix_agent2.conf"
+      register: zabbix_agent_config
+      changed_when: false
+
+    - name: Print configuration
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} -> {{ zabbix_agent_config.stdout_lines }}"

@@ -1,0 +1,56 @@
+---
+# Deploys fault injection scripts and cron job
+# Cycle is parametrized via the `cycle` variable (default: cycle1)
+
+- name: Install iproute2 (for tc network latency injection)
+  ansible.builtin.apt:
+    name: iproute2
+    state: present
+
+- name: Create config directory
+  ansible.builtin.file:
+    path: /etc/cnsm
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Ensure /opt/cnsm-study/scripts exists
+  ansible.builtin.file:
+    path: /opt/cnsm-study/scripts
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Ensure /var/log/cnsm-faults exists
+  ansible.builtin.file:
+    path: /var/log/cnsm-faults
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy fault injection script
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../../scripts/inject_fault.py"
+    dest: /opt/cnsm-study/scripts/inject_fault.py
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy fault schedule (must be generated and committed before this runs)
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../../../protocols/fault_schedule_{{ cycle | default('cycle1') }}.csv"
+    dest: /etc/cnsm/fault_schedule.csv
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Install cron job for fault injection
+  ansible.builtin.cron:
+    name: "CNSM 2027 fault injection"
+    minute: "*"
+    job: "/opt/cnsm-study/scripts/inject_fault.py --schedule /etc/cnsm/fault_schedule.csv --host {{ inventory_hostname }} >> /var/log/cnsm-faults/cron.log 2>&1"
+    user: root
+  when: fault_injection_enabled | bool

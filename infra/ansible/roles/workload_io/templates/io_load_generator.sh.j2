@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# I/O-bound workload using fio with mixed read/write patterns
+
+set -uo pipefail
+
+LOG_FILE="/var/log/cnsm-workloads/io.log"
+mkdir -p "$(dirname "$LOG_FILE")"
+
+get_iodepth() {
+  local hour
+  local dow
+  hour=$(date +%H | sed 's/^0//')
+  dow=$(date +%u)
+  hour=${hour:-0}
+
+  local depth
+  if   (( hour < 4 ));  then depth=4
+  elif (( hour < 8 ));  then depth=$(( 4 + 2 * (hour - 4) ))
+  elif (( hour < 12 )); then depth=$(( 12 + 4 * (hour - 8) ))
+  elif (( hour < 14 )); then depth=32
+  elif (( hour < 18 )); then depth=$(( 32 - 4 * (hour - 14) ))
+  elif (( hour < 22 )); then depth=$(( 16 - 2 * (hour - 18) ))
+  else                       depth=4
+  fi
+
+  if (( dow >= 6 )); then depth=$(( depth * 7 / 10 )); fi
+  if (( depth < 1 )); then depth=1; fi
+  echo "$depth"
+}
+
+main_loop() {
+  while true; do
+    local d
+    d=$(get_iodepth)
+    echo "$(date -Iseconds) running fio iodepth=$d" >> "$LOG_FILE"
+    IODEPTH="$d" timeout 70 fio --client=- /opt/cnsm-study/workloads/fio_mixed.fio </dev/null >/dev/null 2>&1 || \
+      timeout 70 fio /opt/cnsm-study/workloads/fio_mixed.fio --iodepth="$d" >/dev/null 2>&1 || true
+
+    # Random burst of small random reads
+    if (( RANDOM % 720 == 0 )); then
+      echo "$(date -Iseconds) IO_BURST injected" >> "$LOG_FILE"
+      timeout 90 fio --name=burst --filename=/opt/cnsm-study/iotest/testfile.dat \
+        --rw=randread --bs=4k --iodepth=64 --numjobs=4 --time_based --runtime=80 \
+        --direct=1 --group_reporting >/dev/null 2>&1 || true
+    fi
+    sleep 5
+  done
+}
+main_loop

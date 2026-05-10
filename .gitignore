@@ -1,0 +1,65 @@
+# Local-only files
+.local/
+
+# Secrets and credentials
+.env
+*.env
+*.key
+*.pem
+*.p12
+*.pfx
+credentials
+.aws/
+.cnsm2027/
+zabbix_export.env
+*token*
+*secret*
+user-*.txt
+
+# Ansible
+.ansible_facts/
+*.retry
+
+# Local inventory
+infra/ansible/inventory/hosts.ini
+infra/ansible/inventory/hosts.ini.bak.*
+
+# Local secrets / vault
+infra/ansible/group_vars/secrets.yml
+infra/ansible/group_vars/vault.yml
+*.vault
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+export-venv/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Data files
+data/raw/
+data/exports/
+exports/
+*.parquet
+*.jsonl.gz
+*.csv.gz
+
+# Build artifacts
+*.egg-info/
+build/
+dist/

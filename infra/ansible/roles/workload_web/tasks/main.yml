@@ -1,0 +1,54 @@
+---
+# Web workload: nginx serves static content, ApacheBench loop generates
+# variable load following daily and weekly patterns.
+
+- name: Install nginx and ApacheBench
+  ansible.builtin.apt:
+    name:
+      - nginx
+      - apache2-utils
+    state: present
+
+- name: Generate large static file for realistic responses
+  ansible.builtin.shell: |
+    head -c 524288 /dev/urandom | base64 > /var/www/html/large.txt
+  args:
+    creates: /var/www/html/large.txt
+
+- name: Generate medium static file
+  ansible.builtin.shell: |
+    head -c 32768 /dev/urandom | base64 > /var/www/html/medium.txt
+  args:
+    creates: /var/www/html/medium.txt
+
+- name: Ensure nginx is enabled and running
+  ansible.builtin.systemd:
+    name: nginx
+    enabled: true
+    state: started
+
+- name: Deploy load generator script
+  ansible.builtin.template:
+    src: web_load_generator.sh.j2
+    dest: /opt/cnsm-study/workloads/web_load_generator.sh
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy systemd service for the load generator
+  ansible.builtin.template:
+    src: cnsm-workload.service.j2
+    dest: /etc/systemd/system/cnsm-workload.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload systemd
+    - Restart cnsm-workload
+
+- name: Enable and start workload service
+  ansible.builtin.systemd:
+    name: cnsm-workload
+    enabled: true
+    state: started
+    daemon_reload: true

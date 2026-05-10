@@ -1,0 +1,37 @@
+---
+- name: Add CNSM custom Zabbix UserParameters
+  hosts: study_hosts
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Ensure Zabbix Agent 2 include directory exists
+      ansible.builtin.file:
+        path: /etc/zabbix/zabbix_agent2.d
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Install CNSM custom UserParameters
+      ansible.builtin.copy:
+        dest: /etc/zabbix/zabbix_agent2.d/cnsm_study.conf
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          # CNSM/NOMS 2027 custom UserParameters
+
+          UserParameter=cnsm.fault.active,test -f /var/run/cnsm-fault-active && cat /var/run/cnsm-fault-active || echo 0
+          UserParameter=cnsm.fault.class,test -f /var/run/cnsm-fault-class && cat /var/run/cnsm-fault-class || echo none
+          UserParameter=cnsm.workload.heartbeat,test -f /var/run/cnsm-workload-heartbeat && cat /var/run/cnsm-workload-heartbeat || echo 0
+
+          UserParameter=cnsm.tcp.established,ss -tan state established | tail -n +2 | wc -l
+          UserParameter=cnsm.tcp.listen,ss -tan state listening | tail -n +2 | wc -l
+          UserParameter=cnsm.tcp.timewait,ss -tan state time-wait | tail -n +2 | wc -l
+
+    - name: Restart Zabbix Agent 2
+      ansible.builtin.systemd:
+        name: zabbix-agent2
+        state: restarted
+        enabled: true

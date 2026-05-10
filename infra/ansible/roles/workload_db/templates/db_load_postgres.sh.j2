@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Postgres pgbench workload with daily and weekly variation.
+
+set -uo pipefail
+
+LOG_FILE="/var/log/cnsm-workloads/db.log"
+mkdir -p "$(dirname "$LOG_FILE")"
+
+get_clients() {
+  local hour
+  local dow
+  hour=$(date +%H | sed 's/^0//')
+  dow=$(date +%u)
+  hour=${hour:-0}
+
+  local base
+  if   (( hour < 4 ));  then base=2
+  elif (( hour < 8 ));  then base=$(( 2 + (hour - 4) ))
+  elif (( hour < 12 )); then base=$(( 6 + 2 * (hour - 8) ))
+  elif (( hour < 14 )); then base=14
+  elif (( hour < 18 )); then base=$(( 14 - (hour - 14) ))
+  elif (( hour < 22 )); then base=$(( 10 - 2 * (hour - 18) ))
+  else                       base=2
+  fi
+
+  if (( dow >= 6 )); then base=$(( base * 7 / 10 )); fi
+  if (( base < 1 )); then base=1; fi
+  echo "$base"
+}
+
+main_loop() {
+  while true; do
+    local c
+    c=$(get_clients)
+    echo "$(date -Iseconds) running pgbench clients=$c" >> "$LOG_FILE"
+    sudo -u postgres timeout 60 pgbench -c "$c" -j 2 -T 50 cnsm_bench >/dev/null 2>&1 || true
+
+    # 1 in 720 chance of injecting maintenance-style heavy query
+    if (( RANDOM % 720 == 0 )); then
+      echo "$(date -Iseconds) MAINTENANCE injected" >> "$LOG_FILE"
+      sudo -u postgres timeout 90 psql cnsm_bench -c "VACUUM ANALYZE;" >/dev/null 2>&1 || true
+    fi
+    sleep 5
+  done
+}
+main_loop

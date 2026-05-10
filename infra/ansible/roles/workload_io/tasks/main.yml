@@ -1,0 +1,57 @@
+---
+# I/O-bound workload: fio + stress-ng disk operations
+
+- name: Install fio
+  ansible.builtin.apt:
+    name: fio
+    state: present
+
+- name: Create fio test file directory
+  ansible.builtin.file:
+    path: /opt/cnsm-study/iotest
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Pre-allocate fio test file (8 GB)
+  ansible.builtin.shell: |
+    if [ ! -f /opt/cnsm-study/iotest/testfile.dat ]; then
+      fallocate -l 8G /opt/cnsm-study/iotest/testfile.dat
+    fi
+  args:
+    creates: /opt/cnsm-study/iotest/testfile.dat
+
+- name: Deploy IO workload script
+  ansible.builtin.template:
+    src: io_load_generator.sh.j2
+    dest: /opt/cnsm-study/workloads/io_load_generator.sh
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy fio job file
+  ansible.builtin.template:
+    src: fio_mixed.fio.j2
+    dest: /opt/cnsm-study/workloads/fio_mixed.fio
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Deploy systemd service
+  ansible.builtin.template:
+    src: cnsm-workload.service.j2
+    dest: /etc/systemd/system/cnsm-workload.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload systemd
+    - Restart cnsm-workload
+
+- name: Enable and start workload service
+  ansible.builtin.systemd:
+    name: cnsm-workload
+    enabled: true
+    state: started
+    daemon_reload: true

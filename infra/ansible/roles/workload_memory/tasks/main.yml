@@ -1,0 +1,28 @@
+---
+# Memory-bound workload: large in-memory cache simulation with stress-ng vm
+
+- name: Deploy memory workload script
+  ansible.builtin.template:
+    src: memory_load_generator.sh.j2
+    dest: /opt/cnsm-study/workloads/memory_load_generator.sh
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy systemd service
+  ansible.builtin.template:
+    src: cnsm-workload.service.j2
+    dest: /etc/systemd/system/cnsm-workload.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload systemd
+    - Restart cnsm-workload
+
+- name: Enable and start workload service
+  ansible.builtin.systemd:
+    name: cnsm-workload
+    enabled: true
+    state: started
+    daemon_reload: true

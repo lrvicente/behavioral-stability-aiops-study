@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Redis redis-benchmark workload with daily and weekly variation.
+
+set -uo pipefail
+
+LOG_FILE="/var/log/cnsm-workloads/db.log"
+mkdir -p "$(dirname "$LOG_FILE")"
+
+get_clients() {
+  local hour
+  local dow
+  hour=$(date +%H | sed 's/^0//')
+  dow=$(date +%u)
+  hour=${hour:-0}
+
+  local base
+  if   (( hour < 4 ));  then base=10
+  elif (( hour < 8 ));  then base=$(( 10 + 5 * (hour - 4) ))
+  elif (( hour < 12 )); then base=$(( 30 + 10 * (hour - 8) ))
+  elif (( hour < 14 )); then base=80
+  elif (( hour < 18 )); then base=$(( 80 - 10 * (hour - 14) ))
+  elif (( hour < 22 )); then base=$(( 40 - 5 * (hour - 18) ))
+  else                       base=10
+  fi
+
+  if (( dow >= 6 )); then base=$(( base * 7 / 10 )); fi
+  if (( base < 1 )); then base=1; fi
+  echo "$base"
+}
+
+main_loop() {
+  while true; do
+    local c
+    c=$(get_clients)
+    echo "$(date -Iseconds) running redis-benchmark clients=$c" >> "$LOG_FILE"
+    timeout 60 redis-benchmark -c "$c" -n 100000 -t set,get -q >/dev/null 2>&1 || true
+
+    # 1 in 720 chance of large-key insertion burst
+    if (( RANDOM % 720 == 0 )); then
+      echo "$(date -Iseconds) BIG_KEY_BURST injected" >> "$LOG_FILE"
+      for i in $(seq 1 100); do
+        redis-cli SET "burst:$i" "$(head -c 65536 /dev/urandom | base64)" >/dev/null 2>&1 || true
+      done
+    fi
+    sleep 5
+  done
+}
+main_loop

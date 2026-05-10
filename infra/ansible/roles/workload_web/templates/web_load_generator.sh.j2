@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# Web load generator with daily and weekly variation.
+# Behavioral pattern: load varies between 20% and 80% utilization with
+# 4-hour ramp-up and ramp-down cycles. Weekend traffic 30% lower.
+#
+# This script runs forever in foreground (intended for systemd service).
+# It logs each ApacheBench run to /var/log/cnsm-workloads/web.log.
+
+set -uo pipefail
+
+LOG_FILE="/var/log/cnsm-workloads/web.log"
+TARGET_URL="http://localhost/large.txt"
+mkdir -p "$(dirname "$LOG_FILE")"
+
+# Returns concurrency level based on hour and day of week.
+# Hour 0..23 maps to a daily curve (low at night, high at midday, transitions ramp).
+# Day of week: 0=Sunday, 6=Saturday. Weekends get 0.7 multiplier.
+get_concurrency() {
+  local hour
+  local dow
+  hour=$(date +%H | sed 's/^0//')
+  dow=$(date +%u)  # 1..7, 6 and 7 = weekend
+  hour=${hour:-0}
+
+  # Daily curve: piecewise linear
+  # 00-04: 4 (low)
+  # 04-08: ramp 4 -> 12
+  # 08-12: ramp 12 -> 32
+  # 12-14: 32 (peak plateau)
+  # 14-18: ramp 32 -> 24
+  # 18-22: ramp 24 -> 8
+  # 22-24: ramp 8 -> 4
+  local base
+  if   (( hour < 4 ));  then base=4
+  elif (( hour < 8 ));  then base=$(( 4 + 2 * (hour - 4) ))
+  elif (( hour < 12 )); then base=$(( 12 + 5 * (hour - 8) ))
+  elif (( hour < 14 )); then base=32
+  elif (( hour < 18 )); then base=$(( 32 - 2 * (hour - 14) ))
+  elif (( hour < 22 )); then base=$(( 24 - 4 * (hour - 18) ))
+  else                       base=$(( 8 - 2 * (hour - 22) ))
+  fi
+
+  # Weekend adjustment
+  if (( dow >= 6 )); then
+    base=$(( base * 7 / 10 ))
+  fi
+
+  # Random jitter +/- 20%
+  local jitter=$(( (RANDOM % 41) - 20 ))
+  base=$(( base + base * jitter / 100 ))
+
+  # Floor at 1
+  if (( base < 1 )); then base=1; fi
+  echo "$base"
+}
+
+# Random spike injection: ~5 to 10 spikes per week per host.
+# Spike = concurrency 4x for 60 to 180 seconds.
+maybe_inject_spike() {
+  # 1 in 720 chance per loop iteration (loop is roughly 1 minute)
+  # 720 minutes = 12 hours, so on average 2 spikes per day = 14 per week
+  if (( RANDOM % 720 == 0 )); then
+    local duration=$((60 + RANDOM % 121))
+    local spike_c=$(( $(get_concurrency) * 4 ))
+    echo "$(date -Iseconds) SPIKE injected concurrency=$spike_c duration=${duration}s" >> "$LOG_FILE"
+    timeout "$duration" ab -c "$spike_c" -n 100000 "$TARGET_URL" >/dev/null 2>&1 || true
+  fi
+}
+
+main_loop() {
+  while true; do
+    local c
+    c=$(get_concurrency)
+    echo "$(date -Iseconds) running ab concurrency=$c" >> "$LOG_FILE"
+    timeout 60 ab -c "$c" -n 10000 "$TARGET_URL" >/dev/null 2>&1 || true
+    maybe_inject_spike
+    sleep 5
+  done
+}
+
+main_loop

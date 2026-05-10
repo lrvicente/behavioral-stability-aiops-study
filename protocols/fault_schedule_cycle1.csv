@@ -1,0 +1,1009 @@
+scheduled_iso,host,fault_class,duration_seconds,parameters
+2026-05-15T06:14:05+00:00,cnsm-web-04,cpu_spike,1136,cpu=2 load=95
+2026-05-15T10:22:09+00:00,cnsm-mem-01,disk_io,1021,io=2 hdd=2
+2026-05-15T12:05:13+00:00,cnsm-web-03,disk_io,547,io=8 hdd=8
+2026-05-15T15:24:28+00:00,cnsm-db-redis-02,disk_io,844,io=8 hdd=8
+2026-05-15T15:54:55+00:00,cnsm-db-redis-01,memory_pressure,1668,vm_bytes=8G
+2026-05-15T16:45:21+00:00,cnsm-web-01,disk_io,372,io=8 hdd=8
+2026-05-15T19:44:51+00:00,cnsm-io-01,disk_io,924,io=8 hdd=8
+2026-05-15T21:18:04+00:00,cnsm-db-redis-02,disk_io,523,io=8 hdd=8
+2026-05-15T21:38:24+00:00,cnsm-io-01,disk_io,308,io=8 hdd=8
+2026-05-16T09:16:41+00:00,cnsm-mem-01,memory_pressure,1509,vm_bytes=2G
+2026-05-16T10:44:41+00:00,cnsm-io-01,process_leak,311,fork=2
+2026-05-16T11:45:44+00:00,cnsm-web-04,network_latency,1779,delay=100ms
+2026-05-16T13:47:42+00:00,cnsm-db-redis-02,memory_pressure,1668,vm_bytes=8G
+2026-05-16T13:56:17+00:00,cnsm-io-01,cpu_spike,554,cpu=1 load=90
+2026-05-16T15:56:42+00:00,cnsm-db-redis-02,disk_io,814,io=8 hdd=8
+2026-05-16T19:40:15+00:00,cnsm-web-06,memory_pressure,2483,vm_bytes=1G
+2026-05-16T21:23:02+00:00,cnsm-web-01,disk_io,414,io=4 hdd=4
+2026-05-17T07:50:59+00:00,cnsm-web-05,disk_io,641,io=2 hdd=2
+2026-05-17T08:54:55+00:00,cnsm-web-02,network_latency,394,delay=100ms
+2026-05-17T09:45:23+00:00,cnsm-web-02,memory_pressure,1334,vm_bytes=4G
+2026-05-17T12:16:10+00:00,cnsm-web-04,cpu_spike,487,cpu=1 load=95
+2026-05-17T13:10:33+00:00,cnsm-web-06,cpu_spike,1547,cpu=4 load=95
+2026-05-17T13:11:40+00:00,cnsm-mem-01,cpu_spike,483,cpu=2 load=95
+2026-05-17T14:08:45+00:00,cnsm-db-postgres-01,cpu_spike,1149,cpu=1 load=90
+2026-05-17T16:41:37+00:00,cnsm-mem-01,disk_io,411,io=8 hdd=8
+2026-05-17T18:16:43+00:00,cnsm-db-redis-01,disk_io,1136,io=2 hdd=2
+2026-05-17T18:17:22+00:00,cnsm-web-05,cpu_spike,316,cpu=4 load=95
+2026-05-17T21:01:58+00:00,cnsm-db-redis-02,process_leak,579,fork=4
+2026-05-18T06:05:22+00:00,cnsm-db-postgres-02,cpu_spike,393,cpu=4 load=95
+2026-05-18T09:05:14+00:00,cnsm-db-postgres-01,network_latency,558,delay=50ms
+2026-05-18T09:12:52+00:00,cnsm-db-postgres-02,network_latency,338,delay=500ms
+2026-05-18T10:54:46+00:00,cnsm-db-postgres-01,network_latency,1544,delay=500ms
+2026-05-18T14:42:37+00:00,cnsm-web-05,memory_pressure,1846,vm_bytes=8G
+2026-05-18T17:08:44+00:00,cnsm-web-02,disk_io,411,io=8 hdd=8
+2026-05-18T17:13:04+00:00,cnsm-web-05,disk_io,754,io=4 hdd=4
+2026-05-18T19:51:40+00:00,cnsm-web-05,cpu_spike,932,cpu=2 load=85
+2026-05-18T20:48:11+00:00,cnsm-io-01,network_latency,423,delay=500ms
+2026-05-18T21:44:47+00:00,cnsm-web-04,cpu_spike,658,cpu=2 load=95
+2026-05-18T21:48:29+00:00,cnsm-web-03,cpu_spike,363,cpu=1 load=85
+2026-05-19T06:04:33+00:00,cnsm-db-postgres-01,disk_io,1110,io=2 hdd=2
+2026-05-19T07:18:34+00:00,cnsm-db-postgres-01,disk_io,660,io=8 hdd=8
+2026-05-19T10:46:42+00:00,cnsm-web-01,cpu_spike,1654,cpu=1 load=90
+2026-05-19T12:23:21+00:00,cnsm-db-postgres-02,disk_io,866,io=4 hdd=4
+2026-05-19T13:40:31+00:00,cnsm-db-redis-01,cpu_spike,776,cpu=1 load=85
+2026-05-19T14:55:59+00:00,cnsm-web-03,process_leak,789,fork=2
+2026-05-19T15:38:40+00:00,cnsm-web-05,process_leak,619,fork=4
+2026-05-19T16:47:20+00:00,cnsm-web-04,disk_io,784,io=8 hdd=8
+2026-05-19T19:23:38+00:00,cnsm-db-postgres-01,cpu_spike,1685,cpu=4 load=85
+2026-05-19T20:50:24+00:00,cnsm-web-01,process_leak,898,fork=4
+2026-05-19T21:52:45+00:00,cnsm-web-01,process_leak,853,fork=2
+2026-05-20T07:39:04+00:00,cnsm-web-06,cpu_spike,315,cpu=1 load=90
+2026-05-20T10:47:54+00:00,cnsm-web-05,disk_io,731,io=8 hdd=8
+2026-05-20T11:40:29+00:00,cnsm-db-redis-02,cpu_spike,1690,cpu=2 load=95
+2026-05-20T12:32:20+00:00,cnsm-web-01,process_leak,820,fork=2
+2026-05-20T12:33:48+00:00,cnsm-web-06,disk_io,677,io=4 hdd=4
+2026-05-20T12:36:24+00:00,cnsm-db-redis-01,disk_io,849,io=2 hdd=2
+2026-05-20T18:40:23+00:00,cnsm-io-01,memory_pressure,1851,vm_bytes=2G
+2026-05-20T21:05:30+00:00,cnsm-web-05,disk_io,707,io=4 hdd=4
+2026-05-20T21:14:15+00:00,cnsm-web-01,network_latency,1124,delay=200ms
+2026-05-20T21:44:00+00:00,cnsm-web-05,network_latency,1280,delay=500ms
+2026-05-21T07:10:49+00:00,cnsm-web-04,cpu_spike,929,cpu=4 load=95
+2026-05-21T09:03:02+00:00,cnsm-web-05,network_latency,558,delay=200ms
+2026-05-21T09:35:08+00:00,cnsm-web-06,network_latency,975,delay=50ms
+2026-05-21T09:53:04+00:00,cnsm-db-postgres-01,memory_pressure,2647,vm_bytes=1G
+2026-05-21T13:03:14+00:00,cnsm-web-01,disk_io,332,io=4 hdd=4
+2026-05-21T14:21:37+00:00,cnsm-web-02,cpu_spike,1682,cpu=1 load=90
+2026-05-21T14:22:36+00:00,cnsm-db-redis-02,disk_io,1024,io=2 hdd=2
+2026-05-21T15:07:06+00:00,cnsm-web-06,disk_io,780,io=4 hdd=4
+2026-05-21T15:24:38+00:00,cnsm-io-01,disk_io,843,io=8 hdd=8
+2026-05-21T16:01:28+00:00,cnsm-web-01,disk_io,902,io=8 hdd=8
+2026-05-21T18:55:53+00:00,cnsm-web-06,memory_pressure,773,vm_bytes=8G
+2026-05-21T19:26:50+00:00,cnsm-web-03,cpu_spike,977,cpu=4 load=90
+2026-05-21T20:02:05+00:00,cnsm-db-postgres-01,disk_io,600,io=2 hdd=2
+2026-05-21T20:06:34+00:00,cnsm-web-06,network_latency,1003,delay=50ms
+2026-05-21T21:06:34+00:00,cnsm-web-01,disk_io,826,io=2 hdd=2
+2026-05-22T06:21:44+00:00,cnsm-web-04,network_latency,1261,delay=200ms
+2026-05-22T06:51:30+00:00,cnsm-db-postgres-01,network_latency,1674,delay=500ms
+2026-05-22T07:27:16+00:00,cnsm-db-redis-01,network_latency,1005,delay=50ms
+2026-05-22T07:27:36+00:00,cnsm-web-05,cpu_spike,588,cpu=1 load=95
+2026-05-22T07:35:09+00:00,cnsm-web-06,disk_io,481,io=8 hdd=8
+2026-05-22T08:20:44+00:00,cnsm-web-05,network_latency,1545,delay=100ms
+2026-05-22T09:05:04+00:00,cnsm-web-03,memory_pressure,3025,vm_bytes=2G
+2026-05-22T09:58:36+00:00,cnsm-web-06,disk_io,822,io=8 hdd=8
+2026-05-22T10:47:46+00:00,cnsm-web-06,disk_io,960,io=2 hdd=2
+2026-05-22T11:16:38+00:00,cnsm-db-redis-02,network_latency,912,delay=100ms
+2026-05-22T12:32:35+00:00,cnsm-web-02,cpu_spike,843,cpu=1 load=90
+2026-05-22T13:59:33+00:00,cnsm-db-redis-01,disk_io,877,io=2 hdd=2
+2026-05-22T15:31:02+00:00,cnsm-web-01,disk_io,387,io=8 hdd=8
+2026-05-22T15:37:03+00:00,cnsm-web-01,cpu_spike,1430,cpu=2 load=95
+2026-05-22T16:09:06+00:00,cnsm-db-redis-01,cpu_spike,1009,cpu=2 load=95
+2026-05-22T17:14:16+00:00,cnsm-db-postgres-01,cpu_spike,357,cpu=2 load=85
+2026-05-22T17:55:43+00:00,cnsm-web-01,cpu_spike,776,cpu=1 load=90
+2026-05-22T18:32:29+00:00,cnsm-db-postgres-02,disk_io,761,io=8 hdd=8
+2026-05-22T18:59:45+00:00,cnsm-db-redis-01,network_latency,1698,delay=100ms
+2026-05-22T19:26:35+00:00,cnsm-web-04,cpu_spike,1524,cpu=1 load=90
+2026-05-22T20:38:04+00:00,cnsm-mem-01,memory_pressure,2562,vm_bytes=8G
+2026-05-23T09:59:51+00:00,cnsm-io-01,disk_io,402,io=2 hdd=2
+2026-05-23T10:06:49+00:00,cnsm-db-redis-01,memory_pressure,2241,vm_bytes=1G
+2026-05-23T13:21:27+00:00,cnsm-web-06,memory_pressure,2388,vm_bytes=1G
+2026-05-23T17:42:13+00:00,cnsm-io-01,memory_pressure,3257,vm_bytes=2G
+2026-05-23T18:01:33+00:00,cnsm-web-05,cpu_spike,904,cpu=2 load=95
+2026-05-23T19:54:33+00:00,cnsm-db-redis-01,disk_io,822,io=4 hdd=4
+2026-05-23T20:34:08+00:00,cnsm-web-05,process_leak,387,fork=2
+2026-05-23T20:36:36+00:00,cnsm-web-04,cpu_spike,1262,cpu=2 load=90
+2026-05-23T21:36:52+00:00,cnsm-web-05,disk_io,978,io=2 hdd=2
+2026-05-23T21:42:29+00:00,cnsm-db-postgres-01,cpu_spike,754,cpu=2 load=90
+2026-05-24T08:24:01+00:00,cnsm-web-01,cpu_spike,498,cpu=2 load=90
+2026-05-24T09:35:15+00:00,cnsm-db-postgres-02,memory_pressure,807,vm_bytes=4G
+2026-05-24T11:37:27+00:00,cnsm-db-redis-02,network_latency,1195,delay=100ms
+2026-05-24T13:10:04+00:00,cnsm-web-01,process_leak,716,fork=4
+2026-05-24T13:43:28+00:00,cnsm-web-02,network_latency,935,delay=100ms
+2026-05-24T15:06:09+00:00,cnsm-web-05,network_latency,1737,delay=50ms
+2026-05-24T15:14:48+00:00,cnsm-web-03,disk_io,714,io=8 hdd=8
+2026-05-24T16:20:42+00:00,cnsm-web-04,network_latency,1377,delay=500ms
+2026-05-24T16:55:19+00:00,cnsm-mem-01,cpu_spike,1088,cpu=1 load=90
+2026-05-24T18:14:34+00:00,cnsm-web-03,network_latency,697,delay=200ms
+2026-05-24T20:40:08+00:00,cnsm-io-01,cpu_spike,1660,cpu=4 load=90
+2026-05-24T21:26:50+00:00,cnsm-web-03,memory_pressure,3455,vm_bytes=4G
+2026-05-25T08:16:53+00:00,cnsm-db-redis-02,process_leak,393,fork=2
+2026-05-25T09:15:49+00:00,cnsm-mem-01,cpu_spike,577,cpu=2 load=85
+2026-05-25T09:21:58+00:00,cnsm-db-redis-02,disk_io,398,io=8 hdd=8
+2026-05-25T11:53:18+00:00,cnsm-web-03,memory_pressure,2970,vm_bytes=1G
+2026-05-25T12:09:24+00:00,cnsm-web-05,process_leak,793,fork=2
+2026-05-25T12:27:52+00:00,cnsm-web-05,memory_pressure,3364,vm_bytes=2G
+2026-05-25T15:26:03+00:00,cnsm-mem-01,disk_io,387,io=2 hdd=2
+2026-05-25T16:23:37+00:00,cnsm-io-01,disk_io,606,io=2 hdd=2
+2026-05-25T19:05:02+00:00,cnsm-db-postgres-01,cpu_spike,890,cpu=1 load=90
+2026-05-25T19:23:24+00:00,cnsm-web-03,disk_io,950,io=4 hdd=4
+2026-05-25T19:56:07+00:00,cnsm-web-01,disk_io,600,io=4 hdd=4
+2026-05-26T06:07:00+00:00,cnsm-web-04,memory_pressure,2255,vm_bytes=1G
+2026-05-26T06:16:05+00:00,cnsm-io-01,process_leak,764,fork=8
+2026-05-26T06:34:49+00:00,cnsm-web-05,memory_pressure,998,vm_bytes=2G
+2026-05-26T06:51:31+00:00,cnsm-db-redis-01,disk_io,996,io=2 hdd=2
+2026-05-26T08:30:19+00:00,cnsm-web-05,disk_io,759,io=4 hdd=4
+2026-05-26T08:30:38+00:00,cnsm-mem-01,network_latency,674,delay=200ms
+2026-05-26T09:35:54+00:00,cnsm-db-redis-01,disk_io,954,io=4 hdd=4
+2026-05-26T09:42:57+00:00,cnsm-web-04,disk_io,963,io=2 hdd=2
+2026-05-26T10:24:10+00:00,cnsm-db-postgres-01,process_leak,568,fork=4
+2026-05-26T10:38:15+00:00,cnsm-mem-01,network_latency,788,delay=200ms
+2026-05-26T12:00:43+00:00,cnsm-web-03,process_leak,871,fork=4
+2026-05-26T12:57:04+00:00,cnsm-web-06,disk_io,1094,io=4 hdd=4
+2026-05-26T14:42:03+00:00,cnsm-mem-01,disk_io,1183,io=4 hdd=4
+2026-05-26T15:21:21+00:00,cnsm-web-02,cpu_spike,1466,cpu=1 load=95
+2026-05-26T17:57:36+00:00,cnsm-web-01,disk_io,553,io=2 hdd=2
+2026-05-26T18:47:42+00:00,cnsm-db-postgres-02,cpu_spike,711,cpu=1 load=85
+2026-05-26T18:56:35+00:00,cnsm-web-04,memory_pressure,718,vm_bytes=2G
+2026-05-26T18:57:27+00:00,cnsm-web-02,disk_io,890,io=2 hdd=2
+2026-05-26T19:55:38+00:00,cnsm-db-postgres-01,memory_pressure,795,vm_bytes=2G
+2026-05-27T06:10:30+00:00,cnsm-web-04,network_latency,1328,delay=200ms
+2026-05-27T11:10:25+00:00,cnsm-web-01,disk_io,975,io=4 hdd=4
+2026-05-27T12:04:26+00:00,cnsm-web-05,disk_io,1149,io=8 hdd=8
+2026-05-27T12:28:44+00:00,cnsm-web-06,process_leak,386,fork=4
+2026-05-27T16:41:57+00:00,cnsm-db-postgres-02,cpu_spike,451,cpu=2 load=90
+2026-05-27T16:42:25+00:00,cnsm-db-postgres-02,memory_pressure,2117,vm_bytes=1G
+2026-05-27T17:21:59+00:00,cnsm-web-06,process_leak,685,fork=2
+2026-05-27T19:27:09+00:00,cnsm-db-redis-01,disk_io,825,io=4 hdd=4
+2026-05-27T19:59:25+00:00,cnsm-io-01,disk_io,789,io=2 hdd=2
+2026-05-27T20:45:49+00:00,cnsm-db-redis-02,process_leak,389,fork=2
+2026-05-27T21:12:46+00:00,cnsm-io-01,memory_pressure,3031,vm_bytes=2G
+2026-05-28T09:45:19+00:00,cnsm-db-postgres-02,process_leak,831,fork=2
+2026-05-28T11:31:14+00:00,cnsm-mem-01,cpu_spike,850,cpu=2 load=90
+2026-05-28T12:18:39+00:00,cnsm-mem-01,memory_pressure,3194,vm_bytes=4G
+2026-05-28T13:08:48+00:00,cnsm-web-01,cpu_spike,509,cpu=4 load=95
+2026-05-28T14:38:54+00:00,cnsm-web-01,network_latency,1164,delay=100ms
+2026-05-28T14:46:27+00:00,cnsm-db-postgres-02,disk_io,674,io=4 hdd=4
+2026-05-28T20:54:53+00:00,cnsm-web-01,memory_pressure,1684,vm_bytes=2G
+2026-05-29T08:20:32+00:00,cnsm-db-postgres-02,network_latency,1694,delay=100ms
+2026-05-29T10:57:22+00:00,cnsm-db-redis-02,disk_io,546,io=2 hdd=2
+2026-05-29T13:33:07+00:00,cnsm-web-04,process_leak,721,fork=8
+2026-05-29T18:25:51+00:00,cnsm-web-04,network_latency,1314,delay=50ms
+2026-05-29T20:08:45+00:00,cnsm-web-01,memory_pressure,3170,vm_bytes=2G
+2026-05-29T20:33:06+00:00,cnsm-db-postgres-02,cpu_spike,922,cpu=1 load=85
+2026-05-29T20:56:53+00:00,cnsm-db-redis-01,disk_io,765,io=8 hdd=8
+2026-05-29T20:58:50+00:00,cnsm-db-redis-02,cpu_spike,418,cpu=4 load=90
+2026-05-30T08:01:45+00:00,cnsm-db-redis-01,cpu_spike,1133,cpu=4 load=90
+2026-05-30T08:06:35+00:00,cnsm-web-05,cpu_spike,451,cpu=2 load=90
+2026-05-30T08:18:54+00:00,cnsm-web-06,process_leak,403,fork=8
+2026-05-30T08:32:03+00:00,cnsm-web-01,disk_io,764,io=2 hdd=2
+2026-05-30T10:26:39+00:00,cnsm-io-01,memory_pressure,1722,vm_bytes=1G
+2026-05-30T13:11:10+00:00,cnsm-web-04,cpu_spike,1430,cpu=1 load=85
+2026-05-30T14:18:11+00:00,cnsm-web-02,cpu_spike,1538,cpu=1 load=95
+2026-05-30T16:54:57+00:00,cnsm-db-redis-01,disk_io,832,io=4 hdd=4
+2026-05-30T18:03:48+00:00,cnsm-db-postgres-01,cpu_spike,670,cpu=4 load=95
+2026-05-30T18:38:20+00:00,cnsm-db-redis-01,cpu_spike,1797,cpu=2 load=95
+2026-05-30T18:39:25+00:00,cnsm-db-postgres-02,network_latency,1104,delay=200ms
+2026-05-30T20:22:09+00:00,cnsm-io-01,disk_io,1039,io=2 hdd=2
+2026-05-31T06:58:37+00:00,cnsm-web-03,memory_pressure,3081,vm_bytes=1G
+2026-05-31T07:36:48+00:00,cnsm-mem-01,memory_pressure,3242,vm_bytes=8G
+2026-05-31T07:57:19+00:00,cnsm-mem-01,process_leak,768,fork=8
+2026-05-31T08:57:00+00:00,cnsm-db-postgres-02,cpu_spike,1512,cpu=4 load=85
+2026-05-31T10:25:03+00:00,cnsm-db-redis-02,memory_pressure,1173,vm_bytes=8G
+2026-05-31T11:09:24+00:00,cnsm-mem-01,cpu_spike,1703,cpu=2 load=85
+2026-05-31T14:55:34+00:00,cnsm-db-postgres-02,cpu_spike,1649,cpu=4 load=95
+2026-05-31T15:21:09+00:00,cnsm-db-redis-02,disk_io,384,io=4 hdd=4
+2026-05-31T15:57:28+00:00,cnsm-web-04,process_leak,329,fork=2
+2026-05-31T16:29:36+00:00,cnsm-web-06,memory_pressure,3131,vm_bytes=8G
+2026-05-31T18:19:06+00:00,cnsm-db-postgres-01,process_leak,755,fork=2
+2026-05-31T20:22:37+00:00,cnsm-db-postgres-01,network_latency,1215,delay=50ms
+2026-05-31T20:44:14+00:00,cnsm-db-postgres-01,disk_io,790,io=8 hdd=8
+2026-06-01T07:52:25+00:00,cnsm-db-redis-01,network_latency,1400,delay=500ms
+2026-06-01T08:05:35+00:00,cnsm-web-02,disk_io,894,io=4 hdd=4
+2026-06-01T09:55:34+00:00,cnsm-db-redis-02,network_latency,944,delay=50ms
+2026-06-01T10:30:17+00:00,cnsm-db-redis-01,memory_pressure,1925,vm_bytes=2G
+2026-06-01T14:39:43+00:00,cnsm-web-03,disk_io,1127,io=8 hdd=8
+2026-06-01T14:42:20+00:00,cnsm-web-06,cpu_spike,593,cpu=4 load=95
+2026-06-01T15:27:33+00:00,cnsm-web-03,cpu_spike,402,cpu=2 load=90
+2026-06-01T16:00:17+00:00,cnsm-db-postgres-02,cpu_spike,564,cpu=2 load=95
+2026-06-01T16:44:18+00:00,cnsm-db-postgres-01,disk_io,1130,io=2 hdd=2
+2026-06-01T20:03:44+00:00,cnsm-web-02,process_leak,870,fork=2
+2026-06-01T20:51:44+00:00,cnsm-db-redis-02,memory_pressure,2820,vm_bytes=1G
+2026-06-02T06:27:08+00:00,cnsm-db-redis-02,cpu_spike,1503,cpu=4 load=95
+2026-06-02T07:11:28+00:00,cnsm-db-redis-01,process_leak,415,fork=2
+2026-06-02T08:33:22+00:00,cnsm-db-postgres-01,memory_pressure,2077,vm_bytes=1G
+2026-06-02T10:17:09+00:00,cnsm-web-05,disk_io,425,io=4 hdd=4
+2026-06-02T11:41:14+00:00,cnsm-web-01,network_latency,493,delay=50ms
+2026-06-02T12:09:15+00:00,cnsm-web-04,disk_io,913,io=8 hdd=8
+2026-06-02T13:18:11+00:00,cnsm-db-postgres-01,disk_io,592,io=4 hdd=4
+2026-06-02T14:19:22+00:00,cnsm-web-03,network_latency,743,delay=500ms
+2026-06-02T14:26:14+00:00,cnsm-web-01,network_latency,689,delay=500ms
+2026-06-02T15:01:11+00:00,cnsm-web-02,network_latency,1161,delay=500ms
+2026-06-02T15:24:16+00:00,cnsm-web-06,process_leak,531,fork=2
+2026-06-02T15:56:15+00:00,cnsm-db-redis-01,cpu_spike,376,cpu=1 load=90
+2026-06-02T17:20:52+00:00,cnsm-mem-01,disk_io,501,io=4 hdd=4
+2026-06-02T18:01:30+00:00,cnsm-web-02,disk_io,708,io=4 hdd=4
+2026-06-02T18:05:01+00:00,cnsm-db-redis-02,process_leak,602,fork=2
+2026-06-02T21:33:24+00:00,cnsm-db-postgres-01,process_leak,696,fork=8
+2026-06-02T21:40:14+00:00,cnsm-mem-01,network_latency,1400,delay=100ms
+2026-06-02T21:44:56+00:00,cnsm-db-postgres-01,disk_io,809,io=4 hdd=4
+2026-06-03T07:50:18+00:00,cnsm-db-postgres-02,disk_io,916,io=8 hdd=8
+2026-06-03T09:02:18+00:00,cnsm-web-02,disk_io,1136,io=4 hdd=4
+2026-06-03T14:08:59+00:00,cnsm-db-postgres-02,cpu_spike,1580,cpu=2 load=95
+2026-06-03T14:48:45+00:00,cnsm-mem-01,disk_io,1020,io=2 hdd=2
+2026-06-03T15:26:08+00:00,cnsm-io-01,memory_pressure,3420,vm_bytes=2G
+2026-06-04T08:06:17+00:00,cnsm-db-redis-01,process_leak,334,fork=4
+2026-06-04T09:30:49+00:00,cnsm-web-02,memory_pressure,3393,vm_bytes=2G
+2026-06-04T10:48:48+00:00,cnsm-db-redis-02,network_latency,1759,delay=500ms
+2026-06-04T11:43:27+00:00,cnsm-web-04,cpu_spike,841,cpu=4 load=85
+2026-06-04T12:12:39+00:00,cnsm-web-06,cpu_spike,581,cpu=2 load=90
+2026-06-04T12:52:41+00:00,cnsm-web-05,disk_io,1190,io=2 hdd=2
+2026-06-04T13:32:52+00:00,cnsm-db-redis-02,cpu_spike,689,cpu=4 load=85
+2026-06-04T15:27:20+00:00,cnsm-web-01,cpu_spike,1642,cpu=2 load=90
+2026-06-04T17:18:26+00:00,cnsm-io-01,memory_pressure,2553,vm_bytes=1G
+2026-06-04T19:06:18+00:00,cnsm-web-06,process_leak,649,fork=4
+2026-06-04T21:20:32+00:00,cnsm-db-redis-01,cpu_spike,1282,cpu=2 load=95
+2026-06-05T06:19:03+00:00,cnsm-web-05,cpu_spike,1603,cpu=1 load=95
+2026-06-05T06:36:23+00:00,cnsm-db-redis-01,disk_io,436,io=4 hdd=4
+2026-06-05T07:08:26+00:00,cnsm-db-redis-01,process_leak,815,fork=4
+2026-06-05T07:37:47+00:00,cnsm-web-01,process_leak,855,fork=2
+2026-06-05T12:18:01+00:00,cnsm-web-06,disk_io,641,io=2 hdd=2
+2026-06-05T15:26:58+00:00,cnsm-web-02,disk_io,324,io=8 hdd=8
+2026-06-05T18:28:31+00:00,cnsm-web-03,cpu_spike,1631,cpu=1 load=95
+2026-06-05T19:52:49+00:00,cnsm-io-01,cpu_spike,733,cpu=2 load=90
+2026-06-05T19:55:23+00:00,cnsm-mem-01,process_leak,850,fork=4
+2026-06-06T07:23:41+00:00,cnsm-db-redis-02,network_latency,732,delay=500ms
+2026-06-06T08:12:22+00:00,cnsm-web-01,disk_io,902,io=2 hdd=2
+2026-06-06T08:27:53+00:00,cnsm-web-04,process_leak,400,fork=8
+2026-06-06T09:11:33+00:00,cnsm-web-03,network_latency,547,delay=100ms
+2026-06-06T11:22:43+00:00,cnsm-web-04,cpu_spike,890,cpu=4 load=90
+2026-06-06T12:15:45+00:00,cnsm-mem-01,disk_io,1116,io=4 hdd=4
+2026-06-06T13:02:17+00:00,cnsm-web-04,process_leak,772,fork=8
+2026-06-06T15:55:00+00:00,cnsm-web-04,cpu_spike,841,cpu=4 load=95
+2026-06-06T17:06:56+00:00,cnsm-web-05,disk_io,1002,io=4 hdd=4
+2026-06-06T17:11:27+00:00,cnsm-web-03,network_latency,919,delay=50ms
+2026-06-06T17:38:09+00:00,cnsm-db-redis-01,process_leak,889,fork=4
+2026-06-06T18:05:05+00:00,cnsm-io-01,disk_io,1048,io=2 hdd=2
+2026-06-06T20:48:15+00:00,cnsm-db-redis-01,memory_pressure,2429,vm_bytes=4G
+2026-06-06T21:54:32+00:00,cnsm-db-postgres-01,network_latency,1621,delay=200ms
+2026-06-07T07:15:51+00:00,cnsm-web-01,disk_io,1199,io=8 hdd=8
+2026-06-07T08:33:19+00:00,cnsm-db-postgres-01,memory_pressure,2937,vm_bytes=8G
+2026-06-07T09:29:47+00:00,cnsm-db-redis-02,cpu_spike,761,cpu=2 load=95
+2026-06-07T09:51:50+00:00,cnsm-db-postgres-01,disk_io,1050,io=8 hdd=8
+2026-06-07T10:30:00+00:00,cnsm-web-03,memory_pressure,3342,vm_bytes=1G
+2026-06-07T11:57:00+00:00,cnsm-mem-01,memory_pressure,1634,vm_bytes=2G
+2026-06-07T14:47:01+00:00,cnsm-web-01,memory_pressure,2994,vm_bytes=8G
+2026-06-07T14:56:31+00:00,cnsm-web-03,disk_io,613,io=8 hdd=8
+2026-06-07T14:58:06+00:00,cnsm-web-06,memory_pressure,2384,vm_bytes=8G
+2026-06-07T15:51:10+00:00,cnsm-db-postgres-01,cpu_spike,1260,cpu=1 load=90
+2026-06-07T16:21:30+00:00,cnsm-mem-01,disk_io,828,io=2 hdd=2
+2026-06-07T17:40:44+00:00,cnsm-io-01,process_leak,388,fork=4
+2026-06-07T18:14:26+00:00,cnsm-web-04,disk_io,1176,io=4 hdd=4
+2026-06-07T18:36:24+00:00,cnsm-db-postgres-02,memory_pressure,3405,vm_bytes=8G
+2026-06-08T08:00:09+00:00,cnsm-web-05,cpu_spike,1688,cpu=4 load=95
+2026-06-08T09:09:17+00:00,cnsm-web-02,cpu_spike,404,cpu=1 load=95
+2026-06-08T11:00:14+00:00,cnsm-db-redis-01,memory_pressure,1980,vm_bytes=4G
+2026-06-08T11:50:06+00:00,cnsm-web-03,cpu_spike,467,cpu=2 load=85
+2026-06-08T14:41:02+00:00,cnsm-io-01,disk_io,386,io=2 hdd=2
+2026-06-08T15:02:52+00:00,cnsm-db-postgres-01,memory_pressure,666,vm_bytes=4G
+2026-06-08T15:48:36+00:00,cnsm-web-04,process_leak,770,fork=4
+2026-06-08T17:32:47+00:00,cnsm-web-02,disk_io,345,io=8 hdd=8
+2026-06-08T17:56:10+00:00,cnsm-web-05,process_leak,683,fork=2
+2026-06-08T20:20:45+00:00,cnsm-db-postgres-01,cpu_spike,741,cpu=1 load=95
+2026-06-08T20:22:41+00:00,cnsm-db-redis-01,process_leak,458,fork=4
+2026-06-08T20:26:57+00:00,cnsm-web-06,disk_io,502,io=2 hdd=2
+2026-06-08T21:33:27+00:00,cnsm-db-redis-01,cpu_spike,1281,cpu=1 load=85
+2026-06-08T21:46:53+00:00,cnsm-db-redis-02,memory_pressure,3228,vm_bytes=8G
+2026-06-09T06:11:54+00:00,cnsm-web-06,cpu_spike,859,cpu=4 load=90
+2026-06-09T06:18:26+00:00,cnsm-web-04,disk_io,1043,io=4 hdd=4
+2026-06-09T08:13:53+00:00,cnsm-web-01,cpu_spike,1461,cpu=4 load=90
+2026-06-09T09:08:16+00:00,cnsm-io-01,cpu_spike,1142,cpu=1 load=90
+2026-06-09T09:27:46+00:00,cnsm-db-redis-01,memory_pressure,3277,vm_bytes=4G
+2026-06-09T09:28:57+00:00,cnsm-db-redis-02,cpu_spike,1036,cpu=4 load=90
+2026-06-09T10:59:10+00:00,cnsm-web-04,memory_pressure,1779,vm_bytes=8G
+2026-06-09T11:23:21+00:00,cnsm-io-01,process_leak,429,fork=8
+2026-06-09T13:53:36+00:00,cnsm-web-02,process_leak,583,fork=8
+2026-06-09T16:13:59+00:00,cnsm-web-05,cpu_spike,1398,cpu=1 load=90
+2026-06-09T16:41:34+00:00,cnsm-db-postgres-02,cpu_spike,1633,cpu=1 load=95
+2026-06-09T17:58:04+00:00,cnsm-web-01,process_leak,765,fork=4
+2026-06-09T21:30:15+00:00,cnsm-db-postgres-01,disk_io,1120,io=2 hdd=2
+2026-06-09T21:42:08+00:00,cnsm-web-02,memory_pressure,1252,vm_bytes=1G
+2026-06-10T07:41:50+00:00,cnsm-db-redis-02,network_latency,395,delay=50ms
+2026-06-10T08:19:48+00:00,cnsm-io-01,network_latency,461,delay=100ms
+2026-06-10T10:08:49+00:00,cnsm-web-05,disk_io,853,io=4 hdd=4
+2026-06-10T11:45:23+00:00,cnsm-db-redis-01,cpu_spike,694,cpu=1 load=90
+2026-06-10T15:11:30+00:00,cnsm-web-03,network_latency,393,delay=50ms
+2026-06-10T15:45:37+00:00,cnsm-db-postgres-01,network_latency,1609,delay=50ms
+2026-06-10T16:11:32+00:00,cnsm-db-redis-02,disk_io,848,io=4 hdd=4
+2026-06-10T19:24:22+00:00,cnsm-io-01,cpu_spike,1225,cpu=1 load=95
+2026-06-10T20:17:26+00:00,cnsm-web-03,network_latency,1783,delay=200ms
+2026-06-10T20:40:31+00:00,cnsm-web-01,cpu_spike,1047,cpu=1 load=90
+2026-06-11T07:36:28+00:00,cnsm-db-postgres-02,disk_io,806,io=8 hdd=8
+2026-06-11T08:49:31+00:00,cnsm-web-02,disk_io,585,io=4 hdd=4
+2026-06-11T09:08:47+00:00,cnsm-db-postgres-02,disk_io,399,io=4 hdd=4
+2026-06-11T13:07:39+00:00,cnsm-db-postgres-01,process_leak,326,fork=8
+2026-06-11T14:33:31+00:00,cnsm-web-03,process_leak,780,fork=4
+2026-06-11T16:04:07+00:00,cnsm-web-02,cpu_spike,623,cpu=2 load=95
+2026-06-11T17:47:41+00:00,cnsm-web-03,cpu_spike,780,cpu=2 load=90
+2026-06-11T18:23:48+00:00,cnsm-mem-01,cpu_spike,533,cpu=4 load=85
+2026-06-11T20:15:26+00:00,cnsm-web-01,network_latency,454,delay=500ms
+2026-06-11T20:15:59+00:00,cnsm-web-03,disk_io,1068,io=4 hdd=4
+2026-06-11T20:28:38+00:00,cnsm-db-postgres-01,cpu_spike,1267,cpu=4 load=85
+2026-06-11T21:13:56+00:00,cnsm-web-01,network_latency,1404,delay=100ms
+2026-06-12T07:07:24+00:00,cnsm-mem-01,cpu_spike,1723,cpu=4 load=90
+2026-06-12T08:37:07+00:00,cnsm-mem-01,process_leak,333,fork=4
+2026-06-12T09:25:09+00:00,cnsm-web-06,memory_pressure,685,vm_bytes=4G
+2026-06-12T10:11:01+00:00,cnsm-mem-01,network_latency,944,delay=500ms
+2026-06-12T12:09:36+00:00,cnsm-web-01,disk_io,682,io=2 hdd=2
+2026-06-12T13:19:12+00:00,cnsm-db-postgres-02,process_leak,595,fork=8
+2026-06-12T15:50:52+00:00,cnsm-db-redis-02,memory_pressure,1224,vm_bytes=2G
+2026-06-12T16:55:35+00:00,cnsm-web-02,disk_io,867,io=2 hdd=2
+2026-06-12T21:04:16+00:00,cnsm-db-postgres-02,memory_pressure,2457,vm_bytes=1G
+2026-06-13T09:56:10+00:00,cnsm-web-02,cpu_spike,575,cpu=2 load=85
+2026-06-13T11:59:17+00:00,cnsm-web-03,process_leak,387,fork=2
+2026-06-13T12:04:47+00:00,cnsm-web-02,network_latency,887,delay=100ms
+2026-06-13T12:35:01+00:00,cnsm-web-04,cpu_spike,1733,cpu=2 load=90
+2026-06-13T17:57:38+00:00,cnsm-web-02,memory_pressure,763,vm_bytes=4G
+2026-06-13T18:11:13+00:00,cnsm-db-postgres-01,network_latency,1213,delay=500ms
+2026-06-13T18:54:38+00:00,cnsm-db-redis-01,memory_pressure,1254,vm_bytes=8G
+2026-06-13T20:23:54+00:00,cnsm-db-redis-02,process_leak,576,fork=2
+2026-06-14T06:54:47+00:00,cnsm-web-03,memory_pressure,2958,vm_bytes=8G
+2026-06-14T08:22:12+00:00,cnsm-db-postgres-02,memory_pressure,3542,vm_bytes=4G
+2026-06-14T08:40:42+00:00,cnsm-db-postgres-02,disk_io,494,io=2 hdd=2
+2026-06-14T10:57:23+00:00,cnsm-db-postgres-02,process_leak,728,fork=2
+2026-06-14T11:05:47+00:00,cnsm-db-postgres-02,process_leak,477,fork=4
+2026-06-14T11:28:35+00:00,cnsm-web-02,disk_io,979,io=2 hdd=2
+2026-06-14T12:06:00+00:00,cnsm-mem-01,cpu_spike,663,cpu=2 load=90
+2026-06-14T13:29:38+00:00,cnsm-db-postgres-02,memory_pressure,1101,vm_bytes=4G
+2026-06-14T15:16:48+00:00,cnsm-web-03,network_latency,544,delay=100ms
+2026-06-14T16:39:25+00:00,cnsm-web-06,disk_io,454,io=4 hdd=4
+2026-06-14T17:26:05+00:00,cnsm-io-01,network_latency,570,delay=500ms
+2026-06-14T17:52:26+00:00,cnsm-web-04,network_latency,1583,delay=500ms
+2026-06-14T19:20:07+00:00,cnsm-web-02,disk_io,712,io=8 hdd=8
+2026-06-15T07:51:14+00:00,cnsm-db-postgres-02,cpu_spike,1752,cpu=1 load=90
+2026-06-15T08:08:38+00:00,cnsm-web-03,cpu_spike,608,cpu=1 load=90
+2026-06-15T08:19:49+00:00,cnsm-io-01,cpu_spike,880,cpu=2 load=95
+2026-06-15T09:07:47+00:00,cnsm-web-06,disk_io,1184,io=8 hdd=8
+2026-06-15T11:50:51+00:00,cnsm-web-04,process_leak,357,fork=4
+2026-06-15T11:52:00+00:00,cnsm-web-06,cpu_spike,1462,cpu=4 load=85
+2026-06-15T15:41:29+00:00,cnsm-db-redis-01,cpu_spike,421,cpu=1 load=95
+2026-06-15T18:38:21+00:00,cnsm-io-01,cpu_spike,1491,cpu=1 load=95
+2026-06-15T18:47:13+00:00,cnsm-web-03,cpu_spike,733,cpu=2 load=90
+2026-06-15T20:06:31+00:00,cnsm-db-postgres-01,disk_io,976,io=4 hdd=4
+2026-06-15T20:12:56+00:00,cnsm-db-postgres-02,network_latency,1555,delay=200ms
+2026-06-15T20:34:49+00:00,cnsm-web-06,cpu_spike,545,cpu=1 load=90
+2026-06-15T21:35:57+00:00,cnsm-web-05,disk_io,1092,io=2 hdd=2
+2026-06-16T06:38:28+00:00,cnsm-web-04,disk_io,865,io=8 hdd=8
+2026-06-16T08:39:53+00:00,cnsm-web-04,cpu_spike,957,cpu=4 load=85
+2026-06-16T08:47:23+00:00,cnsm-web-06,network_latency,466,delay=100ms
+2026-06-16T08:59:06+00:00,cnsm-db-redis-02,cpu_spike,1221,cpu=2 load=85
+2026-06-16T09:26:50+00:00,cnsm-web-05,process_leak,662,fork=8
+2026-06-16T13:24:30+00:00,cnsm-db-redis-02,memory_pressure,2933,vm_bytes=2G
+2026-06-16T15:37:57+00:00,cnsm-db-redis-01,memory_pressure,3560,vm_bytes=1G
+2026-06-16T18:25:59+00:00,cnsm-web-03,cpu_spike,1076,cpu=2 load=90
+2026-06-16T20:52:20+00:00,cnsm-db-postgres-01,disk_io,1133,io=8 hdd=8
+2026-06-16T20:54:17+00:00,cnsm-web-04,network_latency,1576,delay=500ms
+2026-06-17T06:54:34+00:00,cnsm-web-03,disk_io,730,io=4 hdd=4
+2026-06-17T06:58:08+00:00,cnsm-web-02,cpu_spike,716,cpu=4 load=95
+2026-06-17T08:35:08+00:00,cnsm-io-01,disk_io,1136,io=2 hdd=2
+2026-06-17T12:18:39+00:00,cnsm-web-06,cpu_spike,1180,cpu=1 load=90
+2026-06-17T14:56:49+00:00,cnsm-web-03,disk_io,910,io=8 hdd=8
+2026-06-17T15:52:47+00:00,cnsm-web-02,disk_io,1114,io=2 hdd=2
+2026-06-17T17:02:36+00:00,cnsm-web-03,disk_io,845,io=4 hdd=4
+2026-06-17T17:33:34+00:00,cnsm-db-postgres-01,process_leak,366,fork=8
+2026-06-17T19:39:52+00:00,cnsm-mem-01,disk_io,619,io=4 hdd=4
+2026-06-17T20:14:35+00:00,cnsm-io-01,cpu_spike,478,cpu=2 load=85
+2026-06-18T06:18:18+00:00,cnsm-db-postgres-02,disk_io,349,io=2 hdd=2
+2026-06-18T07:31:58+00:00,cnsm-io-01,process_leak,880,fork=2
+2026-06-18T10:15:18+00:00,cnsm-web-06,disk_io,405,io=2 hdd=2
+2026-06-18T10:48:07+00:00,cnsm-web-03,disk_io,1116,io=4 hdd=4
+2026-06-18T11:50:26+00:00,cnsm-web-01,cpu_spike,729,cpu=4 load=90
+2026-06-18T14:38:33+00:00,cnsm-io-01,cpu_spike,1403,cpu=1 load=90
+2026-06-18T19:16:48+00:00,cnsm-web-04,process_leak,683,fork=4
+2026-06-18T19:20:14+00:00,cnsm-io-01,disk_io,1110,io=2 hdd=2
+2026-06-18T20:17:40+00:00,cnsm-web-03,network_latency,927,delay=200ms
+2026-06-19T06:23:14+00:00,cnsm-web-06,process_leak,616,fork=2
+2026-06-19T06:34:34+00:00,cnsm-db-postgres-01,network_latency,1350,delay=100ms
+2026-06-19T07:56:37+00:00,cnsm-web-06,network_latency,1063,delay=200ms
+2026-06-19T08:41:51+00:00,cnsm-web-02,disk_io,741,io=2 hdd=2
+2026-06-19T11:28:21+00:00,cnsm-io-01,network_latency,1418,delay=100ms
+2026-06-19T12:19:03+00:00,cnsm-web-05,cpu_spike,484,cpu=2 load=85
+2026-06-19T12:41:45+00:00,cnsm-db-postgres-02,disk_io,346,io=4 hdd=4
+2026-06-19T14:15:55+00:00,cnsm-mem-01,cpu_spike,1776,cpu=4 load=90
+2026-06-19T16:26:21+00:00,cnsm-db-redis-01,disk_io,929,io=2 hdd=2
+2026-06-19T18:36:19+00:00,cnsm-db-postgres-01,network_latency,366,delay=100ms
+2026-06-19T18:52:00+00:00,cnsm-web-05,memory_pressure,3355,vm_bytes=4G
+2026-06-20T08:33:25+00:00,cnsm-db-redis-01,network_latency,1083,delay=500ms
+2026-06-20T13:12:56+00:00,cnsm-db-redis-02,cpu_spike,676,cpu=4 load=90
+2026-06-20T14:57:47+00:00,cnsm-web-04,disk_io,766,io=4 hdd=4
+2026-06-20T15:29:17+00:00,cnsm-web-05,network_latency,1335,delay=500ms
+2026-06-20T16:35:54+00:00,cnsm-db-postgres-02,disk_io,674,io=2 hdd=2
+2026-06-20T19:04:16+00:00,cnsm-web-01,process_leak,302,fork=4
+2026-06-20T19:06:32+00:00,cnsm-web-03,disk_io,644,io=2 hdd=2
+2026-06-20T20:11:42+00:00,cnsm-web-01,cpu_spike,852,cpu=4 load=95
+2026-06-20T20:58:42+00:00,cnsm-web-03,process_leak,753,fork=4
+2026-06-20T21:27:50+00:00,cnsm-db-redis-02,process_leak,457,fork=8
+2026-06-20T21:56:51+00:00,cnsm-web-06,cpu_spike,1390,cpu=4 load=85
+2026-06-21T06:25:35+00:00,cnsm-db-redis-02,network_latency,586,delay=50ms
+2026-06-21T07:08:02+00:00,cnsm-db-postgres-02,disk_io,1184,io=8 hdd=8
+2026-06-21T07:54:12+00:00,cnsm-web-02,disk_io,781,io=2 hdd=2
+2026-06-21T07:54:32+00:00,cnsm-web-06,disk_io,773,io=8 hdd=8
+2026-06-21T08:19:13+00:00,cnsm-io-01,network_latency,1730,delay=500ms
+2026-06-21T10:41:16+00:00,cnsm-io-01,disk_io,993,io=2 hdd=2
+2026-06-21T11:37:43+00:00,cnsm-web-04,disk_io,979,io=8 hdd=8
+2026-06-21T14:44:45+00:00,cnsm-web-06,network_latency,1137,delay=200ms
+2026-06-21T17:04:55+00:00,cnsm-db-redis-02,cpu_spike,797,cpu=2 load=85
+2026-06-21T17:36:35+00:00,cnsm-web-05,cpu_spike,905,cpu=4 load=90
+2026-06-21T19:32:48+00:00,cnsm-web-03,cpu_spike,1496,cpu=4 load=85
+2026-06-21T19:53:06+00:00,cnsm-db-redis-02,process_leak,624,fork=4
+2026-06-21T20:33:14+00:00,cnsm-web-01,memory_pressure,1629,vm_bytes=1G
+2026-06-22T07:02:58+00:00,cnsm-db-postgres-02,disk_io,339,io=2 hdd=2
+2026-06-22T09:22:37+00:00,cnsm-mem-01,network_latency,1020,delay=500ms
+2026-06-22T10:01:44+00:00,cnsm-mem-01,cpu_spike,980,cpu=4 load=90
+2026-06-22T12:16:18+00:00,cnsm-web-03,memory_pressure,3528,vm_bytes=2G
+2026-06-22T15:29:11+00:00,cnsm-db-postgres-01,process_leak,621,fork=8
+2026-06-22T15:41:45+00:00,cnsm-io-01,disk_io,355,io=2 hdd=2
+2026-06-22T15:46:47+00:00,cnsm-db-postgres-02,cpu_spike,1768,cpu=4 load=90
+2026-06-22T15:55:45+00:00,cnsm-db-postgres-01,disk_io,1134,io=8 hdd=8
+2026-06-22T19:15:31+00:00,cnsm-web-02,process_leak,549,fork=2
+2026-06-22T20:15:14+00:00,cnsm-db-postgres-02,disk_io,520,io=8 hdd=8
+2026-06-22T21:53:42+00:00,cnsm-web-06,cpu_spike,442,cpu=1 load=95
+2026-06-23T06:01:17+00:00,cnsm-db-redis-02,disk_io,842,io=8 hdd=8
+2026-06-23T08:22:00+00:00,cnsm-db-redis-02,disk_io,688,io=4 hdd=4
+2026-06-23T10:13:25+00:00,cnsm-web-02,network_latency,1422,delay=50ms
+2026-06-23T11:02:46+00:00,cnsm-web-03,disk_io,800,io=8 hdd=8
+2026-06-23T14:41:13+00:00,cnsm-web-04,disk_io,395,io=2 hdd=2
+2026-06-23T16:43:44+00:00,cnsm-db-redis-01,network_latency,668,delay=100ms
+2026-06-23T19:19:09+00:00,cnsm-web-04,network_latency,1640,delay=100ms
+2026-06-24T07:01:56+00:00,cnsm-web-01,cpu_spike,491,cpu=1 load=85
+2026-06-24T07:12:11+00:00,cnsm-web-04,memory_pressure,2723,vm_bytes=4G
+2026-06-24T07:36:37+00:00,cnsm-db-redis-02,memory_pressure,1506,vm_bytes=2G
+2026-06-24T08:09:45+00:00,cnsm-web-04,disk_io,1154,io=4 hdd=4
+2026-06-24T08:11:32+00:00,cnsm-web-05,cpu_spike,659,cpu=1 load=85
+2026-06-24T08:49:27+00:00,cnsm-web-03,cpu_spike,427,cpu=1 load=90
+2026-06-24T09:19:34+00:00,cnsm-web-05,process_leak,397,fork=4
+2026-06-24T10:06:24+00:00,cnsm-db-redis-02,cpu_spike,1136,cpu=1 load=90
+2026-06-24T10:32:01+00:00,cnsm-db-redis-02,cpu_spike,1441,cpu=4 load=85
+2026-06-24T10:36:33+00:00,cnsm-db-postgres-02,network_latency,1495,delay=200ms
+2026-06-24T10:43:03+00:00,cnsm-db-postgres-02,cpu_spike,1565,cpu=4 load=85
+2026-06-24T12:26:00+00:00,cnsm-db-postgres-02,process_leak,813,fork=8
+2026-06-24T14:19:28+00:00,cnsm-db-postgres-02,disk_io,554,io=2 hdd=2
+2026-06-24T14:34:03+00:00,cnsm-mem-01,network_latency,1521,delay=100ms
+2026-06-24T16:45:43+00:00,cnsm-db-redis-01,cpu_spike,1267,cpu=1 load=95
+2026-06-24T16:51:53+00:00,cnsm-web-02,cpu_spike,1646,cpu=4 load=95
+2026-06-24T16:52:19+00:00,cnsm-web-05,network_latency,1228,delay=500ms
+2026-06-24T18:15:51+00:00,cnsm-db-postgres-01,memory_pressure,3217,vm_bytes=8G
+2026-06-24T18:49:50+00:00,cnsm-mem-01,cpu_spike,473,cpu=4 load=95
+2026-06-25T06:40:56+00:00,cnsm-io-01,cpu_spike,509,cpu=4 load=95
+2026-06-25T07:29:44+00:00,cnsm-web-03,network_latency,1427,delay=200ms
+2026-06-25T09:17:22+00:00,cnsm-web-05,network_latency,1705,delay=50ms
+2026-06-25T09:47:42+00:00,cnsm-web-05,process_leak,681,fork=2
+2026-06-25T10:25:55+00:00,cnsm-web-05,process_leak,620,fork=8
+2026-06-25T13:42:05+00:00,cnsm-io-01,cpu_spike,639,cpu=4 load=85
+2026-06-25T14:02:11+00:00,cnsm-web-02,cpu_spike,307,cpu=2 load=85
+2026-06-25T16:10:50+00:00,cnsm-io-01,memory_pressure,3284,vm_bytes=1G
+2026-06-25T16:11:56+00:00,cnsm-db-postgres-01,memory_pressure,606,vm_bytes=4G
+2026-06-25T16:17:46+00:00,cnsm-web-01,cpu_spike,618,cpu=1 load=90
+2026-06-25T17:28:32+00:00,cnsm-web-02,memory_pressure,1122,vm_bytes=1G
+2026-06-25T17:42:43+00:00,cnsm-web-02,network_latency,1487,delay=200ms
+2026-06-25T18:01:46+00:00,cnsm-mem-01,disk_io,1055,io=8 hdd=8
+2026-06-25T18:05:06+00:00,cnsm-io-01,network_latency,1611,delay=100ms
+2026-06-25T18:08:08+00:00,cnsm-web-05,network_latency,1224,delay=100ms
+2026-06-25T19:23:14+00:00,cnsm-db-postgres-01,disk_io,916,io=2 hdd=2
+2026-06-25T20:15:18+00:00,cnsm-db-redis-02,process_leak,759,fork=8
+2026-06-25T21:09:43+00:00,cnsm-web-01,process_leak,494,fork=4
+2026-06-26T08:05:15+00:00,cnsm-web-02,disk_io,301,io=8 hdd=8
+2026-06-26T08:52:17+00:00,cnsm-web-02,disk_io,920,io=8 hdd=8
+2026-06-26T10:10:13+00:00,cnsm-db-postgres-01,disk_io,709,io=8 hdd=8
+2026-06-26T14:26:08+00:00,cnsm-mem-01,cpu_spike,913,cpu=2 load=85
+2026-06-26T14:51:26+00:00,cnsm-db-redis-01,process_leak,539,fork=8
+2026-06-26T15:55:37+00:00,cnsm-web-06,network_latency,1373,delay=100ms
+2026-06-26T16:21:18+00:00,cnsm-db-postgres-02,memory_pressure,2302,vm_bytes=8G
+2026-06-26T16:39:38+00:00,cnsm-db-postgres-01,disk_io,695,io=4 hdd=4
+2026-06-26T17:46:25+00:00,cnsm-web-02,disk_io,1105,io=4 hdd=4
+2026-06-26T18:22:00+00:00,cnsm-web-03,process_leak,648,fork=2
+2026-06-26T19:17:15+00:00,cnsm-web-06,cpu_spike,741,cpu=4 load=85
+2026-06-26T20:27:31+00:00,cnsm-mem-01,process_leak,859,fork=2
+2026-06-26T21:33:04+00:00,cnsm-web-02,cpu_spike,1429,cpu=4 load=90
+2026-06-27T06:44:21+00:00,cnsm-mem-01,memory_pressure,2132,vm_bytes=8G
+2026-06-27T14:01:30+00:00,cnsm-web-06,disk_io,997,io=8 hdd=8
+2026-06-27T14:59:22+00:00,cnsm-db-postgres-01,cpu_spike,1351,cpu=1 load=90
+2026-06-27T15:38:04+00:00,cnsm-db-postgres-02,memory_pressure,1615,vm_bytes=2G
+2026-06-27T15:48:28+00:00,cnsm-db-postgres-01,cpu_spike,1219,cpu=1 load=95
+2026-06-27T16:04:42+00:00,cnsm-mem-01,disk_io,607,io=2 hdd=2
+2026-06-27T21:14:56+00:00,cnsm-web-05,disk_io,815,io=2 hdd=2
+2026-06-28T06:34:46+00:00,cnsm-db-redis-02,disk_io,682,io=2 hdd=2
+2026-06-28T07:45:51+00:00,cnsm-io-01,memory_pressure,602,vm_bytes=8G
+2026-06-28T08:20:16+00:00,cnsm-web-04,memory_pressure,1633,vm_bytes=4G
+2026-06-28T08:25:03+00:00,cnsm-db-redis-01,disk_io,877,io=2 hdd=2
+2026-06-28T08:30:16+00:00,cnsm-web-05,cpu_spike,918,cpu=1 load=90
+2026-06-28T10:22:55+00:00,cnsm-mem-01,disk_io,325,io=4 hdd=4
+2026-06-28T11:52:57+00:00,cnsm-web-02,cpu_spike,1572,cpu=4 load=85
+2026-06-28T12:33:06+00:00,cnsm-mem-01,disk_io,794,io=4 hdd=4
+2026-06-28T13:32:32+00:00,cnsm-db-redis-02,disk_io,878,io=2 hdd=2
+2026-06-28T14:32:15+00:00,cnsm-web-01,cpu_spike,1398,cpu=1 load=90
+2026-06-28T16:10:16+00:00,cnsm-web-06,cpu_spike,1057,cpu=2 load=95
+2026-06-28T17:48:33+00:00,cnsm-db-redis-02,memory_pressure,1289,vm_bytes=4G
+2026-06-28T19:34:38+00:00,cnsm-db-redis-01,process_leak,688,fork=2
+2026-06-28T19:39:27+00:00,cnsm-mem-01,cpu_spike,1750,cpu=1 load=90
+2026-06-28T19:56:16+00:00,cnsm-web-06,disk_io,762,io=2 hdd=2
+2026-06-29T08:14:46+00:00,cnsm-web-01,network_latency,1793,delay=50ms
+2026-06-29T09:51:05+00:00,cnsm-db-redis-02,cpu_spike,1779,cpu=2 load=90
+2026-06-29T12:21:43+00:00,cnsm-db-postgres-02,memory_pressure,3084,vm_bytes=2G
+2026-06-29T14:02:05+00:00,cnsm-db-postgres-01,disk_io,1071,io=8 hdd=8
+2026-06-29T18:37:14+00:00,cnsm-web-05,memory_pressure,702,vm_bytes=4G
+2026-06-29T20:00:20+00:00,cnsm-db-redis-01,network_latency,364,delay=200ms
+2026-06-29T20:21:06+00:00,cnsm-web-04,disk_io,549,io=4 hdd=4
+2026-06-29T20:28:03+00:00,cnsm-web-02,network_latency,1683,delay=100ms
+2026-06-30T06:23:47+00:00,cnsm-db-postgres-02,network_latency,978,delay=50ms
+2026-06-30T08:29:52+00:00,cnsm-web-02,network_latency,1148,delay=100ms
+2026-06-30T08:32:08+00:00,cnsm-db-redis-01,cpu_spike,1632,cpu=1 load=90
+2026-06-30T09:28:20+00:00,cnsm-mem-01,disk_io,1039,io=8 hdd=8
+2026-06-30T10:41:06+00:00,cnsm-db-postgres-02,process_leak,838,fork=4
+2026-06-30T15:51:26+00:00,cnsm-db-postgres-01,cpu_spike,1060,cpu=4 load=85
+2026-06-30T17:38:47+00:00,cnsm-web-01,process_leak,518,fork=4
+2026-06-30T21:28:38+00:00,cnsm-web-03,disk_io,1111,io=2 hdd=2
+2026-07-01T06:24:40+00:00,cnsm-web-03,cpu_spike,988,cpu=4 load=95
+2026-07-01T08:48:23+00:00,cnsm-web-01,disk_io,845,io=2 hdd=2
+2026-07-01T09:39:25+00:00,cnsm-web-03,cpu_spike,749,cpu=2 load=90
+2026-07-01T10:12:14+00:00,cnsm-mem-01,process_leak,693,fork=8
+2026-07-01T12:15:17+00:00,cnsm-db-postgres-02,process_leak,585,fork=8
+2026-07-01T12:31:17+00:00,cnsm-io-01,cpu_spike,591,cpu=4 load=95
+2026-07-01T13:17:34+00:00,cnsm-web-03,cpu_spike,1200,cpu=1 load=95
+2026-07-01T14:24:33+00:00,cnsm-web-05,network_latency,1758,delay=500ms
+2026-07-01T15:11:20+00:00,cnsm-db-redis-02,process_leak,533,fork=4
+2026-07-01T16:11:03+00:00,cnsm-web-03,disk_io,799,io=2 hdd=2
+2026-07-01T17:51:09+00:00,cnsm-web-03,process_leak,375,fork=8
+2026-07-01T20:48:34+00:00,cnsm-web-06,disk_io,877,io=8 hdd=8
+2026-07-01T21:03:43+00:00,cnsm-mem-01,cpu_spike,598,cpu=1 load=85
+2026-07-02T06:57:24+00:00,cnsm-db-postgres-02,disk_io,323,io=2 hdd=2
+2026-07-02T07:22:48+00:00,cnsm-db-redis-02,cpu_spike,1617,cpu=4 load=90
+2026-07-02T08:30:46+00:00,cnsm-db-postgres-02,cpu_spike,1584,cpu=4 load=90
+2026-07-02T09:02:34+00:00,cnsm-db-postgres-02,disk_io,827,io=4 hdd=4
+2026-07-02T09:17:56+00:00,cnsm-web-04,disk_io,1033,io=4 hdd=4
+2026-07-02T10:11:39+00:00,cnsm-db-postgres-02,disk_io,1200,io=4 hdd=4
+2026-07-02T11:02:03+00:00,cnsm-web-06,network_latency,807,delay=500ms
+2026-07-02T11:27:24+00:00,cnsm-db-redis-02,memory_pressure,2855,vm_bytes=4G
+2026-07-02T13:41:44+00:00,cnsm-web-06,memory_pressure,2888,vm_bytes=4G
+2026-07-02T14:11:04+00:00,cnsm-web-04,cpu_spike,1405,cpu=2 load=90
+2026-07-02T14:55:54+00:00,cnsm-db-redis-02,network_latency,1008,delay=50ms
+2026-07-02T15:49:30+00:00,cnsm-web-05,cpu_spike,771,cpu=4 load=90
+2026-07-02T17:15:59+00:00,cnsm-web-05,cpu_spike,858,cpu=1 load=90
+2026-07-02T17:33:33+00:00,cnsm-io-01,process_leak,829,fork=8
+2026-07-02T17:45:40+00:00,cnsm-db-postgres-01,cpu_spike,1065,cpu=1 load=90
+2026-07-02T18:07:19+00:00,cnsm-io-01,disk_io,546,io=4 hdd=4
+2026-07-02T19:43:34+00:00,cnsm-web-01,process_leak,843,fork=2
+2026-07-03T06:10:50+00:00,cnsm-web-06,disk_io,375,io=4 hdd=4
+2026-07-03T06:35:47+00:00,cnsm-web-01,cpu_spike,707,cpu=4 load=95
+2026-07-03T06:59:02+00:00,cnsm-web-01,disk_io,408,io=8 hdd=8
+2026-07-03T09:45:27+00:00,cnsm-web-04,disk_io,1022,io=4 hdd=4
+2026-07-03T11:16:25+00:00,cnsm-io-01,disk_io,493,io=8 hdd=8
+2026-07-03T11:16:56+00:00,cnsm-web-01,memory_pressure,2621,vm_bytes=1G
+2026-07-03T15:07:18+00:00,cnsm-web-02,network_latency,1269,delay=100ms
+2026-07-03T15:40:17+00:00,cnsm-io-01,network_latency,1759,delay=500ms
+2026-07-03T19:55:52+00:00,cnsm-web-05,disk_io,907,io=2 hdd=2
+2026-07-03T21:26:21+00:00,cnsm-mem-01,process_leak,803,fork=4
+2026-07-04T09:07:10+00:00,cnsm-db-postgres-02,cpu_spike,881,cpu=1 load=90
+2026-07-04T10:07:58+00:00,cnsm-db-postgres-02,disk_io,767,io=2 hdd=2
+2026-07-04T10:23:34+00:00,cnsm-io-01,memory_pressure,3385,vm_bytes=8G
+2026-07-04T18:10:19+00:00,cnsm-web-02,cpu_spike,947,cpu=2 load=85
+2026-07-04T20:40:07+00:00,cnsm-io-01,process_leak,365,fork=4
+2026-07-04T20:52:44+00:00,cnsm-db-redis-02,memory_pressure,738,vm_bytes=1G
+2026-07-04T20:55:16+00:00,cnsm-web-06,memory_pressure,922,vm_bytes=8G
+2026-07-04T21:32:59+00:00,cnsm-db-postgres-02,network_latency,1588,delay=500ms
+2026-07-05T06:24:26+00:00,cnsm-db-postgres-01,memory_pressure,2525,vm_bytes=1G
+2026-07-05T08:17:32+00:00,cnsm-db-redis-01,network_latency,560,delay=100ms
+2026-07-05T08:31:16+00:00,cnsm-web-02,cpu_spike,316,cpu=4 load=95
+2026-07-05T12:06:51+00:00,cnsm-web-06,cpu_spike,740,cpu=2 load=90
+2026-07-05T15:02:43+00:00,cnsm-web-06,cpu_spike,751,cpu=2 load=95
+2026-07-05T16:38:54+00:00,cnsm-mem-01,disk_io,697,io=8 hdd=8
+2026-07-05T19:05:38+00:00,cnsm-db-postgres-02,cpu_spike,491,cpu=4 load=95
+2026-07-05T19:10:13+00:00,cnsm-db-postgres-01,cpu_spike,708,cpu=4 load=85
+2026-07-05T19:13:08+00:00,cnsm-web-01,disk_io,852,io=8 hdd=8
+2026-07-05T19:29:41+00:00,cnsm-db-redis-02,cpu_spike,1628,cpu=2 load=90
+2026-07-05T19:49:34+00:00,cnsm-db-postgres-02,cpu_spike,1138,cpu=4 load=85
+2026-07-05T20:33:09+00:00,cnsm-db-redis-01,disk_io,1020,io=4 hdd=4
+2026-07-05T20:35:53+00:00,cnsm-web-03,cpu_spike,355,cpu=2 load=95
+2026-07-05T21:09:58+00:00,cnsm-mem-01,memory_pressure,2675,vm_bytes=8G
+2026-07-06T06:54:48+00:00,cnsm-db-postgres-02,disk_io,410,io=4 hdd=4
+2026-07-06T06:59:01+00:00,cnsm-web-04,disk_io,795,io=4 hdd=4
+2026-07-06T07:53:03+00:00,cnsm-web-02,memory_pressure,2112,vm_bytes=2G
+2026-07-06T08:50:39+00:00,cnsm-web-01,disk_io,1097,io=8 hdd=8
+2026-07-06T12:03:16+00:00,cnsm-db-redis-02,cpu_spike,849,cpu=2 load=95
+2026-07-06T13:00:08+00:00,cnsm-db-redis-01,network_latency,423,delay=50ms
+2026-07-06T15:03:09+00:00,cnsm-mem-01,process_leak,342,fork=8
+2026-07-06T15:20:50+00:00,cnsm-db-postgres-01,disk_io,405,io=2 hdd=2
+2026-07-06T15:21:03+00:00,cnsm-db-postgres-01,process_leak,597,fork=4
+2026-07-06T17:43:35+00:00,cnsm-db-redis-01,cpu_spike,1077,cpu=2 load=90
+2026-07-06T18:47:06+00:00,cnsm-mem-01,memory_pressure,750,vm_bytes=4G
+2026-07-06T20:41:50+00:00,cnsm-web-05,disk_io,960,io=4 hdd=4
+2026-07-07T09:08:06+00:00,cnsm-web-01,disk_io,469,io=4 hdd=4
+2026-07-07T11:32:52+00:00,cnsm-web-04,disk_io,314,io=8 hdd=8
+2026-07-07T12:32:26+00:00,cnsm-web-04,disk_io,448,io=4 hdd=4
+2026-07-07T14:02:39+00:00,cnsm-mem-01,disk_io,463,io=4 hdd=4
+2026-07-07T15:53:15+00:00,cnsm-db-redis-02,disk_io,787,io=2 hdd=2
+2026-07-07T16:40:16+00:00,cnsm-db-redis-02,process_leak,684,fork=4
+2026-07-07T17:25:11+00:00,cnsm-web-03,network_latency,898,delay=100ms
+2026-07-07T17:30:27+00:00,cnsm-io-01,disk_io,915,io=8 hdd=8
+2026-07-07T17:41:07+00:00,cnsm-web-03,network_latency,1387,delay=200ms
+2026-07-07T17:43:31+00:00,cnsm-db-postgres-02,process_leak,570,fork=8
+2026-07-07T18:57:48+00:00,cnsm-db-postgres-02,cpu_spike,1472,cpu=2 load=90
+2026-07-07T19:39:02+00:00,cnsm-web-06,disk_io,1110,io=8 hdd=8
+2026-07-07T20:38:16+00:00,cnsm-mem-01,cpu_spike,1349,cpu=2 load=85
+2026-07-07T21:02:24+00:00,cnsm-mem-01,network_latency,641,delay=500ms
+2026-07-08T06:05:30+00:00,cnsm-db-redis-01,disk_io,773,io=8 hdd=8
+2026-07-08T06:12:57+00:00,cnsm-db-redis-02,cpu_spike,744,cpu=2 load=85
+2026-07-08T06:22:58+00:00,cnsm-web-06,process_leak,685,fork=8
+2026-07-08T07:37:16+00:00,cnsm-web-05,process_leak,875,fork=8
+2026-07-08T08:32:33+00:00,cnsm-mem-01,disk_io,736,io=4 hdd=4
+2026-07-08T09:57:29+00:00,cnsm-db-redis-02,disk_io,840,io=2 hdd=2
+2026-07-08T10:57:39+00:00,cnsm-db-postgres-02,process_leak,632,fork=8
+2026-07-08T11:00:27+00:00,cnsm-web-02,cpu_spike,319,cpu=1 load=85
+2026-07-08T13:43:13+00:00,cnsm-web-01,cpu_spike,964,cpu=1 load=85
+2026-07-08T18:07:04+00:00,cnsm-db-redis-02,network_latency,792,delay=500ms
+2026-07-08T18:08:39+00:00,cnsm-web-03,memory_pressure,1492,vm_bytes=8G
+2026-07-08T18:18:54+00:00,cnsm-web-06,network_latency,816,delay=100ms
+2026-07-08T19:07:43+00:00,cnsm-web-03,cpu_spike,1657,cpu=1 load=85
+2026-07-08T21:28:20+00:00,cnsm-mem-01,process_leak,331,fork=2
+2026-07-09T07:39:09+00:00,cnsm-web-04,cpu_spike,503,cpu=1 load=95
+2026-07-09T07:50:45+00:00,cnsm-web-03,disk_io,924,io=8 hdd=8
+2026-07-09T09:59:49+00:00,cnsm-db-redis-01,cpu_spike,986,cpu=2 load=90
+2026-07-09T12:11:34+00:00,cnsm-db-redis-01,memory_pressure,3102,vm_bytes=8G
+2026-07-09T14:31:13+00:00,cnsm-mem-01,process_leak,416,fork=4
+2026-07-09T16:07:05+00:00,cnsm-web-06,memory_pressure,2256,vm_bytes=8G
+2026-07-09T17:49:39+00:00,cnsm-db-redis-01,cpu_spike,775,cpu=4 load=95
+2026-07-09T19:23:42+00:00,cnsm-mem-01,network_latency,1085,delay=500ms
+2026-07-09T21:53:45+00:00,cnsm-mem-01,cpu_spike,796,cpu=2 load=90
+2026-07-10T06:30:17+00:00,cnsm-web-05,cpu_spike,1047,cpu=4 load=85
+2026-07-10T09:51:05+00:00,cnsm-mem-01,disk_io,1192,io=8 hdd=8
+2026-07-10T10:36:58+00:00,cnsm-io-01,cpu_spike,1293,cpu=2 load=95
+2026-07-10T11:07:21+00:00,cnsm-web-03,disk_io,677,io=4 hdd=4
+2026-07-10T16:15:49+00:00,cnsm-db-redis-01,process_leak,609,fork=2
+2026-07-10T18:07:25+00:00,cnsm-web-05,memory_pressure,2160,vm_bytes=4G
+2026-07-10T19:55:00+00:00,cnsm-web-04,cpu_spike,1192,cpu=4 load=90
+2026-07-11T08:00:22+00:00,cnsm-io-01,network_latency,836,delay=100ms
+2026-07-11T10:06:28+00:00,cnsm-web-06,disk_io,357,io=4 hdd=4
+2026-07-11T11:56:00+00:00,cnsm-mem-01,disk_io,739,io=4 hdd=4
+2026-07-11T11:59:20+00:00,cnsm-mem-01,cpu_spike,1417,cpu=1 load=95
+2026-07-11T12:33:57+00:00,cnsm-web-03,disk_io,574,io=4 hdd=4
+2026-07-11T15:28:43+00:00,cnsm-db-postgres-02,network_latency,988,delay=500ms
+2026-07-11T15:40:09+00:00,cnsm-mem-01,cpu_spike,1562,cpu=1 load=90
+2026-07-11T15:40:28+00:00,cnsm-web-05,cpu_spike,1168,cpu=4 load=90
+2026-07-11T15:40:49+00:00,cnsm-web-04,cpu_spike,1262,cpu=2 load=85
+2026-07-11T16:01:36+00:00,cnsm-web-05,disk_io,478,io=4 hdd=4
+2026-07-11T17:02:09+00:00,cnsm-mem-01,cpu_spike,578,cpu=2 load=90
+2026-07-11T17:19:48+00:00,cnsm-web-02,cpu_spike,381,cpu=4 load=85
+2026-07-11T17:55:43+00:00,cnsm-io-01,cpu_spike,1755,cpu=4 load=95
+2026-07-11T19:30:16+00:00,cnsm-web-02,process_leak,624,fork=4
+2026-07-11T21:16:00+00:00,cnsm-db-postgres-02,network_latency,1642,delay=100ms
+2026-07-11T21:44:01+00:00,cnsm-web-01,memory_pressure,860,vm_bytes=8G
+2026-07-12T07:15:23+00:00,cnsm-db-redis-01,process_leak,345,fork=4
+2026-07-12T11:41:28+00:00,cnsm-web-06,disk_io,456,io=8 hdd=8
+2026-07-12T13:35:02+00:00,cnsm-mem-01,cpu_spike,1723,cpu=1 load=90
+2026-07-12T14:47:01+00:00,cnsm-web-01,cpu_spike,841,cpu=1 load=95
+2026-07-12T16:21:27+00:00,cnsm-db-redis-02,cpu_spike,1741,cpu=1 load=90
+2026-07-12T17:40:51+00:00,cnsm-db-redis-02,cpu_spike,1534,cpu=1 load=85
+2026-07-12T17:45:56+00:00,cnsm-web-06,network_latency,1274,delay=100ms
+2026-07-12T18:08:43+00:00,cnsm-db-redis-02,process_leak,706,fork=4
+2026-07-12T19:28:26+00:00,cnsm-db-redis-01,disk_io,682,io=4 hdd=4
+2026-07-12T20:41:21+00:00,cnsm-db-postgres-02,disk_io,827,io=2 hdd=2
+2026-07-12T20:49:21+00:00,cnsm-web-03,process_leak,531,fork=8
+2026-07-13T07:19:56+00:00,cnsm-io-01,process_leak,479,fork=2
+2026-07-13T08:15:05+00:00,cnsm-web-04,network_latency,1592,delay=200ms
+2026-07-13T09:46:37+00:00,cnsm-db-postgres-01,process_leak,592,fork=8
+2026-07-13T11:35:00+00:00,cnsm-web-02,process_leak,816,fork=4
+2026-07-13T11:52:33+00:00,cnsm-mem-01,network_latency,1679,delay=200ms
+2026-07-13T13:43:45+00:00,cnsm-web-06,cpu_spike,1682,cpu=4 load=95
+2026-07-13T17:04:24+00:00,cnsm-web-06,disk_io,908,io=8 hdd=8
+2026-07-13T17:18:10+00:00,cnsm-web-05,disk_io,344,io=8 hdd=8
+2026-07-13T17:51:55+00:00,cnsm-db-postgres-01,cpu_spike,310,cpu=1 load=85
+2026-07-13T18:34:25+00:00,cnsm-web-05,disk_io,717,io=4 hdd=4
+2026-07-13T18:37:53+00:00,cnsm-db-redis-01,cpu_spike,1501,cpu=1 load=85
+2026-07-13T18:39:07+00:00,cnsm-web-04,process_leak,546,fork=4
+2026-07-13T21:42:37+00:00,cnsm-db-redis-02,disk_io,799,io=2 hdd=2
+2026-07-14T06:14:46+00:00,cnsm-web-02,memory_pressure,1233,vm_bytes=2G
+2026-07-14T07:55:47+00:00,cnsm-mem-01,network_latency,1035,delay=50ms
+2026-07-14T09:49:41+00:00,cnsm-db-postgres-01,disk_io,895,io=8 hdd=8
+2026-07-14T10:50:31+00:00,cnsm-web-04,memory_pressure,2641,vm_bytes=8G
+2026-07-14T10:58:57+00:00,cnsm-io-01,disk_io,721,io=8 hdd=8
+2026-07-14T14:45:54+00:00,cnsm-web-05,network_latency,1596,delay=200ms
+2026-07-14T14:52:38+00:00,cnsm-db-redis-02,disk_io,662,io=4 hdd=4
+2026-07-14T17:36:19+00:00,cnsm-web-01,cpu_spike,693,cpu=4 load=85
+2026-07-15T06:34:35+00:00,cnsm-web-01,disk_io,360,io=2 hdd=2
+2026-07-15T07:09:53+00:00,cnsm-web-03,process_leak,452,fork=8
+2026-07-15T07:14:02+00:00,cnsm-web-06,disk_io,610,io=4 hdd=4
+2026-07-15T08:33:22+00:00,cnsm-io-01,disk_io,312,io=4 hdd=4
+2026-07-15T08:33:42+00:00,cnsm-db-postgres-01,memory_pressure,2710,vm_bytes=2G
+2026-07-15T11:11:52+00:00,cnsm-mem-01,disk_io,955,io=8 hdd=8
+2026-07-15T11:23:51+00:00,cnsm-web-06,cpu_spike,362,cpu=1 load=95
+2026-07-15T17:13:13+00:00,cnsm-db-postgres-01,memory_pressure,2184,vm_bytes=4G
+2026-07-15T19:43:50+00:00,cnsm-db-redis-02,disk_io,309,io=8 hdd=8
+2026-07-15T20:34:54+00:00,cnsm-web-02,cpu_spike,836,cpu=1 load=95
+2026-07-15T21:06:38+00:00,cnsm-web-03,process_leak,312,fork=8
+2026-07-16T06:21:58+00:00,cnsm-db-redis-01,cpu_spike,1412,cpu=4 load=90
+2026-07-16T06:45:38+00:00,cnsm-web-02,disk_io,821,io=4 hdd=4
+2026-07-16T07:16:47+00:00,cnsm-web-05,disk_io,954,io=8 hdd=8
+2026-07-16T07:45:08+00:00,cnsm-db-postgres-02,memory_pressure,1837,vm_bytes=8G
+2026-07-16T09:01:20+00:00,cnsm-web-01,cpu_spike,863,cpu=1 load=85
+2026-07-16T09:42:54+00:00,cnsm-web-03,cpu_spike,1177,cpu=1 load=90
+2026-07-16T10:16:46+00:00,cnsm-web-06,disk_io,950,io=8 hdd=8
+2026-07-16T21:05:53+00:00,cnsm-web-04,cpu_spike,605,cpu=2 load=85
+2026-07-16T21:08:21+00:00,cnsm-web-05,memory_pressure,858,vm_bytes=8G
+2026-07-17T06:07:37+00:00,cnsm-web-04,cpu_spike,1205,cpu=2 load=85
+2026-07-17T06:53:28+00:00,cnsm-web-06,disk_io,492,io=4 hdd=4
+2026-07-17T08:18:00+00:00,cnsm-web-02,network_latency,1355,delay=200ms
+2026-07-17T08:54:44+00:00,cnsm-web-04,network_latency,972,delay=500ms
+2026-07-17T10:50:41+00:00,cnsm-db-redis-01,network_latency,1012,delay=50ms
+2026-07-17T11:18:52+00:00,cnsm-db-redis-02,disk_io,1178,io=8 hdd=8
+2026-07-17T13:18:01+00:00,cnsm-io-01,memory_pressure,2076,vm_bytes=4G
+2026-07-17T16:43:33+00:00,cnsm-web-02,process_leak,305,fork=2
+2026-07-17T19:07:15+00:00,cnsm-web-05,memory_pressure,1172,vm_bytes=1G
+2026-07-17T19:22:27+00:00,cnsm-web-01,network_latency,1167,delay=500ms
+2026-07-17T20:27:35+00:00,cnsm-web-04,memory_pressure,2822,vm_bytes=8G
+2026-07-18T06:08:33+00:00,cnsm-web-05,disk_io,315,io=4 hdd=4
+2026-07-18T06:24:24+00:00,cnsm-web-06,process_leak,644,fork=8
+2026-07-18T06:25:44+00:00,cnsm-web-06,cpu_spike,1168,cpu=2 load=95
+2026-07-18T07:55:53+00:00,cnsm-web-04,memory_pressure,2240,vm_bytes=1G
+2026-07-18T11:47:09+00:00,cnsm-web-02,disk_io,638,io=8 hdd=8
+2026-07-18T12:27:05+00:00,cnsm-web-04,cpu_spike,535,cpu=4 load=85
+2026-07-18T13:26:23+00:00,cnsm-db-redis-01,process_leak,607,fork=4
+2026-07-18T17:04:23+00:00,cnsm-web-03,disk_io,818,io=8 hdd=8
+2026-07-18T17:51:05+00:00,cnsm-web-04,process_leak,309,fork=4
+2026-07-18T18:04:02+00:00,cnsm-web-02,memory_pressure,1021,vm_bytes=4G
+2026-07-18T19:34:07+00:00,cnsm-web-02,process_leak,843,fork=8
+2026-07-18T20:03:15+00:00,cnsm-db-redis-01,memory_pressure,1084,vm_bytes=8G
+2026-07-18T21:55:24+00:00,cnsm-web-04,disk_io,452,io=4 hdd=4
+2026-07-19T07:05:11+00:00,cnsm-db-postgres-02,disk_io,781,io=4 hdd=4
+2026-07-19T08:41:03+00:00,cnsm-web-06,process_leak,733,fork=8
+2026-07-19T09:03:11+00:00,cnsm-web-01,network_latency,1638,delay=50ms
+2026-07-19T10:36:38+00:00,cnsm-db-redis-02,disk_io,740,io=2 hdd=2
+2026-07-19T15:29:05+00:00,cnsm-web-02,cpu_spike,947,cpu=1 load=85
+2026-07-19T16:01:31+00:00,cnsm-web-02,disk_io,418,io=4 hdd=4
+2026-07-19T16:15:28+00:00,cnsm-web-02,cpu_spike,843,cpu=2 load=85
+2026-07-19T17:28:38+00:00,cnsm-web-01,disk_io,829,io=4 hdd=4
+2026-07-19T17:36:20+00:00,cnsm-db-redis-02,network_latency,1407,delay=200ms
+2026-07-19T18:15:54+00:00,cnsm-web-02,network_latency,656,delay=200ms
+2026-07-19T19:37:46+00:00,cnsm-web-05,memory_pressure,3576,vm_bytes=2G
+2026-07-19T20:21:44+00:00,cnsm-web-06,cpu_spike,1689,cpu=4 load=90
+2026-07-19T20:23:45+00:00,cnsm-db-postgres-01,network_latency,1061,delay=500ms
+2026-07-19T20:34:10+00:00,cnsm-db-postgres-01,cpu_spike,1468,cpu=2 load=90
+2026-07-19T21:56:46+00:00,cnsm-web-06,network_latency,1524,delay=50ms
+2026-07-20T09:43:30+00:00,cnsm-web-01,memory_pressure,2799,vm_bytes=4G
+2026-07-20T09:55:57+00:00,cnsm-db-redis-02,disk_io,1147,io=2 hdd=2
+2026-07-20T10:40:26+00:00,cnsm-web-05,cpu_spike,498,cpu=4 load=95
+2026-07-20T10:50:04+00:00,cnsm-db-redis-02,network_latency,874,delay=50ms
+2026-07-20T11:10:36+00:00,cnsm-web-04,process_leak,479,fork=2
+2026-07-20T12:45:29+00:00,cnsm-web-01,disk_io,619,io=4 hdd=4
+2026-07-20T14:40:02+00:00,cnsm-db-redis-01,disk_io,814,io=8 hdd=8
+2026-07-20T15:48:54+00:00,cnsm-io-01,disk_io,753,io=2 hdd=2
+2026-07-20T16:24:32+00:00,cnsm-web-05,process_leak,785,fork=2
+2026-07-20T16:29:35+00:00,cnsm-web-02,disk_io,1036,io=8 hdd=8
+2026-07-20T17:08:07+00:00,cnsm-db-postgres-02,cpu_spike,1429,cpu=4 load=95
+2026-07-20T20:35:09+00:00,cnsm-db-postgres-02,memory_pressure,845,vm_bytes=2G
+2026-07-21T06:16:04+00:00,cnsm-db-redis-01,memory_pressure,1567,vm_bytes=1G
+2026-07-21T07:49:27+00:00,cnsm-mem-01,network_latency,589,delay=500ms
+2026-07-21T08:22:36+00:00,cnsm-web-04,memory_pressure,2629,vm_bytes=4G
+2026-07-21T09:01:12+00:00,cnsm-web-03,cpu_spike,612,cpu=4 load=85
+2026-07-21T10:46:36+00:00,cnsm-io-01,cpu_spike,1055,cpu=2 load=90
+2026-07-21T11:50:44+00:00,cnsm-db-postgres-02,cpu_spike,1040,cpu=4 load=85
+2026-07-21T14:11:48+00:00,cnsm-db-redis-01,cpu_spike,856,cpu=1 load=85
+2026-07-21T16:40:42+00:00,cnsm-db-redis-02,disk_io,531,io=4 hdd=4
+2026-07-21T21:52:17+00:00,cnsm-web-03,memory_pressure,1649,vm_bytes=4G
+2026-07-22T06:04:47+00:00,cnsm-web-04,cpu_spike,1229,cpu=1 load=95
+2026-07-22T07:22:00+00:00,cnsm-web-02,cpu_spike,919,cpu=4 load=95
+2026-07-22T07:44:07+00:00,cnsm-io-01,memory_pressure,989,vm_bytes=1G
+2026-07-22T08:06:34+00:00,cnsm-mem-01,memory_pressure,1616,vm_bytes=4G
+2026-07-22T08:11:04+00:00,cnsm-web-04,process_leak,402,fork=4
+2026-07-22T08:31:37+00:00,cnsm-db-postgres-01,process_leak,756,fork=2
+2026-07-22T08:33:51+00:00,cnsm-io-01,cpu_spike,899,cpu=2 load=95
+2026-07-22T08:38:35+00:00,cnsm-web-01,cpu_spike,1600,cpu=1 load=95
+2026-07-22T16:08:54+00:00,cnsm-web-03,disk_io,456,io=4 hdd=4
+2026-07-22T17:48:09+00:00,cnsm-web-03,network_latency,1393,delay=100ms
+2026-07-22T19:14:20+00:00,cnsm-web-01,cpu_spike,1219,cpu=4 load=90
+2026-07-22T19:29:00+00:00,cnsm-db-postgres-02,network_latency,1452,delay=200ms
+2026-07-22T20:31:05+00:00,cnsm-mem-01,process_leak,471,fork=2
+2026-07-22T21:48:25+00:00,cnsm-db-redis-01,disk_io,850,io=8 hdd=8
+2026-07-22T21:54:49+00:00,cnsm-web-04,memory_pressure,1248,vm_bytes=4G
+2026-07-23T06:47:22+00:00,cnsm-db-postgres-02,disk_io,641,io=4 hdd=4
+2026-07-23T08:05:47+00:00,cnsm-db-redis-02,process_leak,574,fork=2
+2026-07-23T08:31:00+00:00,cnsm-io-01,process_leak,766,fork=8
+2026-07-23T09:18:03+00:00,cnsm-db-postgres-01,cpu_spike,471,cpu=1 load=90
+2026-07-23T10:37:17+00:00,cnsm-mem-01,memory_pressure,2333,vm_bytes=8G
+2026-07-23T14:32:23+00:00,cnsm-db-redis-01,disk_io,897,io=4 hdd=4
+2026-07-23T16:53:12+00:00,cnsm-io-01,cpu_spike,806,cpu=4 load=90
+2026-07-23T17:52:02+00:00,cnsm-web-02,process_leak,693,fork=4
+2026-07-23T18:19:46+00:00,cnsm-db-postgres-01,memory_pressure,1188,vm_bytes=4G
+2026-07-23T21:08:56+00:00,cnsm-web-02,disk_io,607,io=8 hdd=8
+2026-07-24T07:32:50+00:00,cnsm-web-05,cpu_spike,1681,cpu=2 load=95
+2026-07-24T07:37:02+00:00,cnsm-db-postgres-02,network_latency,1283,delay=100ms
+2026-07-24T07:58:10+00:00,cnsm-db-redis-01,cpu_spike,658,cpu=2 load=85
+2026-07-24T13:36:01+00:00,cnsm-db-postgres-01,network_latency,1022,delay=500ms
+2026-07-24T14:13:20+00:00,cnsm-db-postgres-01,disk_io,734,io=2 hdd=2
+2026-07-24T14:32:47+00:00,cnsm-web-01,disk_io,1080,io=2 hdd=2
+2026-07-24T14:34:47+00:00,cnsm-db-postgres-01,cpu_spike,1546,cpu=4 load=90
+2026-07-24T14:58:11+00:00,cnsm-db-postgres-02,process_leak,363,fork=8
+2026-07-24T15:49:13+00:00,cnsm-io-01,disk_io,1007,io=2 hdd=2
+2026-07-24T18:59:18+00:00,cnsm-web-01,cpu_spike,801,cpu=1 load=90
+2026-07-24T20:55:34+00:00,cnsm-io-01,network_latency,788,delay=50ms
+2026-07-24T21:15:01+00:00,cnsm-web-01,network_latency,1268,delay=500ms
+2026-07-25T06:48:33+00:00,cnsm-db-postgres-02,memory_pressure,2014,vm_bytes=8G
+2026-07-25T07:35:17+00:00,cnsm-web-04,cpu_spike,960,cpu=4 load=90
+2026-07-25T07:49:17+00:00,cnsm-web-03,cpu_spike,1418,cpu=4 load=85
+2026-07-25T13:25:20+00:00,cnsm-web-02,disk_io,986,io=2 hdd=2
+2026-07-26T09:51:01+00:00,cnsm-db-redis-01,disk_io,523,io=8 hdd=8
+2026-07-26T10:59:15+00:00,cnsm-web-04,disk_io,1200,io=2 hdd=2
+2026-07-26T12:21:17+00:00,cnsm-db-redis-02,cpu_spike,1280,cpu=1 load=95
+2026-07-26T12:40:08+00:00,cnsm-web-06,cpu_spike,1181,cpu=1 load=85
+2026-07-26T13:19:42+00:00,cnsm-io-01,cpu_spike,366,cpu=2 load=90
+2026-07-26T14:54:33+00:00,cnsm-web-01,process_leak,621,fork=2
+2026-07-26T17:21:10+00:00,cnsm-web-03,cpu_spike,1404,cpu=1 load=90
+2026-07-26T20:17:20+00:00,cnsm-web-05,process_leak,733,fork=8
+2026-07-26T21:35:34+00:00,cnsm-mem-01,process_leak,823,fork=2
+2026-07-27T06:40:14+00:00,cnsm-db-redis-01,disk_io,910,io=2 hdd=2
+2026-07-27T07:43:46+00:00,cnsm-web-06,cpu_spike,467,cpu=2 load=90
+2026-07-27T09:06:00+00:00,cnsm-web-01,memory_pressure,792,vm_bytes=1G
+2026-07-27T09:37:31+00:00,cnsm-io-01,disk_io,1047,io=4 hdd=4
+2026-07-27T11:11:22+00:00,cnsm-db-postgres-01,disk_io,640,io=2 hdd=2
+2026-07-27T14:39:06+00:00,cnsm-web-03,disk_io,546,io=8 hdd=8
+2026-07-27T16:13:40+00:00,cnsm-db-postgres-01,cpu_spike,1744,cpu=2 load=90
+2026-07-27T16:50:40+00:00,cnsm-mem-01,memory_pressure,2363,vm_bytes=1G
+2026-07-27T17:57:47+00:00,cnsm-db-redis-02,disk_io,332,io=2 hdd=2
+2026-07-27T18:54:22+00:00,cnsm-web-04,memory_pressure,811,vm_bytes=2G
+2026-07-27T18:54:27+00:00,cnsm-web-03,cpu_spike,1158,cpu=4 load=95
+2026-07-28T06:26:18+00:00,cnsm-db-redis-02,memory_pressure,1163,vm_bytes=2G
+2026-07-28T07:02:50+00:00,cnsm-io-01,cpu_spike,503,cpu=4 load=90
+2026-07-28T08:30:28+00:00,cnsm-db-redis-01,network_latency,1613,delay=500ms
+2026-07-28T08:36:56+00:00,cnsm-db-postgres-01,network_latency,581,delay=200ms
+2026-07-28T09:02:02+00:00,cnsm-db-redis-01,process_leak,316,fork=2
+2026-07-28T12:40:45+00:00,cnsm-mem-01,cpu_spike,1426,cpu=1 load=95
+2026-07-28T14:57:53+00:00,cnsm-web-01,memory_pressure,3225,vm_bytes=4G
+2026-07-28T16:55:18+00:00,cnsm-db-postgres-01,cpu_spike,877,cpu=2 load=95
+2026-07-28T17:51:34+00:00,cnsm-db-redis-01,disk_io,618,io=8 hdd=8
+2026-07-28T20:00:54+00:00,cnsm-db-redis-01,cpu_spike,581,cpu=1 load=95
+2026-07-28T20:16:05+00:00,cnsm-web-06,process_leak,852,fork=8
+2026-07-28T21:49:48+00:00,cnsm-io-01,network_latency,449,delay=50ms
+2026-07-29T06:08:39+00:00,cnsm-mem-01,process_leak,856,fork=4
+2026-07-29T07:04:41+00:00,cnsm-db-redis-02,cpu_spike,879,cpu=2 load=90
+2026-07-29T07:21:09+00:00,cnsm-io-01,cpu_spike,785,cpu=1 load=95
+2026-07-29T10:18:13+00:00,cnsm-db-redis-01,cpu_spike,386,cpu=2 load=95
+2026-07-29T12:23:11+00:00,cnsm-web-03,memory_pressure,1270,vm_bytes=4G
+2026-07-29T13:35:51+00:00,cnsm-web-05,cpu_spike,400,cpu=4 load=95
+2026-07-29T13:51:03+00:00,cnsm-web-02,process_leak,735,fork=2
+2026-07-29T17:48:09+00:00,cnsm-web-02,memory_pressure,2893,vm_bytes=8G
+2026-07-29T19:21:48+00:00,cnsm-web-04,disk_io,1106,io=8 hdd=8
+2026-07-29T19:51:33+00:00,cnsm-web-02,memory_pressure,3343,vm_bytes=2G
+2026-07-29T20:09:02+00:00,cnsm-io-01,process_leak,575,fork=8
+2026-07-29T21:29:43+00:00,cnsm-web-03,disk_io,746,io=8 hdd=8
+2026-07-30T07:03:26+00:00,cnsm-db-redis-02,cpu_spike,1374,cpu=2 load=95
+2026-07-30T08:42:27+00:00,cnsm-web-05,cpu_spike,1404,cpu=2 load=95
+2026-07-30T12:52:53+00:00,cnsm-io-01,cpu_spike,723,cpu=1 load=95
+2026-07-30T13:23:05+00:00,cnsm-db-postgres-01,memory_pressure,876,vm_bytes=4G
+2026-07-30T13:40:23+00:00,cnsm-web-05,disk_io,910,io=2 hdd=2
+2026-07-30T15:01:55+00:00,cnsm-web-06,network_latency,1592,delay=200ms
+2026-07-30T15:29:04+00:00,cnsm-web-05,network_latency,1617,delay=50ms
+2026-07-30T16:47:51+00:00,cnsm-web-05,disk_io,1107,io=2 hdd=2
+2026-07-30T17:42:09+00:00,cnsm-db-postgres-02,cpu_spike,1311,cpu=1 load=90
+2026-07-30T20:03:01+00:00,cnsm-db-postgres-01,cpu_spike,599,cpu=1 load=85
+2026-07-30T20:42:21+00:00,cnsm-web-06,process_leak,636,fork=2
+2026-07-30T21:40:43+00:00,cnsm-web-01,memory_pressure,3387,vm_bytes=8G
+2026-07-31T07:20:37+00:00,cnsm-web-03,disk_io,879,io=2 hdd=2
+2026-07-31T08:25:56+00:00,cnsm-io-01,cpu_spike,1355,cpu=4 load=90
+2026-07-31T08:34:23+00:00,cnsm-db-postgres-02,network_latency,1785,delay=50ms
+2026-07-31T10:44:31+00:00,cnsm-mem-01,cpu_spike,896,cpu=4 load=85
+2026-07-31T11:48:23+00:00,cnsm-web-03,cpu_spike,1128,cpu=4 load=85
+2026-07-31T12:40:19+00:00,cnsm-web-05,disk_io,478,io=2 hdd=2
+2026-07-31T14:18:43+00:00,cnsm-db-redis-01,cpu_spike,549,cpu=4 load=95
+2026-07-31T16:15:06+00:00,cnsm-mem-01,disk_io,468,io=8 hdd=8
+2026-07-31T17:30:56+00:00,cnsm-web-01,network_latency,523,delay=100ms
+2026-07-31T18:05:09+00:00,cnsm-db-redis-02,disk_io,682,io=4 hdd=4
+2026-08-01T07:25:39+00:00,cnsm-web-02,network_latency,707,delay=100ms
+2026-08-01T08:14:56+00:00,cnsm-db-redis-01,disk_io,615,io=8 hdd=8
+2026-08-01T08:41:51+00:00,cnsm-io-01,process_leak,739,fork=4
+2026-08-01T08:57:43+00:00,cnsm-web-06,cpu_spike,1178,cpu=4 load=95
+2026-08-01T10:39:03+00:00,cnsm-db-postgres-02,cpu_spike,476,cpu=1 load=90
+2026-08-01T10:49:41+00:00,cnsm-web-01,network_latency,1427,delay=50ms
+2026-08-01T10:54:59+00:00,cnsm-io-01,network_latency,618,delay=200ms
+2026-08-01T12:23:20+00:00,cnsm-db-redis-01,disk_io,356,io=4 hdd=4
+2026-08-01T13:12:30+00:00,cnsm-db-postgres-01,cpu_spike,639,cpu=4 load=90
+2026-08-01T14:06:34+00:00,cnsm-web-01,cpu_spike,313,cpu=1 load=95
+2026-08-01T14:13:15+00:00,cnsm-db-redis-01,process_leak,729,fork=8
+2026-08-01T15:52:12+00:00,cnsm-mem-01,disk_io,1027,io=2 hdd=2
+2026-08-01T16:28:02+00:00,cnsm-mem-01,cpu_spike,985,cpu=2 load=95
+2026-08-01T16:37:57+00:00,cnsm-db-postgres-01,process_leak,627,fork=8
+2026-08-01T16:59:26+00:00,cnsm-db-postgres-02,disk_io,891,io=8 hdd=8
+2026-08-02T10:04:07+00:00,cnsm-db-redis-02,memory_pressure,3337,vm_bytes=1G
+2026-08-02T12:19:41+00:00,cnsm-mem-01,memory_pressure,2275,vm_bytes=8G
+2026-08-02T18:56:19+00:00,cnsm-web-01,cpu_spike,365,cpu=2 load=90
+2026-08-02T19:40:05+00:00,cnsm-web-03,process_leak,366,fork=4
+2026-08-03T07:01:33+00:00,cnsm-db-redis-01,memory_pressure,2351,vm_bytes=4G
+2026-08-03T09:16:02+00:00,cnsm-db-redis-01,cpu_spike,1403,cpu=2 load=95
+2026-08-03T12:48:44+00:00,cnsm-db-redis-01,disk_io,553,io=8 hdd=8
+2026-08-03T15:21:59+00:00,cnsm-web-02,process_leak,861,fork=4
+2026-08-03T15:28:08+00:00,cnsm-web-04,cpu_spike,554,cpu=2 load=95
+2026-08-03T17:06:38+00:00,cnsm-mem-01,disk_io,1047,io=2 hdd=2
+2026-08-03T18:45:39+00:00,cnsm-web-06,memory_pressure,3424,vm_bytes=4G
+2026-08-04T06:48:29+00:00,cnsm-web-04,cpu_spike,1676,cpu=2 load=95
+2026-08-04T06:48:31+00:00,cnsm-db-redis-01,network_latency,346,delay=200ms
+2026-08-04T07:27:37+00:00,cnsm-web-04,disk_io,901,io=8 hdd=8
+2026-08-04T10:15:12+00:00,cnsm-db-redis-02,network_latency,455,delay=200ms
+2026-08-04T11:25:20+00:00,cnsm-db-postgres-01,cpu_spike,1763,cpu=4 load=90
+2026-08-04T11:32:41+00:00,cnsm-web-03,memory_pressure,683,vm_bytes=2G
+2026-08-04T14:31:12+00:00,cnsm-web-03,cpu_spike,1257,cpu=1 load=95
+2026-08-04T16:37:02+00:00,cnsm-web-04,disk_io,416,io=4 hdd=4
+2026-08-05T06:17:36+00:00,cnsm-web-05,process_leak,410,fork=4
+2026-08-05T07:43:54+00:00,cnsm-io-01,disk_io,1167,io=8 hdd=8
+2026-08-05T12:53:28+00:00,cnsm-io-01,cpu_spike,429,cpu=4 load=90
+2026-08-05T13:19:36+00:00,cnsm-web-03,memory_pressure,3402,vm_bytes=1G
+2026-08-05T15:46:18+00:00,cnsm-web-02,cpu_spike,680,cpu=1 load=95
+2026-08-05T15:49:02+00:00,cnsm-db-postgres-02,cpu_spike,622,cpu=4 load=95
+2026-08-05T16:38:07+00:00,cnsm-web-03,disk_io,551,io=2 hdd=2
+2026-08-05T17:07:46+00:00,cnsm-web-06,cpu_spike,870,cpu=4 load=85
+2026-08-05T19:09:03+00:00,cnsm-web-05,network_latency,1640,delay=100ms
+2026-08-05T19:13:45+00:00,cnsm-db-postgres-01,process_leak,375,fork=4
+2026-08-05T19:25:51+00:00,cnsm-web-02,cpu_spike,840,cpu=4 load=90
+2026-08-05T19:41:40+00:00,cnsm-db-redis-02,disk_io,1103,io=4 hdd=4
+2026-08-05T20:24:56+00:00,cnsm-web-05,cpu_spike,1289,cpu=1 load=85
+2026-08-06T06:39:46+00:00,cnsm-web-04,cpu_spike,629,cpu=2 load=90
+2026-08-06T11:51:38+00:00,cnsm-web-02,memory_pressure,1325,vm_bytes=8G
+2026-08-06T12:20:00+00:00,cnsm-web-03,process_leak,739,fork=4
+2026-08-06T12:44:17+00:00,cnsm-io-01,disk_io,732,io=8 hdd=8
+2026-08-06T13:50:31+00:00,cnsm-io-01,network_latency,1464,delay=500ms
+2026-08-06T16:51:42+00:00,cnsm-web-06,memory_pressure,1882,vm_bytes=8G
+2026-08-06T16:55:42+00:00,cnsm-db-postgres-01,disk_io,1099,io=2 hdd=2
+2026-08-06T18:30:49+00:00,cnsm-web-03,cpu_spike,312,cpu=2 load=90
+2026-08-06T21:19:43+00:00,cnsm-web-04,disk_io,371,io=4 hdd=4
+2026-08-07T10:01:15+00:00,cnsm-db-redis-02,cpu_spike,981,cpu=2 load=85
+2026-08-07T10:19:07+00:00,cnsm-web-04,disk_io,493,io=8 hdd=8
+2026-08-07T10:21:43+00:00,cnsm-db-redis-01,network_latency,1073,delay=500ms
+2026-08-07T10:32:55+00:00,cnsm-web-04,network_latency,505,delay=500ms
+2026-08-07T10:44:02+00:00,cnsm-io-01,cpu_spike,571,cpu=1 load=85
+2026-08-07T12:10:18+00:00,cnsm-web-05,cpu_spike,993,cpu=1 load=90
+2026-08-07T12:28:08+00:00,cnsm-web-06,memory_pressure,1870,vm_bytes=4G
+2026-08-07T16:17:22+00:00,cnsm-db-postgres-01,disk_io,427,io=4 hdd=4
+2026-08-07T16:47:59+00:00,cnsm-web-04,network_latency,1408,delay=50ms
+2026-08-07T18:14:30+00:00,cnsm-db-postgres-01,cpu_spike,812,cpu=1 load=95
+2026-08-08T07:34:13+00:00,cnsm-web-01,disk_io,1151,io=4 hdd=4
+2026-08-08T10:47:55+00:00,cnsm-web-03,disk_io,582,io=8 hdd=8
+2026-08-08T12:31:16+00:00,cnsm-web-04,memory_pressure,3460,vm_bytes=8G
+2026-08-08T12:33:44+00:00,cnsm-web-02,cpu_spike,440,cpu=1 load=90
+2026-08-08T15:13:30+00:00,cnsm-io-01,disk_io,830,io=8 hdd=8
+2026-08-08T15:33:11+00:00,cnsm-io-01,memory_pressure,3262,vm_bytes=4G
+2026-08-08T15:59:59+00:00,cnsm-db-postgres-02,disk_io,1163,io=8 hdd=8
+2026-08-08T17:45:57+00:00,cnsm-mem-01,disk_io,502,io=4 hdd=4
+2026-08-08T17:47:13+00:00,cnsm-web-02,memory_pressure,3430,vm_bytes=2G
+2026-08-08T18:20:11+00:00,cnsm-web-06,cpu_spike,407,cpu=1 load=85
+2026-08-08T19:07:43+00:00,cnsm-web-06,process_leak,839,fork=2
+2026-08-08T19:41:49+00:00,cnsm-web-05,disk_io,401,io=4 hdd=4
+2026-08-08T21:27:40+00:00,cnsm-web-01,memory_pressure,3233,vm_bytes=8G
+2026-08-09T07:20:28+00:00,cnsm-db-postgres-01,disk_io,617,io=8 hdd=8
+2026-08-09T07:28:39+00:00,cnsm-web-06,disk_io,1129,io=8 hdd=8
+2026-08-09T08:07:33+00:00,cnsm-db-redis-01,cpu_spike,574,cpu=4 load=90
+2026-08-09T09:10:51+00:00,cnsm-web-02,cpu_spike,519,cpu=4 load=95
+2026-08-09T09:49:45+00:00,cnsm-io-01,process_leak,330,fork=4
+2026-08-09T10:24:50+00:00,cnsm-web-05,memory_pressure,2458,vm_bytes=4G
+2026-08-09T14:55:44+00:00,cnsm-web-01,cpu_spike,1416,cpu=1 load=95
+2026-08-10T11:47:47+00:00,cnsm-web-02,process_leak,786,fork=4
+2026-08-10T11:58:12+00:00,cnsm-web-05,cpu_spike,889,cpu=4 load=95
+2026-08-10T13:48:51+00:00,cnsm-db-postgres-02,cpu_spike,1539,cpu=2 load=95
+2026-08-10T14:50:39+00:00,cnsm-web-01,process_leak,360,fork=2
+2026-08-10T18:23:44+00:00,cnsm-web-01,memory_pressure,1498,vm_bytes=2G
+2026-08-10T21:17:11+00:00,cnsm-mem-01,cpu_spike,797,cpu=4 load=95
+2026-08-11T07:01:36+00:00,cnsm-web-05,memory_pressure,3471,vm_bytes=4G
+2026-08-11T10:06:48+00:00,cnsm-db-postgres-02,cpu_spike,413,cpu=1 load=95
+2026-08-11T13:24:12+00:00,cnsm-db-postgres-02,process_leak,845,fork=4
+2026-08-11T15:02:44+00:00,cnsm-web-04,process_leak,897,fork=2
+2026-08-11T16:26:47+00:00,cnsm-web-04,disk_io,1130,io=4 hdd=4
+2026-08-11T17:53:18+00:00,cnsm-web-05,cpu_spike,1286,cpu=2 load=95
+2026-08-11T18:32:40+00:00,cnsm-db-redis-02,cpu_spike,716,cpu=2 load=90
+2026-08-11T20:23:57+00:00,cnsm-db-redis-02,cpu_spike,790,cpu=4 load=90
+2026-08-11T20:42:03+00:00,cnsm-web-05,memory_pressure,3098,vm_bytes=2G
+2026-08-11T21:12:02+00:00,cnsm-db-postgres-01,process_leak,425,fork=2
+2026-08-12T06:38:41+00:00,cnsm-web-01,disk_io,631,io=4 hdd=4
+2026-08-12T06:54:15+00:00,cnsm-db-redis-01,cpu_spike,374,cpu=2 load=90
+2026-08-12T08:43:08+00:00,cnsm-mem-01,network_latency,574,delay=200ms
+2026-08-12T08:58:09+00:00,cnsm-db-postgres-02,process_leak,782,fork=8
+2026-08-12T09:29:36+00:00,cnsm-web-02,process_leak,436,fork=4
+2026-08-12T11:20:17+00:00,cnsm-web-06,cpu_spike,995,cpu=2 load=85
+2026-08-12T17:19:26+00:00,cnsm-web-06,network_latency,1643,delay=500ms
+2026-08-12T17:47:58+00:00,cnsm-db-postgres-01,disk_io,1116,io=8 hdd=8
+2026-08-12T20:44:47+00:00,cnsm-web-02,disk_io,1125,io=8 hdd=8

@@ -1,0 +1,42 @@
+---
+# 20-workloads.yml
+# Deploys workload generators per host group.
+# Each group runs a different workload type to create heterogeneous behavioral
+# patterns required by the cross-environment study.
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/20-workloads.yml
+
+- name: Deploy web workload (nginx + ApacheBench)
+  hosts: web
+  become: true
+  roles:
+    - workload_web
+
+- name: Deploy postgres workload
+  hosts: db_postgres
+  become: true
+  roles:
+    - workload_db
+  vars:
+    workload_db_engine: postgres
+
+- name: Deploy redis workload
+  hosts: db_redis
+  become: true
+  roles:
+    - workload_db
+  vars:
+    workload_db_engine: redis
+
+- name: Deploy memory-bound workload
+  hosts: memory
+  become: true
+  roles:
+    - workload_memory
+
+- name: Deploy I/O-bound workload
+  hosts: io
+  become: true
+  roles:
+    - workload_io

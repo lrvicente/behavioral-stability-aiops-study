@@ -1,0 +1,14 @@
+[global]
+filename=/opt/cnsm-study/iotest/testfile.dat
+direct=1
+time_based=1
+runtime=60
+group_reporting=1
+ramp_time=2
+
+[mixed-rw]
+rw=randrw
+rwmixread=70
+bs=8k
+numjobs=2
+iodepth=16

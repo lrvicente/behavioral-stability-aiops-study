@@ -1,0 +1,33 @@
+[web]
+cnsm-web-01 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-web-02 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-web-03 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-web-04 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-web-05 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-web-06 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+
+[db_postgres]
+cnsm-db-postgres-01 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-db-postgres-02 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+
+[db_redis]
+cnsm-db-redis-01 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+cnsm-db-redis-02 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+
+[memory]
+cnsm-mem-01 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+
+[io]
+cnsm-io-01 ansible_host=REPLACE_WITH_OVH_HOSTNAME ansible_user=ubuntu
+
+[study_hosts:children]
+web
+db_postgres
+db_redis
+memory
+io
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_private_key_file=~/.ssh/cnsm2027_ed25519
+ansible_ssh_common_args='-o StrictHostKeyChecking=accept-new'

@@ -1,0 +1,56 @@
+---
+- name: Add CNSM workload heartbeat sidecar
+  hosts: study_hosts
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Deploy workload heartbeat script
+      ansible.builtin.copy:
+        dest: /opt/cnsm-study/scripts/workload_heartbeat.sh
+        owner: root
+        group: root
+        mode: "0755"
+        content: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+
+          while true; do
+            if systemctl is-active --quiet cnsm-workload; then
+              echo 1 > /var/run/cnsm-workload-heartbeat
+            else
+              echo 0 > /var/run/cnsm-workload-heartbeat
+            fi
+            sleep 30
+          done
+
+    - name: Deploy workload heartbeat systemd service
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/cnsm-workload-heartbeat.service
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          [Unit]
+          Description=CNSM workload heartbeat sidecar
+          After=cnsm-workload.service
+          Wants=cnsm-workload.service
+
+          [Service]
+          Type=simple
+          ExecStart=/opt/cnsm-study/scripts/workload_heartbeat.sh
+          Restart=always
+          RestartSec=5
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Enable and start workload heartbeat service
+      ansible.builtin.systemd:
+        name: cnsm-workload-heartbeat
+        enabled: true
+        state: restarted

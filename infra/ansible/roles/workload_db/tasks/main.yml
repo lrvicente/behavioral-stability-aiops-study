@@ -1,0 +1,80 @@
+---
+# Database workload: postgres + pgbench OR redis + redis-benchmark.
+# Selected via workload_db_engine variable from the calling playbook.
+
+- name: Install postgres and pgbench
+  ansible.builtin.apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+    state: present
+  when: workload_db_engine == 'postgres'
+
+- name: Install redis
+  ansible.builtin.apt:
+    name:
+      - redis-server
+      - redis-tools
+    state: present
+  when: workload_db_engine == 'redis'
+
+- name: Initialize pgbench database (postgres only)
+  become_user: postgres
+  ansible.builtin.shell: |
+    set -e
+    if ! psql -lqt | cut -d \| -f 1 | grep -qw cnsm_bench; then
+      createdb cnsm_bench
+      pgbench -i -s 10 cnsm_bench
+    fi
+  args:
+    executable: /bin/bash
+  changed_when: false
+  when: workload_db_engine == 'postgres'
+
+- name: Configure redis for benchmark workload
+  ansible.builtin.lineinfile:
+    path: /etc/redis/redis.conf
+    regexp: '^maxmemory '
+    line: 'maxmemory 1gb'
+  when: workload_db_engine == 'redis'
+  notify: Restart redis
+
+- name: Configure redis maxmemory-policy
+  ansible.builtin.lineinfile:
+    path: /etc/redis/redis.conf
+    regexp: '^maxmemory-policy '
+    line: 'maxmemory-policy allkeys-lru'
+  when: workload_db_engine == 'redis'
+  notify: Restart redis
+
+- name: Ensure database service is enabled and running
+  ansible.builtin.systemd:
+    name: "{{ 'postgresql' if workload_db_engine == 'postgres' else 'redis-server' }}"
+    enabled: true
+    state: started
+
+- name: Deploy db load generator script
+  ansible.builtin.template:
+    src: "{{ 'db_load_postgres.sh.j2' if workload_db_engine == 'postgres' else 'db_load_redis.sh.j2' }}"
+    dest: /opt/cnsm-study/workloads/db_load_generator.sh
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy systemd service for db workload
+  ansible.builtin.template:
+    src: cnsm-workload.service.j2
+    dest: /etc/systemd/system/cnsm-workload.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload systemd
+    - Restart cnsm-workload
+
+- name: Enable and start workload service
+  ansible.builtin.systemd:
+    name: cnsm-workload
+    enabled: true
+    state: started
+    daemon_reload: true

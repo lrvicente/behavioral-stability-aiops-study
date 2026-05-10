@@ -1,0 +1,18 @@
+# Variables shared across all study hosts
+# Override per group in group_vars/<group>.yml if needed
+
+# Study identification
+study_id: cnsm2027-cycle1
+study_start_date: "2026-05-15"
+study_duration_days: 90
+
+# Polling cadence (informational, agent already configured manually)
+metric_collection_interval_seconds: 15
+
+# Fault injection
+fault_injection_enabled: true
+fault_schedule_seed: 42
+fault_log_dir: /var/log/cnsm-faults
+
+# Workload baselines
+workload_log_dir: /var/log/cnsm-workloads

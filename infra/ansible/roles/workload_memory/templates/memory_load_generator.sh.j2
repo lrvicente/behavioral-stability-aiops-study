@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Memory-bound workload: simulates a large in-memory cache with periodic
+# allocation and access patterns. Uses stress-ng --vm with bytes proportional
+# to time of day.
+
+set -uo pipefail
+
+LOG_FILE="/var/log/cnsm-workloads/memory.log"
+mkdir -p "$(dirname "$LOG_FILE")"
+
+# Total RAM available
+TOTAL_MEM_KB=$(awk '/^MemTotal:/{print $2}' /proc/meminfo)
+TOTAL_MEM_GB=$(( TOTAL_MEM_KB / 1024 / 1024 ))
+
+get_target_mem_pct() {
+  local hour
+  local dow
+  hour=$(date +%H | sed 's/^0//')
+  dow=$(date +%u)
+  hour=${hour:-0}
+
+  local pct
+  if   (( hour < 4 ));  then pct=20
+  elif (( hour < 8 ));  then pct=$(( 20 + 5 * (hour - 4) ))
+  elif (( hour < 12 )); then pct=$(( 40 + 5 * (hour - 8) ))
+  elif (( hour < 14 )); then pct=60
+  elif (( hour < 18 )); then pct=$(( 60 - 3 * (hour - 14) ))
+  elif (( hour < 22 )); then pct=$(( 48 - 5 * (hour - 18) ))
+  else                       pct=20
+  fi
+
+  if (( dow >= 6 )); then pct=$(( pct * 7 / 10 )); fi
+  echo "$pct"
+}
+
+main_loop() {
+  while true; do
+    local pct
+    pct=$(get_target_mem_pct)
+    local mem_gb=$(( TOTAL_MEM_GB * pct / 100 ))
+    if (( mem_gb < 1 )); then mem_gb=1; fi
+
+    echo "$(date -Iseconds) running stress-ng vm gb=$mem_gb pct=$pct" >> "$LOG_FILE"
+    timeout 60 stress-ng --vm 2 --vm-bytes "${mem_gb}G" --vm-keep --timeout 50 >/dev/null 2>&1 || true
+
+    # Random memory pressure spike
+    if (( RANDOM % 720 == 0 )); then
+      echo "$(date -Iseconds) MEM_SPIKE injected" >> "$LOG_FILE"
+      timeout 120 stress-ng --vm 4 --vm-bytes 80% --vm-keep --timeout 100 >/dev/null 2>&1 || true
+    fi
+    sleep 5
+  done
+}
+main_loop
