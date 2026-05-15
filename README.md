@@ -4,7 +4,13 @@ A cross-environment study on behavioral stability modeling for AI Operations dec
 
 ## Status
 
-Cycle 1 in pre-registration phase. Data collection begins May 15, 2026. See `lab_notebook/` for current status entries.
+Cycle 1 ACTIVELY COLLECTING. T-zero data collection started 2026-05-15 06:14:01 UTC.
+
+Pre-registration locked 2026-05-12 10:21:42 UTC (commit `a4b04b475b8a7ff09868c8437811f14599d3d26b`, tag `pre-registration-cycle1-v1.0`).
+
+A companion short paper introducing this testbed is under preparation for **CNSM 2026** (Madrid, October 2026), submission deadline 2026-06-15.
+
+See `lab_notebook/` for daily entries.
 
 ## Target venues
 
@@ -74,7 +80,7 @@ The same command with seeds 43 and 44 (and corresponding start dates) regenerate
 
 The study uses two environments to test cross-environment generalization:
 
-Environment A (production-grade monitoring stack): 12 OVH VPS in Strasbourg datacenter, monitored via dedicated Zabbix 7.0 LTS server on OVH Public Cloud, operated by TheMonitoring.AI for the duration of the study. Hosts are distributed across 5 functional groups (web, postgres, redis, memory-bound, IO-bound).
+Environment A (production-grade monitoring stack): 12 OVH VPS in Gravelines (GRA) datacenter, monitored via dedicated Zabbix 7.0 LTS server on OVH Public Cloud, operated by TheMonitoring.AI for the duration of the study. Hosts are distributed across 5 functional groups (web, postgres, redis, memory-bound, IO-bound).
 
 Environment B (GPU machine learning workloads): Lambda Cloud A10 GPU instance, sprint-based usage during designated windows of cycle 1 and 2. Same monitoring stack with GPU-aware custom items.
 
