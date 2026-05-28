@@ -1,0 +1,146 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    - uuid: a1b2c3d4e5f64a7b8c9d0e1f2a3b4c5d
+      template: 'Template CNSM GPU'
+      name: 'Template CNSM GPU'
+      description: 'GPU metrics (nvidia-smi) for CNSM/NOMS 2027 behavioral stability study. Linked only to cnsm-gpu-01 (Lambda A10).'
+      groups:
+        - name: Templates
+      items:
+        - uuid: 0001c3d4e5f64a7b8c9d0e1f2a3b4001
+          name: 'GPU Utilization'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.util
+          delay: 15s
+          value_type: FLOAT
+          units: '%'
+          history: 90d
+          trends: 365d
+        - uuid: 0002c3d4e5f64a7b8c9d0e1f2a3b4002
+          name: 'GPU Memory Utilization'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.mem_util
+          delay: 15s
+          value_type: FLOAT
+          units: '%'
+          history: 90d
+          trends: 365d
+        - uuid: 0003c3d4e5f64a7b8c9d0e1f2a3b4003
+          name: 'GPU Memory Used'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.mem_used
+          delay: 15s
+          value_type: UNSIGNED
+          units: MiB
+          history: 90d
+          trends: 365d
+        - uuid: 0004c3d4e5f64a7b8c9d0e1f2a3b4004
+          name: 'GPU Memory Free'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.mem_free
+          delay: 15s
+          value_type: UNSIGNED
+          units: MiB
+          history: 90d
+          trends: 365d
+        - uuid: 0005c3d4e5f64a7b8c9d0e1f2a3b4005
+          name: 'GPU Memory Total'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.mem_total
+          delay: 1h
+          value_type: UNSIGNED
+          units: MiB
+          history: 90d
+          trends: 365d
+        - uuid: 0006c3d4e5f64a7b8c9d0e1f2a3b4006
+          name: 'GPU Temperature'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.temp
+          delay: 15s
+          value_type: UNSIGNED
+          units: °C
+          history: 90d
+          trends: 365d
+        - uuid: 0007c3d4e5f64a7b8c9d0e1f2a3b4007
+          name: 'GPU Power Draw'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.power
+          delay: 15s
+          value_type: FLOAT
+          units: W
+          history: 90d
+          trends: 365d
+        - uuid: 0008c3d4e5f64a7b8c9d0e1f2a3b4008
+          name: 'GPU Power Limit'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.power_limit
+          delay: 1h
+          value_type: FLOAT
+          units: W
+          history: 90d
+          trends: 365d
+        - uuid: 0009c3d4e5f64a7b8c9d0e1f2a3b4009
+          name: 'GPU SM Clock'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.clock_sm
+          delay: 15s
+          value_type: UNSIGNED
+          units: MHz
+          history: 90d
+          trends: 365d
+        - uuid: 0010c3d4e5f64a7b8c9d0e1f2a3b4010
+          name: 'GPU Memory Clock'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.clock_mem
+          delay: 15s
+          value_type: UNSIGNED
+          units: MHz
+          history: 90d
+          trends: 365d
+        - uuid: 0011c3d4e5f64a7b8c9d0e1f2a3b4011
+          name: 'GPU Graphics Clock'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.clock_graphics
+          delay: 15s
+          value_type: UNSIGNED
+          units: MHz
+          history: 90d
+          trends: 365d
+        - uuid: 0012c3d4e5f64a7b8c9d0e1f2a3b4012
+          name: 'GPU PCIe Generation'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.pcie_gen
+          delay: 15s
+          value_type: UNSIGNED
+          history: 90d
+          trends: 365d
+        - uuid: 0013c3d4e5f64a7b8c9d0e1f2a3b4013
+          name: 'GPU PCIe Width'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.pcie_width
+          delay: 15s
+          value_type: UNSIGNED
+          units: lanes
+          history: 90d
+          trends: 365d
+        - uuid: 0014c3d4e5f64a7b8c9d0e1f2a3b4014
+          name: 'GPU Fan Speed'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.fan
+          delay: 15s
+          value_type: UNSIGNED
+          units: '%'
+          history: 90d
+          trends: 365d
+        - uuid: 0015c3d4e5f64a7b8c9d0e1f2a3b4015
+          name: 'GPU ECC Errors'
+          type: ZABBIX_ACTIVE
+          key: cnsm.gpu.ecc_errors
+          delay: 60s
+          value_type: UNSIGNED
+          history: 90d
+          trends: 365d

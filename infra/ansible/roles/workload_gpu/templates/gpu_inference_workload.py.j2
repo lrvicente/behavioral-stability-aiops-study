@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+"""
+CNSM/NOMS 2027 - GPU inference workload (cnsm-gpu-01)
+Continuous ResNet50 forward passes on synthetic tensors.
+Duty-cycle controlled to oscillate GPU utilization between
+{{ gpu_workload_util_min }} and {{ gpu_workload_util_max }} on a
+{{ gpu_workload_oscillation_period_s }}s sinusoidal period.
+Deterministic and reproducible (seed {{ gpu_workload_seed }}).
+"""
+import math
+import time
+import signal
+import sys
+import datetime
+import torch
+import torchvision
+
+SEED = {{ gpu_workload_seed }}
+BATCH = {{ gpu_workload_batch_size }}
+PERIOD = {{ gpu_workload_oscillation_period_s }}
+U_MIN = {{ gpu_workload_util_min }}
+U_MAX = {{ gpu_workload_util_max }}
+LOG_DIR = "{{ gpu_workload_log_dir }}"
+
+_running = True
+
+
+def _stop(signum, frame):
+    global _running
+    _running = False
+
+
+signal.signal(signal.SIGTERM, _stop)
+signal.signal(signal.SIGINT, _stop)
+
+
+def log(msg):
+    ts = datetime.datetime.utcnow().isoformat()
+    line = f"{ts}Z {msg}"
+    print(line, flush=True)
+    try:
+        with open(f"{LOG_DIR}/gpu_workload.log", "a") as f:
+            f.write(line + "\n")
+    except Exception:
+        pass
+
+
+def target_util(t_start):
+    """Sinusoidal target utilization in [U_MIN, U_MAX], period PERIOD."""
+    phase = (time.time() - t_start) % PERIOD
+    s = (math.sin(2 * math.pi * phase / PERIOD) + 1) / 2  # 0..1
+    return U_MIN + s * (U_MAX - U_MIN)
+
+
+def main():
+    if not torch.cuda.is_available():
+        log("FATAL: CUDA not available")
+        sys.exit(1)
+
+    torch.manual_seed(SEED)
+    dev = torch.device("cuda")
+    log(f"loading {{ gpu_workload_model }} batch={BATCH} seed={SEED}")
+    model = torchvision.models.{{ gpu_workload_model }}(weights=None).to(dev).eval()
+    x = torch.randn(BATCH, 3, 224, 224, device=dev)
+
+    # warmup + measure real per-batch latency (runtime self-calibration)
+    with torch.no_grad():
+        for _ in range(10):
+            model(x)
+    torch.cuda.synchronize()
+    t0 = time.time()
+    with torch.no_grad():
+        for _ in range(20):
+            model(x)
+    torch.cuda.synchronize()
+    batch_latency = (time.time() - t0) / 20.0
+    log(f"calibrated batch_latency_ms={batch_latency*1000:.2f} "
+        f"max_throughput={1.0/batch_latency:.2f} fwd/s")
+
+    t_start = time.time()
+    n = 0
+    last_report = time.time()
+    with torch.no_grad():
+        while _running:
+            u = target_util(t_start)
+            # duty cycle: work batch_latency, then sleep to hit target util
+            # cycle_time = batch_latency / u  =>  sleep = cycle_time - batch_latency
+            cycle_time = batch_latency / max(u, 0.01)
+            sleep_s = max(cycle_time - batch_latency, 0.0)
+
+            model(x)
+            torch.cuda.synchronize()
+            n += 1
+            if sleep_s > 0:
+                time.sleep(sleep_s)
+
+            if time.time() - last_report >= 60:
+                log(f"alive batches={n} current_target_util={u:.3f}")
+                last_report = time.time()
+
+    log(f"shutdown after {n} batches")
+
+
+if __name__ == "__main__":
+    main()

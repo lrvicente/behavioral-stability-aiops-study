@@ -1,0 +1,64 @@
+---
+# 25-heartbeat-gpu.yml
+# Deploys the workload heartbeat sidecar on the GPU node only.
+# Mirrors 25-workload-heartbeat.yml (study_hosts) but targets hosts: gpu
+# to keep the GPU node isolated from the live cycle1 workers.
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/25-heartbeat-gpu.yml
+
+- name: Add CNSM workload heartbeat sidecar to GPU node
+  hosts: gpu
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Deploy workload heartbeat script
+      ansible.builtin.copy:
+        dest: /opt/cnsm-study/scripts/workload_heartbeat.sh
+        owner: root
+        group: root
+        mode: "0755"
+        content: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+
+          while true; do
+            if systemctl is-active --quiet cnsm-workload; then
+              echo 1 > /var/run/cnsm-workload-heartbeat
+            else
+              echo 0 > /var/run/cnsm-workload-heartbeat
+            fi
+            sleep 30
+          done
+
+    - name: Deploy workload heartbeat systemd service
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/cnsm-workload-heartbeat.service
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          [Unit]
+          Description=CNSM workload heartbeat sidecar
+          After=cnsm-workload.service
+          Wants=cnsm-workload.service
+
+          [Service]
+          Type=simple
+          ExecStart=/opt/cnsm-study/scripts/workload_heartbeat.sh
+          Restart=always
+          RestartSec=5
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Enable and start workload heartbeat service
+      ansible.builtin.systemd:
+        name: cnsm-workload-heartbeat
+        enabled: true
+        state: restarted

@@ -1,0 +1,56 @@
+---
+# workload_gpu role tasks
+- name: Ensure workload log directory exists
+  ansible.builtin.file:
+    path: "{{ gpu_workload_log_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Verify torch and torchvision are available
+  ansible.builtin.command: python3 -c "import torch, torchvision; assert torch.cuda.is_available()"
+  changed_when: false
+
+- name: Deploy GPU inference workload script
+  ansible.builtin.template:
+    src: gpu_inference_workload.py.j2
+    dest: /opt/cnsm-study/workloads/gpu_inference_workload.py
+    owner: root
+    group: root
+    mode: "0755"
+  notify: Restart cnsm-workload
+
+- name: Deploy cnsm-workload systemd service
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/cnsm-workload.service
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      [Unit]
+      Description=CNSM GPU inference workload (cnsm-gpu-01)
+      After=network.target
+
+      [Service]
+      Type=simple
+      ExecStart=/usr/bin/python3 /opt/cnsm-study/workloads/gpu_inference_workload.py
+      Restart=always
+      RestartSec=5
+      # graceful stop so SIGTERM reaches the python signal handler
+      KillSignal=SIGTERM
+      TimeoutStopSec=15
+
+      [Install]
+      WantedBy=multi-user.target
+  notify: Restart cnsm-workload
+
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Enable and start cnsm-workload
+  ansible.builtin.systemd:
+    name: cnsm-workload
+    enabled: true
+    state: started

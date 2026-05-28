@@ -1,0 +1,6 @@
+---
+- name: Restart cnsm-workload
+  ansible.builtin.systemd:
+    name: cnsm-workload
+    state: restarted
+    daemon_reload: true

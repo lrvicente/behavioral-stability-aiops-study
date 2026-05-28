@@ -1,0 +1,13 @@
+---
+# 20-workload-gpu.yml
+# Deploys the GPU inference workload on the GPU node only.
+# Isolated from study_hosts to protect the live cycle1 collection on workers.
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/20-workload-gpu.yml
+
+- name: Deploy GPU inference workload
+  hosts: gpu
+  become: true
+  roles:
+    - workload_gpu

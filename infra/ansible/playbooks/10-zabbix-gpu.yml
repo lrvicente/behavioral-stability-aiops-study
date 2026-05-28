@@ -1,0 +1,123 @@
+---
+# 10-zabbix-gpu.yml
+# Installs and configures Zabbix Agent 2 on the GPU node (cnsm-gpu-01).
+# Consolidated: dual-write (homelab + master) configured directly, single restart.
+# HostMetadata derives from group_names -> "cnsm2027-study gpu" automatically.
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/10-zabbix-gpu.yml
+
+- name: Install and configure Zabbix Agent 2 for GPU node (dual-write)
+  hosts: gpu
+  become: true
+  gather_facts: true
+
+  vars:
+    primary_zabbix_server: "lucas-homelab.duckdns.org"
+    secondary_zabbix_server: "137.74.116.37"
+    zabbix_release_url: "https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu24.04_all.deb"
+
+  tasks:
+    - name: Install required base packages
+      ansible.builtin.apt:
+        name:
+          - wget
+          - curl
+          - gnupg
+          - iproute2
+          - procps
+        state: present
+        update_cache: true
+
+    - name: Download Zabbix repository package
+      ansible.builtin.get_url:
+        url: "{{ zabbix_release_url }}"
+        dest: /tmp/zabbix-release_latest_7.0+ubuntu24.04_all.deb
+        mode: "0644"
+
+    - name: Install Zabbix repository package
+      ansible.builtin.apt:
+        deb: /tmp/zabbix-release_latest_7.0+ubuntu24.04_all.deb
+
+    - name: Update apt cache after adding Zabbix repository
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install Zabbix Agent 2
+      ansible.builtin.apt:
+        name:
+          - zabbix-agent2
+          - zabbix-agent2-plugin-*
+        state: present
+
+    - name: Configure dual passive Zabbix servers
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^Server='
+        line: "Server={{ primary_zabbix_server }},{{ secondary_zabbix_server }}"
+        backup: true
+
+    - name: Configure dual active Zabbix servers
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^ServerActive='
+        line: "ServerActive={{ primary_zabbix_server }}:10051,{{ secondary_zabbix_server }}:10051"
+        backup: true
+
+    - name: Configure Zabbix hostname to match Ansible inventory
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^Hostname='
+        line: "Hostname={{ inventory_hostname }}"
+        backup: true
+
+    - name: Configure HostMetadata for auto-registration (derives gpu from group)
+      ansible.builtin.lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        regexp: '^#?HostMetadata='
+        line: "HostMetadata=cnsm2027-study {{ group_names | join(',') }}"
+        backup: true
+
+    - name: Ensure Zabbix include directory exists
+      ansible.builtin.file:
+        path: /etc/zabbix/zabbix_agent2.d
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Add CNSM/NOMS study custom UserParameters
+      ansible.builtin.copy:
+        dest: /etc/zabbix/zabbix_agent2.d/cnsm_study.conf
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          # Custom UserParameters for CNSM/NOMS 2027 behavioral stability study
+
+          UserParameter=cnsm.fault.active,test -f /var/run/cnsm-fault-active && cat /var/run/cnsm-fault-active || echo 0
+          UserParameter=cnsm.fault.class,test -f /var/run/cnsm-fault-class && cat /var/run/cnsm-fault-class || echo none
+          UserParameter=cnsm.workload.heartbeat,test -f /var/run/cnsm-workload-heartbeat && cat /var/run/cnsm-workload-heartbeat || echo 0
+
+          UserParameter=cnsm.tcp.established,ss -tan state established | tail -n +2 | wc -l
+          UserParameter=cnsm.tcp.listen,ss -tan state listening | tail -n +2 | wc -l
+          UserParameter=cnsm.tcp.timewait,ss -tan state time-wait | tail -n +2 | wc -l
+
+          UserParameter=cnsm.process.running,ps -eo stat | grep -c '^R' || true
+          UserParameter=cnsm.process.sleeping,ps -eo stat | grep -c '^S' || true
+          UserParameter=cnsm.process.zombie,ps -eo stat | grep -c '^Z' || true
+
+    - name: Enable and restart Zabbix Agent 2
+      ansible.builtin.systemd:
+        name: zabbix-agent2
+        enabled: true
+        state: restarted
+
+    - name: Show resulting Zabbix agent configuration
+      ansible.builtin.shell: "grep -E '^(Server|ServerActive|Hostname|HostMetadata)=' /etc/zabbix/zabbix_agent2.conf"
+      register: zabbix_agent_config
+      changed_when: false
+
+    - name: Print configuration
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} -> {{ zabbix_agent_config.stdout_lines }}"

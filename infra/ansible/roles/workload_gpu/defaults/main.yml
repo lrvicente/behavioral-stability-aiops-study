@@ -1,0 +1,10 @@
+---
+# workload_gpu role defaults
+gpu_workload_mode: inference          # inference | (training/ablation reserved for sprints)
+gpu_workload_batch_size: 64
+gpu_workload_seed: 142
+gpu_workload_oscillation_period_s: 900   # 15 minutes
+gpu_workload_util_min: 0.50              # 50%
+gpu_workload_util_max: 0.85              # 85%
+gpu_workload_model: resnet50
+gpu_workload_log_dir: /var/log/cnsm-workloads

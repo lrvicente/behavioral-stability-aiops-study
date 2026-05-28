@@ -1,0 +1,104 @@
+---
+# 15-gpu-userparameters.yml
+# Adds GPU metric collection (nvidia-smi) to the GPU node only.
+# Uses a single cached nvidia-smi query refreshed by a helper script,
+# so all 15 metrics come from the same instant and the GPU is queried once.
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/15-gpu-userparameters.yml
+
+- name: Add GPU UserParameters to GPU node
+  hosts: gpu
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Deploy nvidia-smi cache helper script
+      ansible.builtin.copy:
+        dest: /opt/cnsm-study/scripts/gpu_metrics.sh
+        owner: root
+        group: root
+        mode: "0755"
+        content: |
+          #!/usr/bin/env bash
+          # Queries nvidia-smi once and writes a CSV cache consumed by Zabbix UserParameters.
+          set -euo pipefail
+          CACHE=/var/run/cnsm-gpu-metrics
+          FIELDS="utilization.gpu,utilization.memory,memory.used,memory.free,memory.total,temperature.gpu,power.draw,power.limit,clocks.sm,clocks.mem,clocks.gr,pcie.link.gen.current,pcie.link.width.current,fan.speed,ecc.errors.corrected.aggregate.total"
+          nvidia-smi --query-gpu=${FIELDS} --format=csv,noheader,nounits > "${CACHE}.tmp" 2>/dev/null || echo "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" > "${CACHE}.tmp"
+          mv "${CACHE}.tmp" "${CACHE}"
+
+    - name: Deploy systemd service for gpu metrics cache
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/cnsm-gpu-metrics.service
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          [Unit]
+          Description=CNSM GPU metrics cache refresher
+          [Service]
+          Type=oneshot
+          ExecStart=/opt/cnsm-study/scripts/gpu_metrics.sh
+
+    - name: Deploy systemd timer for gpu metrics cache (every 10s)
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/cnsm-gpu-metrics.timer
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          [Unit]
+          Description=Refresh CNSM GPU metrics cache periodically
+          [Timer]
+          OnBootSec=15
+          OnUnitActiveSec=10
+          AccuracySec=1s
+          [Install]
+          WantedBy=timers.target
+
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Enable and start gpu metrics timer
+      ansible.builtin.systemd:
+        name: cnsm-gpu-metrics.timer
+        enabled: true
+        state: started
+
+    - name: Run the metrics script once to populate cache immediately
+      ansible.builtin.command: /opt/cnsm-study/scripts/gpu_metrics.sh
+      changed_when: false
+
+    - name: Install GPU UserParameters
+      ansible.builtin.copy:
+        dest: /etc/zabbix/zabbix_agent2.d/cnsm_gpu.conf
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          # CNSM/NOMS 2027 GPU UserParameters (cnsm-gpu-01)
+          # All read from cached nvidia-smi CSV at /var/run/cnsm-gpu-metrics
+          # Field order: util.gpu,util.mem,mem.used,mem.free,mem.total,temp,power,power.limit,clk.sm,clk.mem,clk.gr,pcie.gen,pcie.width,fan,ecc
+
+          UserParameter=cnsm.gpu.util,cut -d',' -f1 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.mem_util,cut -d',' -f2 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.mem_used,cut -d',' -f3 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.mem_free,cut -d',' -f4 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.mem_total,cut -d',' -f5 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.temp,cut -d',' -f6 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.power,cut -d',' -f7 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.power_limit,cut -d',' -f8 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.clock_sm,cut -d',' -f9 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.clock_mem,cut -d',' -f10 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.clock_graphics,cut -d',' -f11 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.pcie_gen,cut -d',' -f12 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.pcie_width,cut -d',' -f13 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.fan,cut -d',' -f14 /var/run/cnsm-gpu-metrics | tr -d ' '
+          UserParameter=cnsm.gpu.ecc_errors,cut -d',' -f15 /var/run/cnsm-gpu-metrics | tr -d ' '
+
+    - name: Restart Zabbix Agent 2
+      ansible.builtin.systemd:
+        name: zabbix-agent2
+        state: restarted
