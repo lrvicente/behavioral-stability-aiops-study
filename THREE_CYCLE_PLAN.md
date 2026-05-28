@@ -88,7 +88,7 @@ If all three cycles execute as planned:
 
 Total: 7 to 9 peer-reviewed publications, with coherent thematic unity (behavioral stability as central concept).
 
-For Essex PhD by Publication critical analysis, this provides:
+For the doctoral portfolio, this provides:
 - Multiple chapters of contribution
 - Clear methodological evolution (generalization → robustness → human-AI integration)
 - Demonstration of independent research direction
@@ -117,8 +117,8 @@ For Essex PhD by Publication critical analysis, this provides:
 | Mar 2027 | Cycle 3 collection start |
 | Jun to Jul 2027 | Cycle 3 analysis + paper draft |
 | Aug to Sep 2027 | Cycle 3 paper submission + portfolio consolidation |
-| Oct 2027 | Critical analysis writing for Essex PhD by Publication |
-| Nov 2027 | Essex submission readiness |
+| Oct 2027 | Portfolio consolidation and doctoral writing |
+| Nov 2027 | Doctoral submission readiness |
 
 ## Pre-registration commits
 

@@ -1371,7 +1371,7 @@ The earlier guide treated lab notebook as monthly. Reviewer feedback (correctly)
 
 ### 19.1 Why daily-or-on-event
 
-The lab notebook is one of the strongest pieces of evidence for Essex PhD by Publication. Reviewers and Essex examiners value seeing how decisions were made, not just the polished final result. A monthly summary reconstructs decisions in retrospect, which is weaker than recording them as they happen.
+The lab notebook is one of the strongest pieces of evidence for the doctoral portfolio. Reviewers and examiners value seeing how decisions were made, not just the polished final result. A monthly summary reconstructs decisions in retrospect, which is weaker than recording them as they happen.
 
 ### 19.2 Format
 
@@ -1661,7 +1661,7 @@ This guide takes you from zero to first experiment running. When you complete ch
 - Automated fault injection with synchronized ground truth (OVH + GPU-aware on Lambda)
 - Cross-environment evaluation pipeline understood, ready for analysis
 - Data management, backup, halt criteria, and lab notebook discipline in place
-- Defensible scientific basis for NOMS 2027, CNSM 2027, and Essex PhD by Publication portfolio
+- Defensible scientific basis for NOMS 2027, CNSM 2027, and the doctoral portfolio
 
 Once Cycle 1 collection is complete, you re-use the same infrastructure for Cycles 2 and 3 by simply changing the active fault schedule (cycle2, cycle3) and varying one experimental dimension per cycle, per `THREE_CYCLE_PLAN.md`.
 
