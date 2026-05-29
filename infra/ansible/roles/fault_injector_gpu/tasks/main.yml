@@ -1,0 +1,44 @@
+---
+# Deploys GPU fault injection script, schedule, and cron job (gpu node only)
+- name: Ensure /etc/cnsm exists
+  ansible.builtin.file:
+    path: /etc/cnsm
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+- name: Ensure /opt/cnsm-study/scripts exists
+  ansible.builtin.file:
+    path: /opt/cnsm-study/scripts
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+- name: Ensure /var/log/cnsm-faults exists
+  ansible.builtin.file:
+    path: /var/log/cnsm-faults
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+- name: Copy GPU fault injection script
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../../scripts/inject_fault_gpu.py"
+    dest: /opt/cnsm-study/scripts/inject_fault_gpu.py
+    owner: root
+    group: root
+    mode: "0755"
+- name: Copy GPU fault schedule
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../../../protocols/{{ gpu_schedule | default('pre_pilot_schedule.csv') }}"
+    dest: /etc/cnsm/fault_schedule_gpu.csv
+    owner: root
+    group: root
+    mode: "0644"
+- name: Install cron job for GPU fault injection
+  ansible.builtin.cron:
+    name: "CNSM 2027 GPU fault injection"
+    minute: "*"
+    job: "/opt/cnsm-study/scripts/inject_fault_gpu.py --schedule /etc/cnsm/fault_schedule_gpu.csv --host {{ inventory_hostname }} >> /var/log/cnsm-faults/cron.log 2>&1"
+    user: root
+  when: fault_injection_enabled | bool

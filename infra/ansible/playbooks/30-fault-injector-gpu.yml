@@ -1,0 +1,16 @@
+---
+# 30-fault-injector-gpu.yml
+# Deploys GPU fault injection to the GPU node only (hosts: gpu).
+# Schedule defaults to pre_pilot_schedule.csv; override with -e gpu_schedule=...
+#
+# Usage:
+#   ansible-playbook -i inventory/hosts.ini playbooks/30-fault-injector-gpu.yml
+#   ansible-playbook -i inventory/hosts.ini playbooks/30-fault-injector-gpu.yml -e gpu_schedule=fault_schedule_gpu_cycle1.csv
+
+- name: Deploy GPU fault injection
+  hosts: gpu
+  become: true
+  vars:
+    gpu_schedule: "pre_pilot_schedule.csv"
+  roles:
+    - fault_injector_gpu
