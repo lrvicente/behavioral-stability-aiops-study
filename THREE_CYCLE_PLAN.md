@@ -36,7 +36,7 @@ These elements remain constant to enable cross-cycle comparison:
 - Dataset descriptor paper: Scientific Data or IEEE Dataport
 - Position paper on Decision Governance: AIOps Workshop colocation
 
-## Cycle 2: Fault diversity impact (Oct 2026 to Feb 2027)
+## Cycle 2: Fault diversity impact (Aug 2026 to Nov 2026, amended v1.2)
 
 **Variable under study**: density and diversity of fault injections during training, holding the model architecture constant.
 
@@ -56,7 +56,7 @@ These elements remain constant to enable cross-cycle comparison:
 - Workshop paper on cascading fault detection
 - Journal extension to CNSM 2027 paper (TNSM invitation if accepted)
 
-## Cycle 3: LLM-augmented decision governance (Mar to Jul 2027)
+## Cycle 3: LLM-augmented decision governance (Nov 2026 to Feb 2027, amended v1.2)
 
 **Variable under study**: integration of large language model agent into the decision governance loop, monitoring the same hosts.
 
@@ -125,7 +125,7 @@ For the doctoral portfolio, this provides:
 Each cycle's protocol must be committed to the public GitHub repository BEFORE data collection begins. Specifically:
 
 - Cycle 1: `protocols/fault_schedule_cycle1.csv` committed before May 15 2026
-- Cycle 2: `protocols/fault_schedule_cycle2.csv` committed before Oct 15 2026 (or relevant cycle 2 start date)
-- Cycle 3: `protocols/fault_schedule_cycle3.csv` committed before Mar 15 2027
+- Cycle 2: `protocols/fault_schedule_cycle2.csv` committed before Aug 21 2026 (amended v1.2; artifact already locked under pre-registration-cycle1-v1.0 on 2026-05-12)
+- Cycle 3: `protocols/fault_schedule_cycle3.csv` committed before Nov 26 2026 (amended v1.2; artifact already locked under pre-registration-cycle1-v1.0 on 2026-05-12)
 
 Each commit serves as timestamped evidence of pre-registration.
