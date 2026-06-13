@@ -1,5 +1,8 @@
 ---
 # workload_gpu role tasks
+# Mode-aware: deploys either inference or training workload based on
+# gpu_workload_mode (see defaults/main.yml).
+
 - name: Ensure workload log directory exists
   ansible.builtin.file:
     path: "{{ gpu_workload_log_dir }}"
@@ -8,20 +11,36 @@
     group: root
     mode: "0755"
 
-- name: Verify torch and torchvision are available
+- name: Ensure workload data directory exists
+  ansible.builtin.file:
+    path: "{{ gpu_workload_data_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Ensure workload scripts directory exists
+  ansible.builtin.file:
+    path: /opt/cnsm-study/workloads
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Verify torch and torchvision are available with CUDA
   ansible.builtin.command: python3 -c "import torch, torchvision; assert torch.cuda.is_available()"
   changed_when: false
 
-- name: Deploy GPU inference workload script
+- name: Deploy GPU workload script (mode={{ gpu_workload_mode }})
   ansible.builtin.template:
-    src: gpu_inference_workload.py.j2
-    dest: /opt/cnsm-study/workloads/gpu_inference_workload.py
+    src: "gpu_{{ gpu_workload_mode }}_workload.py.j2"
+    dest: "/opt/cnsm-study/workloads/gpu_{{ gpu_workload_mode }}_workload.py"
     owner: root
     group: root
     mode: "0755"
   notify: Restart cnsm-workload
 
-- name: Deploy cnsm-workload systemd service
+- name: Deploy cnsm-workload systemd service (mode={{ gpu_workload_mode }})
   ansible.builtin.copy:
     dest: /etc/systemd/system/cnsm-workload.service
     owner: root
@@ -29,12 +48,12 @@
     mode: "0644"
     content: |
       [Unit]
-      Description=CNSM GPU inference workload (cnsm-gpu-01)
+      Description=CNSM GPU {{ gpu_workload_mode }} workload (cnsm-gpu-01)
       After=network.target
 
       [Service]
       Type=simple
-      ExecStart=/usr/bin/python3 /opt/cnsm-study/workloads/gpu_inference_workload.py
+      ExecStart=/usr/bin/python3 /opt/cnsm-study/workloads/gpu_{{ gpu_workload_mode }}_workload.py
       Restart=always
       RestartSec=5
       # graceful stop so SIGTERM reaches the python signal handler

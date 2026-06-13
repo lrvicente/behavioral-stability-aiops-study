@@ -1,10 +1,19 @@
 ---
 # workload_gpu role defaults
-gpu_workload_mode: inference          # inference | (training/ablation reserved for sprints)
-gpu_workload_batch_size: 64
-gpu_workload_seed: 142
-gpu_workload_oscillation_period_s: 900   # 15 minutes
-gpu_workload_util_min: 0.50              # 50%
-gpu_workload_util_max: 0.85              # 85%
+# Mode: inference (legacy pre-pilot) | training (CNSM 2027 cycle 1 §4.2)
+gpu_workload_mode: training
 gpu_workload_model: resnet50
+gpu_workload_seed: 42
 gpu_workload_log_dir: /var/log/cnsm-workloads
+gpu_workload_data_dir: /lambda/nfs/cnsm-gpu-01-fs/cnsm-study/data
+
+# Inference workload params (legacy, unused when mode=training)
+gpu_workload_batch_size: 64
+gpu_workload_oscillation_period_s: 900
+gpu_workload_util_min: 0.50
+gpu_workload_util_max: 0.85
+
+# Training workload params (active when mode=training)
+gpu_workload_inference_batch_size: 128
+gpu_workload_inference_interval_s: 1800  # 30 min per protocol §5.2
+gpu_workload_inference_burst_batches: 20

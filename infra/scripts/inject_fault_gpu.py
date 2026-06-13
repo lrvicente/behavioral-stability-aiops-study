@@ -8,8 +8,8 @@ same ground-truth markers (/var/run/cnsm-fault-active, cnsm-fault-class)
 consumed by Zabbix, keeping the GPU node consistent with the workers.
 
 Five GPU fault classes (mapped from the worker classes):
-  gpu_compute_stress  - saturate GPU compute (matmul loop)
-  vram_pressure       - allocate VRAM up to a target fraction (may OOM workload)
+  gpu_utilization_spike  - saturate GPU compute (matmul loop)
+  gpu_memory_pressure - allocate VRAM up to a target fraction (may OOM workload)
   pcie_bandwidth_sat  - continuous host<->device transfers
   network_degradation - tc netem (identical to workers' network_latency)
   cuda_process_kill   - SIGKILL CUDA processes (workload restarts via systemd)
@@ -53,7 +53,7 @@ def parse_parameters(params_str: str) -> dict:
 
 # ---------- GPU fault primitives ----------
 
-def _gpu_compute_stress(duration: int, params: dict) -> None:
+def _gpu_utilization_spike(duration: int, params: dict) -> None:
     size = int(params.get("matrix_size", "8192"))
     code = (
         "import torch,time;"
@@ -68,7 +68,7 @@ def _gpu_compute_stress(duration: int, params: dict) -> None:
     subprocess.run(["python3", "-c", code], check=False, timeout=duration + 30)
 
 
-def _vram_pressure(duration: int, params: dict) -> None:
+def _gpu_memory_pressure(duration: int, params: dict) -> None:
     frac = float(params.get("fraction", "0.95"))
     # Allocate in a dedicated child process so the OS reclaims ALL VRAM on kill.
     code = (
@@ -155,8 +155,8 @@ def _cuda_process_kill(duration: int, params: dict) -> None:
 # ---------- dispatch ----------
 
 DISPATCH = {
-    "gpu_compute_stress": _gpu_compute_stress,
-    "vram_pressure": _vram_pressure,
+    "gpu_utilization_spike": _gpu_utilization_spike,
+    "gpu_memory_pressure": _gpu_memory_pressure,
     "pcie_bandwidth_sat": _pcie_bandwidth_sat,
     "network_degradation": _network_degradation,
     "cuda_process_kill": _cuda_process_kill,
@@ -185,7 +185,7 @@ def execute_fault(fault_class: str, duration: int, params: dict) -> None:
 
 def _post_fault_watchdog(fault_class: str) -> None:
     """After disruptive faults, confirm the workload recovered."""
-    if fault_class not in ("vram_pressure", "cuda_process_kill"):
+    if fault_class not in ("gpu_memory_pressure", "cuda_process_kill"):
         return
     deadline = time.time() + 60
     while time.time() < deadline:

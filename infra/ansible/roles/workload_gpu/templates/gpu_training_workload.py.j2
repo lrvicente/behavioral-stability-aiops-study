@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+"""
+CNSM/NOMS 2027 - GPU training workload (cnsm-gpu-01)
+
+ResNet50 training loop on CIFAR10 with periodic batch inference.
+Implements protocol section 4.2 (training profile 80-95% utilization)
+and complements section 5.2 (batch inference every 30 min as
+secondary stressor).
+
+Deterministic seed: {{ gpu_workload_seed }}.
+Batch size: {{ gpu_workload_batch_size }} (training) / {{ gpu_workload_inference_batch_size }} (inference burst).
+Mixed precision (AMP) enabled for realistic memory pressure pattern.
+Batch inference burst: every {{ gpu_workload_inference_interval_s }}s.
+"""
+import datetime
+import os
+import signal
+import sys
+import time
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+from torch.amp import GradScaler, autocast
+from torch.utils.data import DataLoader
+
+SEED = {{ gpu_workload_seed }}
+BATCH = {{ gpu_workload_batch_size }}
+INFERENCE_BATCH = {{ gpu_workload_inference_batch_size }}
+INFERENCE_INTERVAL = {{ gpu_workload_inference_interval_s }}
+INFERENCE_BURST_BATCHES = {{ gpu_workload_inference_burst_batches }}
+LOG_DIR = "{{ gpu_workload_log_dir }}"
+DATA_DIR = "{{ gpu_workload_data_dir }}"
+
+_running = True
+
+
+def _stop(signum, frame):
+    global _running
+    _running = False
+
+
+signal.signal(signal.SIGTERM, _stop)
+signal.signal(signal.SIGINT, _stop)
+
+
+def log(msg):
+    ts = datetime.datetime.utcnow().isoformat()
+    line = f"{ts}Z {msg}"
+    print(line, flush=True)
+    try:
+        os.makedirs(LOG_DIR, exist_ok=True)
+        with open(f"{LOG_DIR}/gpu_workload.log", "a") as f:
+            f.write(line + "\n")
+    except Exception:
+        pass
+
+
+def make_dataset():
+    """CIFAR10 with standard ResNet preprocessing (resize to 224x224)."""
+    transform = transforms.Compose([
+        transforms.Resize(224),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225]),
+    ])
+    os.makedirs(DATA_DIR, exist_ok=True)
+    ds = torchvision.datasets.CIFAR10(
+        root=DATA_DIR, train=True, download=True, transform=transform
+    )
+    loader = DataLoader(
+        ds, batch_size=BATCH, shuffle=True, num_workers=4, pin_memory=True
+    )
+    return loader
+
+
+def make_model(device):
+    """ResNet50 from torchvision, randomly initialized (no pretrained weights),
+    head adapted to CIFAR10 (10 classes)."""
+    model = torchvision.models.{{ gpu_workload_model }}(weights=None)
+    model.fc = nn.Linear(model.fc.in_features, 10)
+    model = model.to(device)
+    return model
+
+
+def inference_burst(model, device, n_batches):
+    """Periodic inference burst per protocol section 5.2."""
+    model.eval()
+    x = torch.randn(INFERENCE_BATCH, 3, 224, 224, device=device)
+    t0 = time.time()
+    with torch.no_grad():
+        for _ in range(n_batches):
+            with autocast(device_type='cuda'):
+                model(x)
+            torch.cuda.synchronize()
+            if not _running:
+                break
+    log(f"inference_burst batches={n_batches} elapsed={time.time()-t0:.2f}s")
+    model.train()
+
+
+def main():
+    if not torch.cuda.is_available():
+        log("FATAL: CUDA not available")
+        sys.exit(1)
+
+    torch.manual_seed(SEED)
+    torch.cuda.manual_seed_all(SEED)
+    device = torch.device("cuda")
+
+    log(f"loading {{ gpu_workload_model }} batch={BATCH} seed={SEED}")
+    loader = make_dataset()
+    model = make_model(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9,
+                          weight_decay=5e-4)
+    scaler = GradScaler('cuda')
+
+    log(f"training loop start. inference_burst every {INFERENCE_INTERVAL}s "
+        f"({INFERENCE_BURST_BATCHES} batches at size {INFERENCE_BATCH})")
+
+    model.train()
+    last_inference = time.time()
+    last_report = time.time()
+    n_batches = 0
+    epoch = 0
+
+    while _running:
+        epoch += 1
+        for inputs, targets in loader:
+            if not _running:
+                break
+            inputs = inputs.to(device, non_blocking=True)
+            targets = targets.to(device, non_blocking=True)
+
+            optimizer.zero_grad(set_to_none=True)
+            with autocast(device_type='cuda'):
+                outputs = model(inputs)
+                loss = criterion(outputs, targets)
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
+            n_batches += 1
+
+            # Periodic inference burst (protocol 5.2)
+            if time.time() - last_inference >= INFERENCE_INTERVAL:
+                inference_burst(model, device, INFERENCE_BURST_BATCHES)
+                last_inference = time.time()
+
+            # Periodic progress report
+            if time.time() - last_report >= 60:
+                log(f"alive epoch={epoch} batches_total={n_batches} "
+                    f"last_loss={loss.item():.4f}")
+                last_report = time.time()
+
+    log(f"shutdown after {n_batches} training batches, {epoch} epochs")
+
+
+if __name__ == "__main__":
+    main()
