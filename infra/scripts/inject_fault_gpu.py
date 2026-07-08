@@ -7,19 +7,26 @@ schedule CSV, executes any GPU fault due within the window. Writes the
 same ground-truth markers (/var/run/cnsm-fault-active, cnsm-fault-class)
 consumed by Zabbix, keeping the GPU node consistent with the workers.
 
-Five GPU fault classes (mapped from the worker classes):
-  gpu_utilization_spike  - saturate GPU compute (matmul loop)
-  gpu_memory_pressure - allocate VRAM up to a target fraction (may OOM workload)
-  pcie_bandwidth_sat  - continuous host<->device transfers
-  network_degradation - tc netem (identical to workers' network_latency)
-  cuda_process_kill   - SIGKILL CUDA processes (workload restarts via systemd)
+Six GPU fault classes, reconciled to the locked protocol section 5.2
+(EXPERIMENTAL_SETUP.md) and the 5.2.1 cross-environment mapping:
+
+  gpu_utilization_spike           compute_saturation  (<- OVH cpu_spike)
+  gpu_memory_pressure             memory_pressure     (<- OVH memory_pressure)
+  disk_io_contention              io_bottleneck       (<- OVH disk_io)
+  data_loader_bottleneck          network_degradation (<- OVH network_latency)
+  batch_inference_overload        process_instability (<- OVH process_leak)
+  cpu_contention_during_training  Lambda-only, excluded from paired analysis
+
+Design constraint: the injector runs as a SEPARATE process via cron and must
+not restart the resnet50 training process. IO/loader faults therefore act on
+the shared NFS dataset mount the DataLoader reads from; inference overload
+spawns concurrent CUDA processes contending for SM/VRAM.
 """
 from __future__ import annotations
 
 import argparse
 import csv
 import os
-import signal
 import socket
 import subprocess
 import sys
@@ -32,8 +39,10 @@ CLASS_MARKER = Path("/var/run/cnsm-fault-class")
 EXECUTION_LOG = Path("/var/log/cnsm-faults/executions.log")
 HEARTBEAT = Path("/var/run/cnsm-workload-heartbeat")
 
-# PIDs we must never kill in cuda_process_kill
-SELF_PROTECT_NAMES = ("inject_fault_gpu", "gpu_metrics", "zabbix")
+DATASET_DIR = "/lambda/nfs/cnsm-gpu-01-fs/cnsm-study/data"
+IO_SCRATCH = "/lambda/nfs/cnsm-gpu-01-fs/cnsm-study/faultio"
+
+DISRUPTIVE = ("gpu_memory_pressure", "batch_inference_overload")
 
 
 def log(message: str) -> None:
@@ -70,14 +79,13 @@ def _gpu_utilization_spike(duration: int, params: dict) -> None:
 
 def _gpu_memory_pressure(duration: int, params: dict) -> None:
     frac = float(params.get("fraction", "0.95"))
-    # Allocate in a dedicated child process so the OS reclaims ALL VRAM on kill.
     code = (
         "import torch,time;"
         "d=torch.device('cuda');"
         "free,total=torch.cuda.mem_get_info();"
         f"target=int(total*{frac});"
         "blocks=[];"
-        "step=256*1024*1024;"  # 256MB chunks
+        "step=256*1024*1024;"
         "alloc=0;"
         "exec(\""
         "while alloc<target:\\n"
@@ -97,59 +105,118 @@ def _gpu_memory_pressure(duration: int, params: dict) -> None:
             proc.kill()
 
 
-def _pcie_bandwidth_sat(duration: int, params: dict) -> None:
-    mb = int(params.get("transfer_mb", "512"))
-    code = (
-        "import torch,time;"
-        "d=torch.device('cuda');"
-        f"n={mb}*1024*1024//4;"
-        "host=torch.randn(n,pin_memory=True);"
-        f"t=time.time()+{duration};"
-        "exec(\""
-        "while time.time()<t:\\n"
-        " g=host.to(d,non_blocking=True);back=g.cpu();torch.cuda.synchronize()\")"
-    )
-    subprocess.run(["python3", "-c", code], check=False, timeout=duration + 30)
-
-
-def _network_degradation(duration: int, params: dict) -> None:
-    iface = subprocess.check_output(
-        ["sh", "-c", "ip route | awk '/default/ {print $5; exit}'"]
-    ).decode().strip()
-    delay = params.get("delay", "100ms")
-    subprocess.run(
-        ["tc", "qdisc", "add", "dev", iface, "root", "netem", "delay", delay],
-        check=False,
-    )
+def _disk_io_contention(duration: int, params: dict) -> None:
+    """io_bottleneck. Protocol 5.2: 'fio stress on the SSD while data loader
+    reads'. Persistent layout + fio self-timeout so the timed run never pays the
+    NFS file-creation cost."""
+    os.makedirs(IO_SCRATCH, exist_ok=True)
+    size = params.get("size", "2G")
+    cmd = [
+        "fio",
+        "--name=cnsm_disk_io_contention",
+        f"--directory={IO_SCRATCH}",
+        "--rw=randrw", "--rwmixread=70",
+        "--bs=64k",
+        f"--size={size}",
+        "--iodepth=" + params.get("iodepth", "16"),
+        "--numjobs=" + params.get("numjobs", "4"),
+        "--ioengine=libaio",
+        "--direct=1",
+        "--group_reporting",
+        f"--runtime={duration}", "--time_based",
+        f"--timeout={duration}",
+        "--allow_file_create=1",
+        "--unlink=0",
+        "--minimal",
+    ]
     try:
-        time.sleep(duration)
+        subprocess.run(cmd, check=False, timeout=duration + 180)
+    except subprocess.TimeoutExpired:
+        subprocess.run(["pkill", "-f", "cnsm_disk_io_contention"], check=False)
+
+
+def _data_loader_bottleneck(duration: int, params: dict) -> None:
+    """network_degradation concept. Protocol 5.2: 'artificial latency in data
+    loading pipeline'. Mechanism: high-latency small random reads on the dataset
+    mount, maximizing the per-op latency the DataLoader feels while reading
+    shards. Chosen over tc netem because it is self-contained (no NIC topology
+    assumptions) and validated 2026-07-08. Persistent layout + fio self-timeout,
+    same pattern as disk_io_contention."""
+    os.makedirs(IO_SCRATCH, exist_ok=True)
+    cmd = [
+        "fio",
+        "--name=cnsm_data_loader_bottleneck",
+        f"--directory={IO_SCRATCH}",
+        "--rw=randread",
+        "--bs=4k",
+        "--size=" + params.get("size", "1G"),
+        "--iodepth=" + params.get("iodepth", "1"),
+        "--numjobs=" + params.get("numjobs", "8"),
+        "--ioengine=libaio",
+        "--direct=1",
+        "--thinktime=" + params.get("thinktime_us", "2000"),
+        "--thinktime_blocks=1",
+        "--group_reporting",
+        f"--runtime={duration}", "--time_based",
+        f"--timeout={duration}",
+        "--allow_file_create=1",
+        "--unlink=0",
+        "--minimal",
+    ]
+    try:
+        subprocess.run(cmd, check=False, timeout=duration + 180)
+    except subprocess.TimeoutExpired:
+        subprocess.run(["pkill", "-f", "cnsm_data_loader_bottleneck"], check=False)
+
+
+def _batch_inference_overload(duration: int, params: dict) -> None:
+    """process_instability concept. Protocol 5.2: 'excessive concurrent
+    inference requests'. Spawn N concurrent resnet50 inference processes on the
+    same GPU, contending with training for SM time and VRAM."""
+    n = int(params.get("concurrency", "6"))
+    infer_batch = params.get("infer_batch", "128")
+    worker_code = (
+        "import torch,torchvision,time;"
+        "d=torch.device('cuda');"
+        "m=torchvision.models.resnet50().to(d).eval();"
+        f"b=int({infer_batch});"
+        "x=torch.randn(b,3,224,224,device=d);"
+        f"end=time.time()+{duration};"
+        "exec(\"\"\"\n"
+        "with torch.no_grad():\n"
+        " while time.time()<end:\n"
+        "  y=m(x);torch.cuda.synchronize()\n"
+        "\"\"\")"
+    )
+    procs = []
+    try:
+        for _ in range(n):
+            procs.append(subprocess.Popen(["python3", "-c", worker_code]))
+        deadline = time.time() + duration + 30
+        for p in procs:
+            remaining = max(1, int(deadline - time.time()))
+            try:
+                p.wait(timeout=remaining)
+            except subprocess.TimeoutExpired:
+                p.kill()
     finally:
-        subprocess.run(
-            ["tc", "qdisc", "del", "dev", iface, "root", "netem"], check=False
-        )
+        for p in procs:
+            if p.poll() is None:
+                p.kill()
 
 
-def _cuda_process_kill(duration: int, params: dict) -> None:
-    out = subprocess.check_output(
-        ["nvidia-smi", "--query-compute-apps=pid", "--format=csv,noheader"]
-    ).decode().strip()
-    killed = []
-    for line in out.splitlines():
-        pid = line.strip()
-        if not pid.isdigit():
-            continue
-        try:
-            with open(f"/proc/{pid}/cmdline", "rb") as f:
-                cmd = f.read().decode(errors="ignore")
-            if any(name in cmd for name in SELF_PROTECT_NAMES):
-                continue
-            os.kill(int(pid), signal.SIGKILL)
-            killed.append(pid)
-        except (ProcessLookupError, FileNotFoundError, PermissionError):
-            continue
-    log(f"cuda_process_kill killed_pids={killed}")
-    # Hold the marker for `duration` so the event has a measurable window.
-    time.sleep(duration)
+def _cpu_contention_during_training(duration: int, params: dict) -> None:
+    """Lambda-only (5.2.1: excluded from paired SHAP analysis, kept for
+    within-Lambda metrics). Protocol 5.2: 'stress-ng --cpu on host CPUs while
+    GPU training runs'."""
+    cpu = params.get("cpu", "0")
+    load = params.get("load", "90")
+    cmd = [
+        "stress-ng", "--cpu", cpu,
+        "--cpu-load", load,
+        "--timeout", str(duration),
+    ]
+    subprocess.run(cmd, check=False, timeout=duration + 30)
 
 
 # ---------- dispatch ----------
@@ -157,9 +224,10 @@ def _cuda_process_kill(duration: int, params: dict) -> None:
 DISPATCH = {
     "gpu_utilization_spike": _gpu_utilization_spike,
     "gpu_memory_pressure": _gpu_memory_pressure,
-    "pcie_bandwidth_sat": _pcie_bandwidth_sat,
-    "network_degradation": _network_degradation,
-    "cuda_process_kill": _cuda_process_kill,
+    "disk_io_contention": _disk_io_contention,
+    "data_loader_bottleneck": _data_loader_bottleneck,
+    "batch_inference_overload": _batch_inference_overload,
+    "cpu_contention_during_training": _cpu_contention_during_training,
 }
 
 
@@ -185,7 +253,7 @@ def execute_fault(fault_class: str, duration: int, params: dict) -> None:
 
 def _post_fault_watchdog(fault_class: str) -> None:
     """After disruptive faults, confirm the workload recovered."""
-    if fault_class not in ("gpu_memory_pressure", "cuda_process_kill"):
+    if fault_class not in DISRUPTIVE:
         return
     deadline = time.time() + 60
     while time.time() < deadline:

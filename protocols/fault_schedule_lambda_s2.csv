@@ -1,0 +1,197 @@
+event_id,host,scheduled_iso,fault_class,duration_seconds,parameters,study
+gpu-s2-0001,cnsm-gpu-01,2026-07-10T06:07:05+00:00,gpu_utilization_spike,585,matrix_size=10240,cnsm2027-study
+gpu-s2-0002,cnsm-gpu-01,2026-07-10T09:06:08+00:00,disk_io_contention,404,size=2G iodepth=32 numjobs=2,cnsm2027-study
+gpu-s2-0003,cnsm-gpu-01,2026-07-10T10:21:15+00:00,data_loader_bottleneck,365,size=1G thinktime_us=1000 numjobs=4,cnsm2027-study
+gpu-s2-0004,cnsm-gpu-01,2026-07-10T11:32:25+00:00,gpu_memory_pressure,1047,fraction=0.8,cnsm2027-study
+gpu-s2-0005,cnsm-gpu-01,2026-07-10T14:58:40+00:00,cpu_contention_during_training,817,cpu=0 load=100,cnsm2027-study
+gpu-s2-0006,cnsm-gpu-01,2026-07-10T17:47:16+00:00,gpu_utilization_spike,354,matrix_size=10240,cnsm2027-study
+gpu-s2-0007,cnsm-gpu-01,2026-07-10T21:00:21+00:00,batch_inference_overload,503,concurrency=8 infer_batch=128,cnsm2027-study
+gpu-s2-0008,cnsm-gpu-01,2026-07-11T07:15:58+00:00,gpu_utilization_spike,989,matrix_size=6144,cnsm2027-study
+gpu-s2-0009,cnsm-gpu-01,2026-07-11T09:48:30+00:00,cpu_contention_during_training,394,cpu=0 load=90,cnsm2027-study
+gpu-s2-0010,cnsm-gpu-01,2026-07-11T13:02:03+00:00,gpu_utilization_spike,498,matrix_size=8192,cnsm2027-study
+gpu-s2-0011,cnsm-gpu-01,2026-07-11T17:07:58+00:00,data_loader_bottleneck,1004,size=1G thinktime_us=4000 numjobs=8,cnsm2027-study
+gpu-s2-0012,cnsm-gpu-01,2026-07-11T18:11:40+00:00,gpu_memory_pressure,688,fraction=0.9,cnsm2027-study
+gpu-s2-0013,cnsm-gpu-01,2026-07-11T18:36:11+00:00,disk_io_contention,770,size=2G iodepth=32 numjobs=2,cnsm2027-study
+gpu-s2-0014,cnsm-gpu-01,2026-07-11T20:13:57+00:00,batch_inference_overload,380,concurrency=8 infer_batch=128,cnsm2027-study
+gpu-s2-0015,cnsm-gpu-01,2026-07-12T08:58:28+00:00,data_loader_bottleneck,506,size=1G thinktime_us=2000 numjobs=8,cnsm2027-study
+gpu-s2-0016,cnsm-gpu-01,2026-07-12T10:37:49+00:00,disk_io_contention,764,size=2G iodepth=16 numjobs=4,cnsm2027-study
+gpu-s2-0017,cnsm-gpu-01,2026-07-12T11:20:01+00:00,cpu_contention_during_training,679,cpu=0 load=90,cnsm2027-study
+gpu-s2-0018,cnsm-gpu-01,2026-07-12T13:32:56+00:00,gpu_memory_pressure,1029,fraction=0.9,cnsm2027-study
+gpu-s2-0019,cnsm-gpu-01,2026-07-12T15:22:32+00:00,gpu_utilization_spike,846,matrix_size=10240,cnsm2027-study
+gpu-s2-0020,cnsm-gpu-01,2026-07-12T18:52:47+00:00,batch_inference_overload,373,concurrency=8 infer_batch=64,cnsm2027-study
+gpu-s2-0021,cnsm-gpu-01,2026-07-12T19:53:36+00:00,gpu_utilization_spike,1393,matrix_size=10240,cnsm2027-study
+gpu-s2-0022,cnsm-gpu-01,2026-07-13T10:46:59+00:00,batch_inference_overload,623,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0023,cnsm-gpu-01,2026-07-13T14:00:20+00:00,cpu_contention_during_training,367,cpu=0 load=80,cnsm2027-study
+gpu-s2-0024,cnsm-gpu-01,2026-07-13T16:09:12+00:00,disk_io_contention,880,size=2G iodepth=16 numjobs=4,cnsm2027-study
+gpu-s2-0025,cnsm-gpu-01,2026-07-13T16:50:19+00:00,gpu_utilization_spike,1642,matrix_size=8192,cnsm2027-study
+gpu-s2-0026,cnsm-gpu-01,2026-07-13T17:45:03+00:00,gpu_memory_pressure,1410,fraction=0.9,cnsm2027-study
+gpu-s2-0027,cnsm-gpu-01,2026-07-13T21:05:45+00:00,gpu_utilization_spike,1239,matrix_size=6144,cnsm2027-study
+gpu-s2-0028,cnsm-gpu-01,2026-07-13T21:30:37+00:00,data_loader_bottleneck,842,size=1G thinktime_us=1000 numjobs=4,cnsm2027-study
+gpu-s2-0029,cnsm-gpu-01,2026-07-14T08:01:50+00:00,cpu_contention_during_training,393,cpu=0 load=80,cnsm2027-study
+gpu-s2-0030,cnsm-gpu-01,2026-07-14T10:59:59+00:00,batch_inference_overload,412,concurrency=4 infer_batch=64,cnsm2027-study
+gpu-s2-0031,cnsm-gpu-01,2026-07-14T11:37:59+00:00,gpu_utilization_spike,1693,matrix_size=8192,cnsm2027-study
+gpu-s2-0032,cnsm-gpu-01,2026-07-14T12:59:11+00:00,gpu_utilization_spike,1521,matrix_size=6144,cnsm2027-study
+gpu-s2-0033,cnsm-gpu-01,2026-07-14T17:01:29+00:00,gpu_memory_pressure,1388,fraction=0.85,cnsm2027-study
+gpu-s2-0034,cnsm-gpu-01,2026-07-14T19:20:13+00:00,disk_io_contention,910,size=2G iodepth=32 numjobs=4,cnsm2027-study
+gpu-s2-0035,cnsm-gpu-01,2026-07-14T20:21:53+00:00,data_loader_bottleneck,1433,size=1G thinktime_us=1000 numjobs=4,cnsm2027-study
+gpu-s2-0036,cnsm-gpu-01,2026-07-15T07:03:16+00:00,data_loader_bottleneck,1325,size=1G thinktime_us=1000 numjobs=4,cnsm2027-study
+gpu-s2-0037,cnsm-gpu-01,2026-07-15T08:26:16+00:00,batch_inference_overload,605,concurrency=8 infer_batch=64,cnsm2027-study
+gpu-s2-0038,cnsm-gpu-01,2026-07-15T10:57:42+00:00,gpu_memory_pressure,913,fraction=0.85,cnsm2027-study
+gpu-s2-0039,cnsm-gpu-01,2026-07-15T11:16:28+00:00,gpu_utilization_spike,630,matrix_size=10240,cnsm2027-study
+gpu-s2-0040,cnsm-gpu-01,2026-07-15T12:41:46+00:00,cpu_contention_during_training,1097,cpu=0 load=100,cnsm2027-study
+gpu-s2-0041,cnsm-gpu-01,2026-07-15T14:02:38+00:00,gpu_utilization_spike,301,matrix_size=10240,cnsm2027-study
+gpu-s2-0042,cnsm-gpu-01,2026-07-15T17:52:53+00:00,disk_io_contention,631,size=2G iodepth=16 numjobs=4,cnsm2027-study
+gpu-s2-0043,cnsm-gpu-01,2026-07-16T07:09:56+00:00,gpu_utilization_spike,562,matrix_size=10240,cnsm2027-study
+gpu-s2-0044,cnsm-gpu-01,2026-07-16T08:23:32+00:00,data_loader_bottleneck,1273,size=1G thinktime_us=4000 numjobs=4,cnsm2027-study
+gpu-s2-0045,cnsm-gpu-01,2026-07-16T10:40:00+00:00,gpu_memory_pressure,1142,fraction=0.9,cnsm2027-study
+gpu-s2-0046,cnsm-gpu-01,2026-07-16T11:26:23+00:00,batch_inference_overload,733,concurrency=4 infer_batch=64,cnsm2027-study
+gpu-s2-0047,cnsm-gpu-01,2026-07-16T13:19:06+00:00,disk_io_contention,1030,size=2G iodepth=32 numjobs=4,cnsm2027-study
+gpu-s2-0048,cnsm-gpu-01,2026-07-16T15:42:08+00:00,cpu_contention_during_training,987,cpu=0 load=100,cnsm2027-study
+gpu-s2-0049,cnsm-gpu-01,2026-07-16T17:12:46+00:00,gpu_utilization_spike,1064,matrix_size=8192,cnsm2027-study
+gpu-s2-0050,cnsm-gpu-01,2026-07-17T09:27:58+00:00,disk_io_contention,307,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0051,cnsm-gpu-01,2026-07-17T10:32:32+00:00,cpu_contention_during_training,534,cpu=0 load=80,cnsm2027-study
+gpu-s2-0052,cnsm-gpu-01,2026-07-17T13:42:38+00:00,gpu_memory_pressure,664,fraction=0.85,cnsm2027-study
+gpu-s2-0053,cnsm-gpu-01,2026-07-17T15:07:21+00:00,gpu_utilization_spike,445,matrix_size=10240,cnsm2027-study
+gpu-s2-0054,cnsm-gpu-01,2026-07-17T15:17:06+00:00,batch_inference_overload,543,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0055,cnsm-gpu-01,2026-07-17T17:20:55+00:00,data_loader_bottleneck,738,size=1G thinktime_us=4000 numjobs=4,cnsm2027-study
+gpu-s2-0056,cnsm-gpu-01,2026-07-17T21:22:51+00:00,gpu_utilization_spike,1781,matrix_size=10240,cnsm2027-study
+gpu-s2-0057,cnsm-gpu-01,2026-07-18T07:22:20+00:00,batch_inference_overload,778,concurrency=8 infer_batch=64,cnsm2027-study
+gpu-s2-0058,cnsm-gpu-01,2026-07-18T09:35:23+00:00,data_loader_bottleneck,1679,size=1G thinktime_us=4000 numjobs=4,cnsm2027-study
+gpu-s2-0059,cnsm-gpu-01,2026-07-18T11:17:48+00:00,gpu_utilization_spike,424,matrix_size=8192,cnsm2027-study
+gpu-s2-0060,cnsm-gpu-01,2026-07-18T11:58:15+00:00,gpu_memory_pressure,1294,fraction=0.8,cnsm2027-study
+gpu-s2-0061,cnsm-gpu-01,2026-07-18T15:21:36+00:00,disk_io_contention,554,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0062,cnsm-gpu-01,2026-07-18T15:54:07+00:00,cpu_contention_during_training,849,cpu=0 load=90,cnsm2027-study
+gpu-s2-0063,cnsm-gpu-01,2026-07-18T17:46:04+00:00,gpu_utilization_spike,587,matrix_size=8192,cnsm2027-study
+gpu-s2-0064,cnsm-gpu-01,2026-07-19T08:49:04+00:00,gpu_utilization_spike,640,matrix_size=8192,cnsm2027-study
+gpu-s2-0065,cnsm-gpu-01,2026-07-19T09:40:05+00:00,gpu_memory_pressure,1594,fraction=0.85,cnsm2027-study
+gpu-s2-0066,cnsm-gpu-01,2026-07-19T12:05:19+00:00,disk_io_contention,518,size=2G iodepth=16 numjobs=4,cnsm2027-study
+gpu-s2-0067,cnsm-gpu-01,2026-07-19T15:43:26+00:00,batch_inference_overload,468,concurrency=6 infer_batch=64,cnsm2027-study
+gpu-s2-0068,cnsm-gpu-01,2026-07-19T17:08:42+00:00,data_loader_bottleneck,1099,size=1G thinktime_us=2000 numjobs=8,cnsm2027-study
+gpu-s2-0069,cnsm-gpu-01,2026-07-19T19:24:55+00:00,cpu_contention_during_training,592,cpu=0 load=90,cnsm2027-study
+gpu-s2-0070,cnsm-gpu-01,2026-07-19T20:38:32+00:00,gpu_utilization_spike,1726,matrix_size=10240,cnsm2027-study
+gpu-s2-0071,cnsm-gpu-01,2026-07-20T06:43:24+00:00,disk_io_contention,358,size=2G iodepth=32 numjobs=2,cnsm2027-study
+gpu-s2-0072,cnsm-gpu-01,2026-07-20T07:37:30+00:00,cpu_contention_during_training,814,cpu=0 load=100,cnsm2027-study
+gpu-s2-0073,cnsm-gpu-01,2026-07-20T10:52:27+00:00,gpu_memory_pressure,922,fraction=0.8,cnsm2027-study
+gpu-s2-0074,cnsm-gpu-01,2026-07-20T17:03:08+00:00,batch_inference_overload,820,concurrency=4 infer_batch=64,cnsm2027-study
+gpu-s2-0075,cnsm-gpu-01,2026-07-20T17:28:54+00:00,data_loader_bottleneck,440,size=1G thinktime_us=4000 numjobs=4,cnsm2027-study
+gpu-s2-0076,cnsm-gpu-01,2026-07-20T17:55:16+00:00,gpu_utilization_spike,1682,matrix_size=6144,cnsm2027-study
+gpu-s2-0077,cnsm-gpu-01,2026-07-20T18:52:27+00:00,gpu_utilization_spike,1126,matrix_size=6144,cnsm2027-study
+gpu-s2-0078,cnsm-gpu-01,2026-07-21T07:15:08+00:00,cpu_contention_during_training,985,cpu=0 load=100,cnsm2027-study
+gpu-s2-0079,cnsm-gpu-01,2026-07-21T08:43:05+00:00,gpu_utilization_spike,943,matrix_size=6144,cnsm2027-study
+gpu-s2-0080,cnsm-gpu-01,2026-07-21T10:28:57+00:00,gpu_utilization_spike,843,matrix_size=8192,cnsm2027-study
+gpu-s2-0081,cnsm-gpu-01,2026-07-21T11:41:51+00:00,gpu_memory_pressure,868,fraction=0.9,cnsm2027-study
+gpu-s2-0082,cnsm-gpu-01,2026-07-21T13:29:51+00:00,data_loader_bottleneck,1621,size=1G thinktime_us=2000 numjobs=8,cnsm2027-study
+gpu-s2-0083,cnsm-gpu-01,2026-07-21T16:50:13+00:00,batch_inference_overload,623,concurrency=4 infer_batch=64,cnsm2027-study
+gpu-s2-0084,cnsm-gpu-01,2026-07-21T17:37:17+00:00,disk_io_contention,769,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0085,cnsm-gpu-01,2026-07-22T09:42:22+00:00,gpu_utilization_spike,1552,matrix_size=10240,cnsm2027-study
+gpu-s2-0086,cnsm-gpu-01,2026-07-22T11:16:12+00:00,data_loader_bottleneck,1383,size=1G thinktime_us=1000 numjobs=8,cnsm2027-study
+gpu-s2-0087,cnsm-gpu-01,2026-07-22T13:07:26+00:00,disk_io_contention,979,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0088,cnsm-gpu-01,2026-07-22T16:23:16+00:00,cpu_contention_during_training,570,cpu=0 load=80,cnsm2027-study
+gpu-s2-0089,cnsm-gpu-01,2026-07-22T18:55:29+00:00,batch_inference_overload,409,concurrency=8 infer_batch=64,cnsm2027-study
+gpu-s2-0090,cnsm-gpu-01,2026-07-22T20:02:28+00:00,gpu_memory_pressure,1157,fraction=0.85,cnsm2027-study
+gpu-s2-0091,cnsm-gpu-01,2026-07-22T20:56:39+00:00,gpu_utilization_spike,1538,matrix_size=6144,cnsm2027-study
+gpu-s2-0092,cnsm-gpu-01,2026-07-23T06:39:21+00:00,cpu_contention_during_training,1149,cpu=0 load=90,cnsm2027-study
+gpu-s2-0093,cnsm-gpu-01,2026-07-23T09:03:57+00:00,gpu_utilization_spike,390,matrix_size=6144,cnsm2027-study
+gpu-s2-0094,cnsm-gpu-01,2026-07-23T13:12:55+00:00,batch_inference_overload,641,concurrency=4 infer_batch=128,cnsm2027-study
+gpu-s2-0095,cnsm-gpu-01,2026-07-23T16:38:15+00:00,data_loader_bottleneck,630,size=1G thinktime_us=4000 numjobs=8,cnsm2027-study
+gpu-s2-0096,cnsm-gpu-01,2026-07-23T16:58:20+00:00,gpu_utilization_spike,1429,matrix_size=10240,cnsm2027-study
+gpu-s2-0097,cnsm-gpu-01,2026-07-23T17:56:54+00:00,gpu_memory_pressure,1475,fraction=0.9,cnsm2027-study
+gpu-s2-0098,cnsm-gpu-01,2026-07-23T20:22:00+00:00,disk_io_contention,309,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0099,cnsm-gpu-01,2026-07-24T09:15:54+00:00,batch_inference_overload,340,concurrency=6 infer_batch=64,cnsm2027-study
+gpu-s2-0100,cnsm-gpu-01,2026-07-24T10:38:43+00:00,gpu_memory_pressure,1111,fraction=0.9,cnsm2027-study
+gpu-s2-0101,cnsm-gpu-01,2026-07-24T12:31:01+00:00,data_loader_bottleneck,510,size=1G thinktime_us=2000 numjobs=8,cnsm2027-study
+gpu-s2-0102,cnsm-gpu-01,2026-07-24T14:08:23+00:00,gpu_utilization_spike,1571,matrix_size=10240,cnsm2027-study
+gpu-s2-0103,cnsm-gpu-01,2026-07-24T19:18:35+00:00,cpu_contention_during_training,458,cpu=0 load=80,cnsm2027-study
+gpu-s2-0104,cnsm-gpu-01,2026-07-24T20:39:22+00:00,disk_io_contention,1185,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0105,cnsm-gpu-01,2026-07-24T21:02:46+00:00,gpu_utilization_spike,1144,matrix_size=6144,cnsm2027-study
+gpu-s2-0106,cnsm-gpu-01,2026-07-25T06:30:08+00:00,cpu_contention_during_training,527,cpu=0 load=80,cnsm2027-study
+gpu-s2-0107,cnsm-gpu-01,2026-07-25T08:16:46+00:00,batch_inference_overload,771,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0108,cnsm-gpu-01,2026-07-25T12:27:20+00:00,data_loader_bottleneck,766,size=1G thinktime_us=1000 numjobs=4,cnsm2027-study
+gpu-s2-0109,cnsm-gpu-01,2026-07-25T13:56:57+00:00,disk_io_contention,975,size=2G iodepth=32 numjobs=2,cnsm2027-study
+gpu-s2-0110,cnsm-gpu-01,2026-07-25T16:15:03+00:00,gpu_utilization_spike,972,matrix_size=8192,cnsm2027-study
+gpu-s2-0111,cnsm-gpu-01,2026-07-25T17:02:32+00:00,gpu_utilization_spike,442,matrix_size=8192,cnsm2027-study
+gpu-s2-0112,cnsm-gpu-01,2026-07-25T19:48:25+00:00,gpu_memory_pressure,1319,fraction=0.9,cnsm2027-study
+gpu-s2-0113,cnsm-gpu-01,2026-07-26T07:16:25+00:00,batch_inference_overload,744,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0114,cnsm-gpu-01,2026-07-26T11:57:16+00:00,disk_io_contention,746,size=2G iodepth=32 numjobs=2,cnsm2027-study
+gpu-s2-0115,cnsm-gpu-01,2026-07-26T12:29:29+00:00,gpu_utilization_spike,1480,matrix_size=6144,cnsm2027-study
+gpu-s2-0116,cnsm-gpu-01,2026-07-26T14:46:35+00:00,cpu_contention_during_training,560,cpu=0 load=80,cnsm2027-study
+gpu-s2-0117,cnsm-gpu-01,2026-07-26T18:27:29+00:00,data_loader_bottleneck,1751,size=1G thinktime_us=2000 numjobs=4,cnsm2027-study
+gpu-s2-0118,cnsm-gpu-01,2026-07-26T19:42:36+00:00,gpu_utilization_spike,1364,matrix_size=10240,cnsm2027-study
+gpu-s2-0119,cnsm-gpu-01,2026-07-26T20:08:16+00:00,gpu_memory_pressure,1003,fraction=0.85,cnsm2027-study
+gpu-s2-0120,cnsm-gpu-01,2026-07-27T09:49:34+00:00,batch_inference_overload,634,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0121,cnsm-gpu-01,2026-07-27T11:25:57+00:00,gpu_utilization_spike,1435,matrix_size=6144,cnsm2027-study
+gpu-s2-0122,cnsm-gpu-01,2026-07-27T12:10:23+00:00,disk_io_contention,496,size=2G iodepth=32 numjobs=4,cnsm2027-study
+gpu-s2-0123,cnsm-gpu-01,2026-07-27T14:38:18+00:00,data_loader_bottleneck,1687,size=1G thinktime_us=4000 numjobs=4,cnsm2027-study
+gpu-s2-0124,cnsm-gpu-01,2026-07-27T17:52:21+00:00,gpu_memory_pressure,1765,fraction=0.85,cnsm2027-study
+gpu-s2-0125,cnsm-gpu-01,2026-07-27T18:52:55+00:00,gpu_utilization_spike,1131,matrix_size=10240,cnsm2027-study
+gpu-s2-0126,cnsm-gpu-01,2026-07-27T20:06:14+00:00,cpu_contention_during_training,1153,cpu=0 load=80,cnsm2027-study
+gpu-s2-0127,cnsm-gpu-01,2026-07-28T07:19:32+00:00,gpu_utilization_spike,1346,matrix_size=8192,cnsm2027-study
+gpu-s2-0128,cnsm-gpu-01,2026-07-28T10:51:52+00:00,gpu_utilization_spike,647,matrix_size=10240,cnsm2027-study
+gpu-s2-0129,cnsm-gpu-01,2026-07-28T14:09:53+00:00,cpu_contention_during_training,386,cpu=0 load=90,cnsm2027-study
+gpu-s2-0130,cnsm-gpu-01,2026-07-28T15:03:05+00:00,data_loader_bottleneck,1355,size=1G thinktime_us=4000 numjobs=8,cnsm2027-study
+gpu-s2-0131,cnsm-gpu-01,2026-07-28T15:49:12+00:00,batch_inference_overload,395,concurrency=4 infer_batch=128,cnsm2027-study
+gpu-s2-0132,cnsm-gpu-01,2026-07-28T18:26:29+00:00,disk_io_contention,530,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0133,cnsm-gpu-01,2026-07-28T21:29:02+00:00,gpu_memory_pressure,650,fraction=0.8,cnsm2027-study
+gpu-s2-0134,cnsm-gpu-01,2026-07-29T13:46:06+00:00,gpu_utilization_spike,799,matrix_size=6144,cnsm2027-study
+gpu-s2-0135,cnsm-gpu-01,2026-07-29T14:18:43+00:00,gpu_memory_pressure,611,fraction=0.8,cnsm2027-study
+gpu-s2-0136,cnsm-gpu-01,2026-07-29T15:38:51+00:00,cpu_contention_during_training,1097,cpu=0 load=90,cnsm2027-study
+gpu-s2-0137,cnsm-gpu-01,2026-07-29T16:46:12+00:00,disk_io_contention,524,size=2G iodepth=32 numjobs=2,cnsm2027-study
+gpu-s2-0138,cnsm-gpu-01,2026-07-29T18:07:41+00:00,gpu_utilization_spike,402,matrix_size=10240,cnsm2027-study
+gpu-s2-0139,cnsm-gpu-01,2026-07-29T20:12:51+00:00,data_loader_bottleneck,810,size=1G thinktime_us=1000 numjobs=8,cnsm2027-study
+gpu-s2-0140,cnsm-gpu-01,2026-07-29T21:07:39+00:00,batch_inference_overload,436,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0141,cnsm-gpu-01,2026-07-30T08:44:44+00:00,gpu_memory_pressure,1167,fraction=0.9,cnsm2027-study
+gpu-s2-0142,cnsm-gpu-01,2026-07-30T09:08:21+00:00,gpu_utilization_spike,1292,matrix_size=10240,cnsm2027-study
+gpu-s2-0143,cnsm-gpu-01,2026-07-30T10:38:40+00:00,batch_inference_overload,544,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0144,cnsm-gpu-01,2026-07-30T11:08:38+00:00,data_loader_bottleneck,458,size=1G thinktime_us=4000 numjobs=8,cnsm2027-study
+gpu-s2-0145,cnsm-gpu-01,2026-07-30T14:04:03+00:00,cpu_contention_during_training,540,cpu=0 load=90,cnsm2027-study
+gpu-s2-0146,cnsm-gpu-01,2026-07-30T19:54:39+00:00,gpu_utilization_spike,987,matrix_size=8192,cnsm2027-study
+gpu-s2-0147,cnsm-gpu-01,2026-07-30T20:26:43+00:00,disk_io_contention,853,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0148,cnsm-gpu-01,2026-07-31T09:59:40+00:00,cpu_contention_during_training,725,cpu=0 load=80,cnsm2027-study
+gpu-s2-0149,cnsm-gpu-01,2026-07-31T10:14:58+00:00,gpu_utilization_spike,723,matrix_size=8192,cnsm2027-study
+gpu-s2-0150,cnsm-gpu-01,2026-07-31T11:26:15+00:00,data_loader_bottleneck,1097,size=1G thinktime_us=4000 numjobs=4,cnsm2027-study
+gpu-s2-0151,cnsm-gpu-01,2026-07-31T15:41:41+00:00,gpu_memory_pressure,1779,fraction=0.85,cnsm2027-study
+gpu-s2-0152,cnsm-gpu-01,2026-07-31T17:16:35+00:00,batch_inference_overload,788,concurrency=4 infer_batch=128,cnsm2027-study
+gpu-s2-0153,cnsm-gpu-01,2026-07-31T18:34:06+00:00,disk_io_contention,605,size=2G iodepth=32 numjobs=4,cnsm2027-study
+gpu-s2-0154,cnsm-gpu-01,2026-07-31T21:09:41+00:00,gpu_utilization_spike,1402,matrix_size=10240,cnsm2027-study
+gpu-s2-0155,cnsm-gpu-01,2026-08-01T06:54:55+00:00,data_loader_bottleneck,1783,size=1G thinktime_us=1000 numjobs=8,cnsm2027-study
+gpu-s2-0156,cnsm-gpu-01,2026-08-01T10:22:54+00:00,gpu_memory_pressure,861,fraction=0.9,cnsm2027-study
+gpu-s2-0157,cnsm-gpu-01,2026-08-01T11:32:13+00:00,gpu_utilization_spike,1393,matrix_size=6144,cnsm2027-study
+gpu-s2-0158,cnsm-gpu-01,2026-08-01T13:10:17+00:00,batch_inference_overload,703,concurrency=8 infer_batch=64,cnsm2027-study
+gpu-s2-0159,cnsm-gpu-01,2026-08-01T13:24:33+00:00,gpu_utilization_spike,471,matrix_size=10240,cnsm2027-study
+gpu-s2-0160,cnsm-gpu-01,2026-08-01T14:30:55+00:00,cpu_contention_during_training,738,cpu=0 load=80,cnsm2027-study
+gpu-s2-0161,cnsm-gpu-01,2026-08-01T16:07:48+00:00,disk_io_contention,1187,size=2G iodepth=16 numjobs=4,cnsm2027-study
+gpu-s2-0162,cnsm-gpu-01,2026-08-02T08:04:56+00:00,data_loader_bottleneck,1263,size=1G thinktime_us=1000 numjobs=4,cnsm2027-study
+gpu-s2-0163,cnsm-gpu-01,2026-08-02T10:21:07+00:00,gpu_utilization_spike,1016,matrix_size=6144,cnsm2027-study
+gpu-s2-0164,cnsm-gpu-01,2026-08-02T11:21:52+00:00,gpu_utilization_spike,1631,matrix_size=6144,cnsm2027-study
+gpu-s2-0165,cnsm-gpu-01,2026-08-02T15:39:06+00:00,batch_inference_overload,341,concurrency=4 infer_batch=64,cnsm2027-study
+gpu-s2-0166,cnsm-gpu-01,2026-08-02T17:34:51+00:00,cpu_contention_during_training,504,cpu=0 load=80,cnsm2027-study
+gpu-s2-0167,cnsm-gpu-01,2026-08-02T19:40:28+00:00,disk_io_contention,936,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0168,cnsm-gpu-01,2026-08-02T20:30:51+00:00,gpu_memory_pressure,858,fraction=0.85,cnsm2027-study
+gpu-s2-0169,cnsm-gpu-01,2026-08-03T06:44:51+00:00,batch_inference_overload,410,concurrency=8 infer_batch=64,cnsm2027-study
+gpu-s2-0170,cnsm-gpu-01,2026-08-03T08:21:03+00:00,data_loader_bottleneck,938,size=1G thinktime_us=4000 numjobs=8,cnsm2027-study
+gpu-s2-0171,cnsm-gpu-01,2026-08-03T12:45:42+00:00,disk_io_contention,706,size=2G iodepth=16 numjobs=2,cnsm2027-study
+gpu-s2-0172,cnsm-gpu-01,2026-08-03T16:22:07+00:00,gpu_utilization_spike,1512,matrix_size=10240,cnsm2027-study
+gpu-s2-0173,cnsm-gpu-01,2026-08-03T17:25:34+00:00,gpu_utilization_spike,1584,matrix_size=6144,cnsm2027-study
+gpu-s2-0174,cnsm-gpu-01,2026-08-03T18:31:38+00:00,gpu_memory_pressure,808,fraction=0.9,cnsm2027-study
+gpu-s2-0175,cnsm-gpu-01,2026-08-03T20:18:41+00:00,cpu_contention_during_training,1091,cpu=0 load=90,cnsm2027-study
+gpu-s2-0176,cnsm-gpu-01,2026-08-04T07:34:39+00:00,cpu_contention_during_training,312,cpu=0 load=90,cnsm2027-study
+gpu-s2-0177,cnsm-gpu-01,2026-08-04T10:35:20+00:00,gpu_utilization_spike,1303,matrix_size=6144,cnsm2027-study
+gpu-s2-0178,cnsm-gpu-01,2026-08-04T11:24:04+00:00,data_loader_bottleneck,1187,size=1G thinktime_us=2000 numjobs=8,cnsm2027-study
+gpu-s2-0179,cnsm-gpu-01,2026-08-04T12:44:44+00:00,gpu_utilization_spike,1748,matrix_size=6144,cnsm2027-study
+gpu-s2-0180,cnsm-gpu-01,2026-08-04T15:19:35+00:00,gpu_memory_pressure,1491,fraction=0.8,cnsm2027-study
+gpu-s2-0181,cnsm-gpu-01,2026-08-04T18:37:49+00:00,batch_inference_overload,834,concurrency=8 infer_batch=128,cnsm2027-study
+gpu-s2-0182,cnsm-gpu-01,2026-08-04T21:25:03+00:00,disk_io_contention,930,size=2G iodepth=32 numjobs=4,cnsm2027-study
+gpu-s2-0183,cnsm-gpu-01,2026-08-05T07:33:30+00:00,gpu_utilization_spike,988,matrix_size=6144,cnsm2027-study
+gpu-s2-0184,cnsm-gpu-01,2026-08-05T10:40:57+00:00,data_loader_bottleneck,1312,size=1G thinktime_us=2000 numjobs=4,cnsm2027-study
+gpu-s2-0185,cnsm-gpu-01,2026-08-05T11:05:57+00:00,cpu_contention_during_training,799,cpu=0 load=80,cnsm2027-study
+gpu-s2-0186,cnsm-gpu-01,2026-08-05T14:21:34+00:00,batch_inference_overload,663,concurrency=6 infer_batch=128,cnsm2027-study
+gpu-s2-0187,cnsm-gpu-01,2026-08-05T16:04:21+00:00,gpu_utilization_spike,872,matrix_size=10240,cnsm2027-study
+gpu-s2-0188,cnsm-gpu-01,2026-08-05T17:33:38+00:00,disk_io_contention,1018,size=2G iodepth=16 numjobs=4,cnsm2027-study
+gpu-s2-0189,cnsm-gpu-01,2026-08-05T20:52:42+00:00,gpu_memory_pressure,1658,fraction=0.8,cnsm2027-study
+gpu-s2-0190,cnsm-gpu-01,2026-08-06T08:11:47+00:00,gpu_utilization_spike,902,matrix_size=6144,cnsm2027-study
+gpu-s2-0191,cnsm-gpu-01,2026-08-06T10:28:50+00:00,gpu_memory_pressure,1428,fraction=0.9,cnsm2027-study
+gpu-s2-0192,cnsm-gpu-01,2026-08-06T11:17:25+00:00,gpu_utilization_spike,798,matrix_size=8192,cnsm2027-study
+gpu-s2-0193,cnsm-gpu-01,2026-08-06T11:54:02+00:00,data_loader_bottleneck,1659,size=1G thinktime_us=4000 numjobs=8,cnsm2027-study
+gpu-s2-0194,cnsm-gpu-01,2026-08-06T13:02:41+00:00,cpu_contention_during_training,784,cpu=0 load=100,cnsm2027-study
+gpu-s2-0195,cnsm-gpu-01,2026-08-06T15:58:27+00:00,disk_io_contention,843,size=2G iodepth=32 numjobs=4,cnsm2027-study
+gpu-s2-0196,cnsm-gpu-01,2026-08-06T20:46:36+00:00,batch_inference_overload,863,concurrency=6 infer_batch=128,cnsm2027-study
