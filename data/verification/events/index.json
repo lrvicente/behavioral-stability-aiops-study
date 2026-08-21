@@ -1,0 +1,96 @@
+[
+  {
+    "tag": "paper_tzero_fig2",
+    "host": "cnsm-web-04",
+    "fault_class": "cpu_spike",
+    "scheduled_iso": "2026-05-15T06:14:05+00:00",
+    "observed_start": "2026-05-15T06:14:01.640408+00:00",
+    "observed_end": "2026-05-15T06:32:57.718379+00:00",
+    "duration_error_s": "+0.08",
+    "status": "executed",
+    "window_basis": "observed execution window",
+    "samples": 3079
+  },
+  {
+    "tag": "class_cpu_spike",
+    "host": "cnsm-io-01",
+    "fault_class": "cpu_spike",
+    "scheduled_iso": "2026-05-16T13:56:17+00:00",
+    "observed_start": "2026-05-16T13:56:01.760471+00:00",
+    "observed_end": "2026-05-16T14:05:15.825960+00:00",
+    "duration_error_s": "+0.07",
+    "status": "executed",
+    "window_basis": "observed execution window",
+    "samples": 2699
+  },
+  {
+    "tag": "class_disk_io",
+    "host": "cnsm-mem-01",
+    "fault_class": "disk_io",
+    "scheduled_iso": "2026-05-15T10:22:09+00:00",
+    "observed_start": "2026-05-15T10:22:02.055839+00:00",
+    "observed_end": "2026-05-15T10:39:03.172049+00:00",
+    "duration_error_s": "+0.12",
+    "status": "executed",
+    "window_basis": "observed execution window",
+    "samples": 3002
+  },
+  {
+    "tag": "class_memory_pressure",
+    "host": "cnsm-db-redis-01",
+    "fault_class": "memory_pressure",
+    "scheduled_iso": "2026-05-15T15:54:55+00:00",
+    "observed_start": "2026-05-15T15:54:01.925817+00:00",
+    "observed_end": "2026-05-15T16:21:50.671016+00:00",
+    "duration_error_s": "+0.75",
+    "status": "executed",
+    "window_basis": "observed execution window",
+    "samples": 3430
+  },
+  {
+    "tag": "class_network_latency",
+    "host": "cnsm-web-04",
+    "fault_class": "network_latency",
+    "scheduled_iso": "2026-05-16T11:45:44+00:00",
+    "observed_start": "2026-05-16T11:45:01.536830+00:00",
+    "observed_end": "2026-05-16T12:14:40.564150+00:00",
+    "duration_error_s": "+0.03",
+    "status": "executed",
+    "window_basis": "observed execution window",
+    "samples": 3499
+  },
+  {
+    "tag": "class_process_leak",
+    "host": "cnsm-db-redis-02",
+    "fault_class": "process_leak",
+    "scheduled_iso": "2026-05-17T21:01:58+00:00",
+    "observed_start": "2026-05-17T21:01:01.890347+00:00",
+    "observed_end": "2026-05-17T21:10:40.973546+00:00",
+    "duration_error_s": "+0.08",
+    "status": "executed",
+    "window_basis": "observed execution window",
+    "samples": 2723
+  },
+  {
+    "tag": "silent_absence_cnsm-web-01",
+    "host": "cnsm-web-01",
+    "fault_class": "network_latency",
+    "scheduled_iso": "2026-07-19T09:03:11+00:00",
+    "duration_error_s": "",
+    "status": "missing",
+    "window_basis": "scheduled window, event did not execute",
+    "samples": 3407,
+    "scheduled_end": "2026-07-19T09:30:29+00:00"
+  },
+  {
+    "tag": "silent_absence_cnsm-web-04",
+    "host": "cnsm-web-04",
+    "fault_class": "process_leak",
+    "scheduled_iso": "2026-07-20T11:10:36+00:00",
+    "duration_error_s": "",
+    "status": "missing",
+    "window_basis": "scheduled window, event did not execute",
+    "samples": 2652,
+    "scheduled_end": "2026-07-20T11:18:35+00:00"
+  }
+]
